@@ -14,7 +14,7 @@ export default function StickyCartIcon({ onClick }: StickyCartIconProps) {
   return (
     <button
       onClick={onClick}
-      className="fixed right-6 bottom-24 bg-lime-400 hover:bg-lime-200 text-white rounded-2xl shadow-2xl p-4 transition-all duration-300 hover:scale-110 z-40 group animate-bounce"
+      className="fixed right-6 bottom-24 bg-[#9EA233] hover:bg-[#9EA233] text-white rounded-2xl shadow-2xl p-4 transition-all duration-300 hover:scale-110 z-40 group animate-bounce"
     >
       <div className="relative">
         <ShoppingCart className="w-8 h-8" />
@@ -25,7 +25,7 @@ export default function StickyCartIcon({ onClick }: StickyCartIconProps) {
       <div className="mt-2 text-sm font-semibold">
         ₹{getTotalPrice()}
       </div>
-      <div className="absolute -top-2 -left-2 w-4 h-4 bg-lime-400 rounded-full animate-ping"></div>
+      <div className="absolute -top-2 -left-2 w-4 h-4 bg-[#9EA233] rounded-full animate-ping"></div>
     </button>
   );
 }

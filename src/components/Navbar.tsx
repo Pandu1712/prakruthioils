@@ -30,7 +30,7 @@ export default function Navbar({ onNavigate, currentPage }: NavbarProps) {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled ? "bg-[#9ACD32] shadow-lg py-2" : "bg-[#9ACD32] py-4"
+        isScrolled ? "bg-[#9EA233] shadow-lg py-2" : "bg-[#9EA233] py-4"
       }`}
     >
       <div className="container mx-auto px-6">
@@ -114,7 +114,7 @@ export default function Navbar({ onNavigate, currentPage }: NavbarProps) {
                 }}
                 className={`block w-full text-left px-4 py-3 rounded-lg transition duration-300 ${
                   currentPage === item.id
-                    ? "bg-[#9ACD32] text-white font-semibold"
+                    ? "bg-[#9EA233] text-white font-semibold"
                     : "text-gray-700 hover:bg-gray-100"
                 }`}
               >

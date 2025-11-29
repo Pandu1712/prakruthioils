@@ -8,7 +8,7 @@ export default function Footer({ onNavigate }: FooterProps) {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#9ACD32] text-white pt-16 pb-8">
+    <footer className="bg-[#9EA233] text-white pt-16 pb-8">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
 
@@ -25,7 +25,7 @@ export default function Footer({ onNavigate }: FooterProps) {
 
             {/* SOCIAL ICONS */}
             <div className="flex space-x-4 pt-4">
-              <a href="#" className="bg-white/20 p-2 rounded-full hover:bg-white/30 transition">
+              <a href="https://www.facebook.com/share/1HTiWhMeen/ " className="bg-white/20 p-2 rounded-full hover:bg-white/30 transition">
                 <Facebook className="w-5 h-5" />
               </a>
               <a href=" https://www.instagram.com/prakruthicoldpressedoils/#

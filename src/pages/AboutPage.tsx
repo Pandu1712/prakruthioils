@@ -17,7 +17,7 @@ export default function AboutPage() {
       <section className="container mx-auto px-6 text-center mb-24">
         <h1 className="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight">
           Pure, Traditional & Healthy —
-          <span className="text-[#8DA84A]"> Prakruthi Cold Oils</span>
+          <span className="text-[#9EA233]"> Prakruthi Cold Oils</span>
         </h1>
         <p className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto mt-4">
           100% natural cold-pressed oils, organic millets, and premium ghee —
@@ -35,7 +35,7 @@ export default function AboutPage() {
 
       {/* ===== OUR STORY (NEW LAYOUT) ===== */}
       <section className="container mx-auto px-6 mb-24">
-        <div className="grid md:grid-cols-2 gap-12 items-center bg-white p-10 rounded-3xl shadow-xl border border-[#e8e6df]">
+        <div className="grid md:grid-cols-2 gap-12 items-center bg-white p-10 rounded-3xl shadow-xl border border-[#9EA233]">
 
           <div>
             <h2 className="text-3xl font-bold text-gray-900 mb-5">
@@ -108,9 +108,9 @@ export default function AboutPage() {
           ].map((item, index) => (
             <div
               key={index}
-              className="bg-white p-8 rounded-3xl shadow-lg border border-[#dfe3d4] hover:shadow-2xl transition"
+              className="bg-white p-8 rounded-3xl shadow-lg border border-[#9EA233] hover:shadow-2xl transition"
             >
-              <div className="w-16 h-16 rounded-2xl bg-[#8DA84A] text-white flex items-center justify-center mb-6">
+              <div className="w-16 h-16 rounded-2xl bg-[#9EA233] text-white flex items-center justify-center mb-6">
                 <item.icon className="w-8 h-8" />
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">
@@ -124,7 +124,7 @@ export default function AboutPage() {
 
       {/* ===== MISSION (NEW DESIGN) ===== */}
       <section className="container mx-auto px-6 mb-24">
-        <div className="bg-[#8DA84A]/15 rounded-3xl p-14 shadow-lg border border-[#d6dfc4] text-center">
+        <div className="bg-[#9EA233]/15 rounded-3xl p-14 shadow-lg border border-[#9EA233] text-center">
 
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
             Our Mission
@@ -143,7 +143,7 @@ export default function AboutPage() {
               "Traditional Methods",
             ].map((v, idx) => (
               <div key={idx} className="flex items-center gap-2 text-lg text-gray-800">
-                <CheckCircle2 className="w-6 h-6 text-[#8DA84A]" />
+                <CheckCircle2 className="w-6 h-6 text-[#9EA2339EA233]" />
                 <span>{v}</span>
               </div>
             ))}
@@ -180,9 +180,9 @@ export default function AboutPage() {
           ].map((value, index) => (
             <div
               key={index}
-              className="flex gap-4 bg-white p-7 rounded-3xl border border-[#dfe3d4] shadow-lg hover:shadow-2xl transition"
+              className="flex gap-4 bg-white p-7 rounded-3xl border border-[#9EA233] shadow-lg hover:shadow-2xl transition"
             >
-              <div className="bg-[#8DA84A] text-white p-3 rounded-xl">
+              <div className="bg-[#9EA233] text-white p-3 rounded-xl">
                 <value.icon className="w-6 h-6" />
               </div>
 

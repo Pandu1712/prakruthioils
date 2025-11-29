@@ -40,7 +40,7 @@ export default function CategoriesSection({
         <div className="text-center mb-14">
          
            <h1 className="text-4xl md:text-6xl font-extrabold text-gray-900 mb-4 tracking-tight">
-          Explore Our<span className="text-[#9ACD32]"> Premium Products</span>
+          Explore Our<span className="text-[#9EA233]"> Premium Products</span>
         </h1>
           <p className="text-lg md:text-xl text-gray-700 max-w-2xl mx-auto mt-3">
             Handpicked, natural, and organic products crafted for your healthy lifestyle.
@@ -62,7 +62,7 @@ export default function CategoriesSection({
                   w-full h-72 mx-auto bg-white relative rounded-2xl overflow-hidden
                   shadow-lg transition-all duration-500
                   group-hover:scale-105 group-hover:shadow-2xl
-                  border-4 border-[#9ACD32]
+                  border-4 border-[#9EA233]
                 "
               >
                 <img
@@ -72,16 +72,16 @@ export default function CategoriesSection({
                 />
 
                 {/* Overlay on hover */}
-                <div className="absolute inset-0 bg-[#9ACD32]/20 opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl"></div>
+                <div className="absolute inset-0 bg-[#9EA233]/20 opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl"></div>
               </div>
 
               {/* Category Name */}
-              <h3 className="text-2xl font-semibold text-gray-900 mt-4 group-hover:text-[#9ACD32] transition-colors">
+              <h3 className="text-2xl font-semibold text-gray-900 mt-4 group-hover:text-[#9EA233] transition-colors">
                 {category.name}
               </h3>
 
               {/* Explore Button */}
-              <div className="flex items-center justify-center gap-2 mt-2 text-[#9ACD32] font-semibold opacity-90 group-hover:opacity-100 transition-all">
+              <div className="flex items-center justify-center gap-2 mt-2 text-[#9EA233] font-semibold opacity-90 group-hover:opacity-100 transition-all">
                 <span>Explore</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
               </div>

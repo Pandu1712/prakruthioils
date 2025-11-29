@@ -61,7 +61,7 @@ export default function ContactPage() {
         {/* HEADER */}
         <div className="text-center mb-20">
          <h1 className="text-4xl md:text-6xl font-extrabold text-gray-900 mb-4 tracking-tight">
-          Get In<span className="text-[#9ACD32]"> Touch</span>
+          Get In<span className="text-[#9EA233]"> Touch</span>
         </h1>
           <p className="text-lg md:text-xl text-[#6e6a5e] mt-3 max-w-2xl mx-auto">
             We’re always happy to help — reach out anytime for products, support, or inquiries.
@@ -237,7 +237,7 @@ export default function ContactPage() {
     {/* Google Map - Left */}
     <div className="flex-1 h-[420px] rounded-3xl overflow-hidden shadow-xl border border-[#dcd7ca]">
       <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.9937835704423!2d72.8310494!3d19.0144963!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7ce92e4c2fb33%3A0x6b25c8f5e8d7f1e7!2sMumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1234567890"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.7259670347453!2d77.5766881!3d13.053107!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae175cff580f3f%3A0xfb8c7eb615a60462!2sPrakruthi%20Cold%20Pressed%20Oils!5e0!3m2!1sen!2sin!4v1764400551105!5m2!1sen!2sin"
         className="w-full h-full border-0"
         loading="lazy"
         allowFullScreen

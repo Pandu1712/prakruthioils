@@ -11,7 +11,7 @@ export default function CartPage({ onBack, onCheckout }: CartPageProps) {
 
   if (cart.length === 0) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-yellow-50 via-lime-50 to-white px-4">
+      <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-[#9EA233] via-[#9EA233] to-white px-4">
         <ShoppingBag className="w-32 h-32 text-yellow-300 mb-6 animate-bounce" />
         <h2 className="text-4xl font-extrabold text-gray-900 mb-2">Oops! Your Cart is Empty</h2>
         <p className="text-gray-600 mb-6 text-center max-w-md">
@@ -19,7 +19,7 @@ export default function CartPage({ onBack, onCheckout }: CartPageProps) {
         </p>
         <button
           onClick={onBack}
-          className="bg-gradient-to-r from-lime-400 to-lime-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:scale-105 transition-transform"
+          className="bg-gradient-to-r from-[#9EA233] to-[#9EA233] text-white font-bold py-3 px-8 rounded-full shadow-lg hover:scale-105 transition-transform"
         >
           Start Shopping
         </button>
@@ -28,7 +28,7 @@ export default function CartPage({ onBack, onCheckout }: CartPageProps) {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-lime-50 to-white pt-24 pb-16 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-[#9EA233] via-lime-50 to-white pt-24 pb-16 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Back Button */}
         <button
@@ -82,8 +82,8 @@ export default function CartPage({ onBack, onCheckout }: CartPageProps) {
                         className={`px-4 py-1 rounded-full text-sm font-semibold border transition
                           ${
                             item.selectedSize.size === size.size
-                              ? 'bg-lime-500 text-white border-lime-600'
-                              : 'bg-gray-100 text-gray-700 border-gray-300 hover:bg-lime-100'
+                              ? 'bg-[#9EA233] text-white border-[#9EA233]'
+                              : 'bg-gray-100 text-gray-700 border-gray-300 hover:bg-[#9EA233]'
                           }`}
                         onClick={() => updateSize(item.product.id, item.selectedSize.size, size)}
                       >
@@ -94,7 +94,7 @@ export default function CartPage({ onBack, onCheckout }: CartPageProps) {
 
                   {/* Quantity & Price */}
                   <div className="flex justify-between items-center mt-2">
-                    <div className="flex items-center border-2 border-lime-500 rounded-lg overflow-hidden">
+                    <div className="flex items-center border-2 border-[#9EA233] rounded-lg overflow-hidden">
                       <button
                         onClick={() =>
                           updateQuantity(item.product.id, item.selectedSize.size, item.quantity - 1)
@@ -108,13 +108,13 @@ export default function CartPage({ onBack, onCheckout }: CartPageProps) {
                         onClick={() =>
                           updateQuantity(item.product.id, item.selectedSize.size, item.quantity + 1)
                         }
-                        className="p-2 bg-lime-50 hover:bg-lime-100 text-lime-600 transition-colors"
+                        className="p-2 bg- hover:bg-lime-100 text-lime-600 transition-colors"
                       >
                         <Plus className="w-4 h-4" />
                       </button>
                     </div>
 
-                    <span className="text-2xl font-extrabold text-lime-600">
+                    <span className="text-2xl font-extrabold text-[#9EA233]">
                       ₹{item.selectedSize.price * item.quantity}
                     </span>
                   </div>
@@ -133,16 +133,16 @@ export default function CartPage({ onBack, onCheckout }: CartPageProps) {
               </div>
               <div className="flex justify-between text-gray-600">
                 <span>Shipping</span>
-                <span className="font-semibold text-lime-600">Free</span>
+                <span className="font-semibold text-[#9EA233]">Free</span>
               </div>
               <div className="border-t mt-2 pt-4 flex justify-between text-xl font-extrabold text-gray-900">
                 <span>Total</span>
-                <span className="text-lime-600">₹{getTotalPrice()}</span>
+                <span className="text-[#9EA233]">₹{getTotalPrice()}</span>
               </div>
 
               <button
                 onClick={onCheckout}
-                className="mt-6 bg-gradient-to-r from-lime-400 to-lime-600 hover:from-lime-500 hover:to-lime-700 text-white font-bold py-4 rounded-2xl shadow-lg hover:scale-105 transition-transform"
+                className="mt-6 bg-gradient-to-r from-[#9EA233] to-[#9EA233] hover:from-lime-500 hover:to-lime-700 text-white font-bold py-4 rounded-2xl shadow-lg hover:scale-105 transition-transform"
               >
                 Proceed to Checkout
               </button>

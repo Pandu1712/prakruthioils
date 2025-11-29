@@ -54,11 +54,11 @@ export default function CheckoutPage({ onBack, onSuccess }: CheckoutPageProps) {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-lime-50 to-white pt-24 pb-16">
+    <div className="min-h-screen bg-gradient-to-b from-[#9EA233] to-white pt-24 pb-16">
       <div className="container mx-auto px-4 max-w-4xl">
         <button
           onClick={onBack}
-          className="flex items-center gap-2 text-lime-600 hover:text-lime-700 font-semibold mb-8 group"
+          className="flex items-center gap-2 text-[#9EA233] hover:text-[#9EA233] font-semibold mb-8 group"
         >
           <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
           Back to Cart
@@ -74,7 +74,7 @@ export default function CheckoutPage({ onBack, onSuccess }: CheckoutPageProps) {
               <div className="space-y-6">
                 <div>
                   <label className="flex items-center gap-2 text-sm font-semibold text-gray-700 mb-2">
-                    <User className="w-4 h-4 text-lime-600" />
+                    <User className="w-4 h-4 text-[#9EA233]" />
                     Full Name *
                   </label>
                   <input
@@ -83,14 +83,14 @@ export default function CheckoutPage({ onBack, onSuccess }: CheckoutPageProps) {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-lime-500 focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-[#9EA233] focus:outline-none transition-colors"
                     placeholder="Enter your full name"
                   />
                 </div>
 
                 <div>
                   <label className="flex items-center gap-2 text-sm font-semibold text-gray-700 mb-2">
-                    <Phone className="w-4 h-4 text-lime-600" />
+                    <Phone className="w-4 h-4 text-[#9EA233]" />
                     Phone Number *
                   </label>
                   <input
@@ -100,14 +100,14 @@ export default function CheckoutPage({ onBack, onSuccess }: CheckoutPageProps) {
                     onChange={handleChange}
                     required
                     pattern="[0-9]{10}"
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-lime-500 focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-[#9EA233] focus:outline-none transition-colors"
                     placeholder="10 digit mobile number"
                   />
                 </div>
 
                 <div>
                   <label className="flex items-center gap-2 text-sm font-semibold text-gray-700 mb-2">
-                    <Mail className="w-4 h-4 text-lime-600" />
+                    <Mail className="w-4 h-4 text-[#9EA233]" />
                     Email Address *
                   </label>
                   <input
@@ -116,14 +116,14 @@ export default function CheckoutPage({ onBack, onSuccess }: CheckoutPageProps) {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-lime-500 focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-[#9EA233] focus:outline-none transition-colors"
                     placeholder="your.email@example.com"
                   />
                 </div>
 
                 <div>
                   <label className="flex items-center gap-2 text-sm font-semibold text-gray-700 mb-2">
-                    <MapPin className="w-4 h-4 text-lime-600" />
+                    <MapPin className="w-4 h-4 text-[#9EA233]" />
                     Delivery Address *
                   </label>
                   <textarea
@@ -132,7 +132,7 @@ export default function CheckoutPage({ onBack, onSuccess }: CheckoutPageProps) {
                     onChange={handleChange}
                     required
                     rows={4}
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-lime-500 focus:outline-none transition-colors resize-none"
+                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-[#9EA233] focus:outline-none transition-colors resize-none"
                     placeholder="Enter complete delivery address with pincode"
                   />
                 </div>
@@ -140,7 +140,7 @@ export default function CheckoutPage({ onBack, onSuccess }: CheckoutPageProps) {
 
               <button
                 type="submit"
-                className="w-full mt-8 bg-lime-500 hover:bg-lime-600 text-white py-4 rounded-xl font-bold text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl flex items-center justify-center gap-3"
+                className="w-full mt-8 bg-[#9EA233] hover:bg-[#9EA233] text-white py-4 rounded-xl font-bold text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl flex items-center justify-center gap-3"
               >
                 <Send className="w-6 h-6" />
                 Send Order to WhatsApp
@@ -174,7 +174,7 @@ export default function CheckoutPage({ onBack, onSuccess }: CheckoutPageProps) {
                       <p className="text-xs text-gray-600">
                         {item.selectedSize.size} × {item.quantity}
                       </p>
-                      <p className="text-sm font-bold text-lime-600 mt-1">
+                      <p className="text-sm font-bold text-[#9EA233] mt-1">
                         ₹{item.selectedSize.price * item.quantity}
                       </p>
                     </div>
@@ -189,11 +189,11 @@ export default function CheckoutPage({ onBack, onSuccess }: CheckoutPageProps) {
                 </div>
                 <div className="flex justify-between text-gray-600">
                   <span>Shipping</span>
-                  <span className="font-semibold text-lime-600">Free</span>
+                  <span className="font-semibold text [#9EA233]">Free</span>
                 </div>
                 <div className="border-t pt-3 flex justify-between text-xl font-bold text-gray-900">
                   <span>Total</span>
-                  <span className="text-lime-600">₹{getTotalPrice()}</span>
+                  <span className="text-[#9EA233]">₹{getTotalPrice()}</span>
                 </div>
               </div>
             </div>
