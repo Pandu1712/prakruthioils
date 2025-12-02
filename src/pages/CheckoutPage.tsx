@@ -26,7 +26,7 @@ export default function CheckoutPage({ onBack, onSuccess }: CheckoutPageProps) {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    let message = `*New Order from Naturaahh*\n\n`;
+    let message = `*New Order from Prakruthi Cold Oils*\n\n`;
     message += `*Customer Details:*\n`;
     message += `Name: ${formData.name}\n`;
     message += `Phone: ${formData.phone}\n`;
