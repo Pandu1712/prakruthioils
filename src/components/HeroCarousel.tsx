@@ -7,7 +7,7 @@ export default function HeroBanner() {
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent z-10"></div>
 
         <img
-          src="/Banner1.png"
+          src="https://res.cloudinary.com/dd4oiwnep/image/upload/v1764697930/DVK_8693_hcjvh7.jpg"
           alt="Natural Products"
           className="w-full h-full object-cover"
         />

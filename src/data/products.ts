@@ -89,7 +89,7 @@ export const products: Product[] = [
   name: 'Coconut Oil',
   category: 'coldoils',
   description: '100% pure cold pressed coconut oil made from fresh coconuts.',
-  image: 'https://www.greendna.in/cdn/shop/products/coconut-oil_11_600x.jpg?v=1593247466',
+  image: 'https://res.cloudinary.com/dd4oiwnep/image/upload/v1764735206/DVK_8702_o0i55s.jpg',
   sizes: [
     { size: '250ML', price: 169, inStock: true },
     { size: '500ML', price: 309, inStock: true },
@@ -115,7 +115,7 @@ export const products: Product[] = [
   name: 'Sesame Oil',
   category: 'coldoils',
   description: 'Pure cold pressed sesame oil with deep aroma and essential nutrients.',
-  image: 'https://sivaromanaturals.com/wp-content/uploads/2024/02/Sesame-Oil.png',
+  image: 'https://res.cloudinary.com/dd4oiwnep/image/upload/v1764735235/DVK_8710_fcdz2p.jpg',
   sizes: [
     { size: '250ML', price: 109, inStock: true },
     { size: '500ML', price: 209, inStock: true },
@@ -141,7 +141,7 @@ export const products: Product[] = [
   name: 'Groundnut Oil',
   category: 'coldoils',
   description: 'Nutty and flavorful cold pressed groundnut oil for everyday cooking.',
-  image: 'https://paneerwala.in/wp-content/uploads/2022/02/groundnut-oil-e1568642832203.jpg',
+  image: 'https://res.cloudinary.com/dd4oiwnep/image/upload/v1764735207/DVK_8712_hvjjak.jpg',
   sizes: [
     { size: '1L', price: 289, inStock: true },
     { size: '2L', price: 569, inStock: true },
@@ -167,7 +167,7 @@ export const products: Product[] = [
   name: 'Castor Oil',
   category: 'coldoils',
   description: 'Pure cold pressed castor oil ideal for hair, skin and wellness.',
-  image: "https://m.media-amazon.com/images/I/71TMFhJOmwL._AC_UF350,350_QL80_.jpg", // REPLACE WITH REAL CASTOR IMAGE
+  image: "https://res.cloudinary.com/dd4oiwnep/image/upload/v1764735206/DVK_8701_przzw7.jpg", // REPLACE WITH REAL CASTOR IMAGE
   sizes: [
     { size: '250ML', price: 69, inStock: true },
     { size: '500ML', price: 129, inStock: true },
@@ -218,7 +218,7 @@ export const products: Product[] = [
   name: 'Mustard Oil',
   category: 'coldoils',
   description: 'Strong aromatic cold pressed mustard oil ideal for Indian cooking.',
-  image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQXzc3zb6NV7qjIJ1qZ3eRIdoJs3SA4i8vAA&s',
+  image: 'https://res.cloudinary.com/dd4oiwnep/image/upload/v1764735207/DVK_8711_gekug4.jpg',
   sizes: [
     { size: '500ML', price: 209, inStock: true },
     { size: '1L', price: 399, inStock: true }

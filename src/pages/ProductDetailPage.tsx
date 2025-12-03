@@ -46,7 +46,7 @@ export default function ProductDetailPage({ product, onBack }: ProductDetailPage
             <img
               src={product.image}
               alt={product.name}
-              className="rounded-3xl shadow-2xl w-full h-[28rem] object-cover transform hover:scale-105 transition-all duration-500"
+              className="rounded-3xl shadow-2xl w-full h-[28rem]  transform hover:scale-105 transition-all duration-500"
             />
             <div className="absolute bottom-6 left-6 flex flex-col gap-3">
               <span className="bg-[#9EA233] text-white px-4 py-2 rounded-full font-semibold flex items-center gap-2 shadow-lg">

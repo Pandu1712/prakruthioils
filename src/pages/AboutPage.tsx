@@ -61,7 +61,7 @@ export default function AboutPage() {
 
           <div className="relative">
             <img
-              src="Banner.png"
+              src="https://res.cloudinary.com/dd4oiwnep/image/upload/v1764697930/DVK_8693_hcjvh7.jpg"
               alt="Our Story"
               className="rounded-3xl shadow-2xl w-full h-[380px]"
             />

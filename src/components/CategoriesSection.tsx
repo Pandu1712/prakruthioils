@@ -15,7 +15,7 @@ const categories: Category[] = [
   {
     id: "coldoils",
     name: "Cold Pressed Oils",
-    image: "Banner1.png",
+    image: "https://res.cloudinary.com/dd4oiwnep/image/upload/v1764735204/DVK_8693_tovhj7.jpg",
   },
   {
     id: "ghee",
