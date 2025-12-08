@@ -15,9 +15,7 @@ export default function ProductCard({ product, onViewDetails }: ProductCardProps
 
   const { addToCart, cart } = useCart();
 
-  /* --------------------------------------------------
-     Disable Add-to-Cart if size already exists in cart
-  --------------------------------------------------- */
+  /* Check if size already in cart */
   useEffect(() => {
     const exists = cart.some(
       (item) =>
@@ -45,18 +43,27 @@ export default function ProductCard({ product, onViewDetails }: ProductCardProps
   const decreaseQuantity = () => setQuantity((q) => Math.max(1, q - 1));
 
   return (
-    <div className="
-      h-full group relative 
-      bg-gradient-to-br from-[#fef08a]/50 to-[#9EA233]/50 
-      rounded-3xl backdrop-blur-lg 
-      border border-[#d9f99d]/40 shadow-xl 
-      overflow-hidden transition-transform duration-500 
-      hover:scale-105
-    ">
-
+    <div
+      className="
+        h-full group relative 
+        bg-gradient-to-br from-[#fef08a]/50 to-[#9EA233]/50 
+        rounded-3xl backdrop-blur-lg 
+        border border-[#d9f99d]/40 shadow-xl 
+        overflow-hidden transition-transform duration-500 
+        hover:scale-105
+      "
+    >
       {/* PRODUCT IMAGE */}
       <div
-        className="relative w-full h-72 sm:h-80 lg:h-96 xl:h-[30rem] overflow-hidden rounded-t-3xl cursor-pointer bg-white"
+        className="
+          relative 
+          w-full 
+          h-60 sm:h-72 md:h-80 lg:h-96 xl:h-[28rem] 
+          overflow-hidden 
+          rounded-t-3xl 
+          cursor-pointer 
+          bg-white
+        "
         onClick={() => onViewDetails(product)}
       >
         <img
@@ -65,10 +72,10 @@ export default function ProductCard({ product, onViewDetails }: ProductCardProps
           className="
             w-full
             h-full
-            object-cover
-            object-center
+            object-contain
             transition-transform duration-700
-            group-hover:scale-110
+            group-hover:scale-105
+            p-2
           "
         />
 
@@ -122,13 +129,14 @@ export default function ProductCard({ product, onViewDetails }: ProductCardProps
         {/* PRICE */}
         <div className="text-2xl font-extrabold text-[#9EA233]">
           ₹{selectedSize.price}
-          <span className="text-sm text-gray-700 font-medium"> /{selectedSize.size}</span>
+          <span className="text-sm text-gray-700 font-medium">
+            {" "}
+            /{selectedSize.size}
+          </span>
         </div>
 
         {/* QUANTITY + ADD TO CART */}
         <div className="flex items-center gap-3">
-
-          {/* QUANTITY */}
           <div className="flex items-center bg-white rounded-full border border-[#9EA233] overflow-hidden">
             <button
               onClick={decreaseQuantity}
@@ -145,7 +153,6 @@ export default function ProductCard({ product, onViewDetails }: ProductCardProps
             </button>
           </div>
 
-          {/* ADD TO CART */}
           <button
             onClick={handleAddToCart}
             disabled={!selectedSize.inStock || isDisabled}
