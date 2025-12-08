@@ -139,6 +139,16 @@ export default function CartPage({ onBack, onCheckout }: CartPageProps) {
                 <span>Total</span>
                 <span className="text-[#9EA233]">₹{getTotalPrice()}</span>
               </div>
+             <div className="text-sm text-gray-700 leading-relaxed mt-3">
+  <p>
+    <strong className="text-[#9EA233] font-semibold">Shipping:</strong>  
+    Delivery charges are location-based and will be calculated accordingly.  
+    <span className="block mt-1 text-[#4b4b4b] font-medium">
+      Free delivery within a 3 km range.
+    </span>
+  </p>
+</div>
+
 
               <button
                 onClick={onCheckout}
