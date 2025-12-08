@@ -117,7 +117,7 @@ export const products: Product[] = [
 }
 ,{
   id: "mm-004",
-  name: "Jagger Powder",
+  name: "Jaggery Powder",
   category: "millets",
 
   description:

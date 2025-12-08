@@ -88,7 +88,7 @@ export default function ContactPage() {
                   {
                     icon: MapPin,
                     title: "Address",
-                    desc: "SrikrishnaNandhu Nilayam, Opp Royamart Road, Tatanagar, Bengaluru, Karnataka 560092",
+                    desc: "SrikrishnaNandhu Nilayam, Opp Royamart Road, Tatanagar, Bengaluru, Karnataka 560092 LANDMARK: Near Playzone Sahakar Nagar"
                   },
                   {
                     icon: Phone,
@@ -248,7 +248,7 @@ export default function ContactPage() {
     {/* Banner Image - Right */}
     <div className="flex-1 h-[420px] rounded-3xl overflow-hidden shadow-xl">
       <img
-        src="/Banner.png"
+        src="https://res.cloudinary.com/dd4oiwnep/image/upload/v1765181679/ChatGPT_Image_Dec_8_2025_01_44_09_PM_nfxzit.png"
         alt="Banner"
         className="w-full h-full "
       />
