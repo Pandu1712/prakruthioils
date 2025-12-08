@@ -14,6 +14,7 @@ export interface Product {
   benefits: string[];
   specifications: string[];
   howToUse: string;
+  tags?: string[];
 }
 
 export interface CartItem {

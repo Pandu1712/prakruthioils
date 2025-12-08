@@ -86,14 +86,28 @@ export default function ProductCard({ product, onViewDetails }: ProductCardProps
         />
 
         {/* Tags */}
-        <div className="absolute bottom-3 left-3 flex flex-col gap-2">
-          <span className="px-3 py-1 bg-[#9EA233]/90 text-white text-xs font-semibold rounded-full">
-            Natural
-          </span>
-          <span className="px-3 py-1 bg-[#fef08a]/90 text-gray-900 text-xs font-semibold rounded-full">
-            Fully Organic
-          </span>
-        </div>
+        {/* TAGS */}
+{product.tags && product.tags.length > 0 && (
+  <div className="absolute bottom-3 left-3 flex flex-col gap-2">
+    {product.tags.map((tag, i) => (
+      <span
+        key={i}
+        className={`
+          px-3 py-1 text-xs font-semibold rounded-full
+          ${tag.toLowerCase() === "organic"
+            ? "bg-[#fef08a]/90 text-gray-900"
+            : tag.toLowerCase() === "natural"
+            ? "bg-[#9EA233]/90 text-white"
+            : "bg-black/70 text-white"
+          }
+        `}
+      >
+        {tag}
+      </span>
+    ))}
+  </div>
+)}
+
       </div>
 
       {/* CONTENT */}

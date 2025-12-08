@@ -50,6 +50,7 @@ export const products: Product[] = [
     'No Chemicals',
     'Fresh & Crunchy'
   ],
+  tags: ['Natural','Fully Organic'],
   howToUse: 'Use for cooking, snacking, or making chutneys and powders.'
 },
 {
@@ -70,6 +71,7 @@ export const products: Product[] = [
     'Improves throat health',
     'Enhances skin glow'
   ],
+  tags: ['Natural','Fully Organic'],
   specifications: [
     '100% Raw & Unprocessed',
     'No Added Sugar',
@@ -83,6 +85,7 @@ export const products: Product[] = [
   id: "mm-003",
   name: "Forming Honey",
   category: "millets",
+  tags: ['Natural','Fully Organic'],
 
   description:
     "Pure, natural forest honey extracted from wild bee colonies. Unprocessed, chemical-free, and rich in enzymes, vitamins, and antioxidants. Ideal for boosting immunity and overall wellness.",
@@ -117,6 +120,7 @@ export const products: Product[] = [
 }
 ,{
   id: "mm-004",
+  tags: ['Natural','Fully Organic'],
   name: "Jaggery Powder",
   category: "millets",
 
@@ -160,6 +164,7 @@ export const products: Product[] = [
   name: 'Coconut Oil',
   category: 'coldoils',
   description: '100% pure cold pressed coconut oil made from fresh coconuts.',
+  tags: ['Natural','Fully Organic'],
   image: 'https://res.cloudinary.com/dd4oiwnep/image/upload/v1765181387/WhatsApp_Image_2025-12-08_at_10.33.32_780ad951_bqagse.jpg',
   sizes: [
     { size: '250ML', price: 169, inStock: true },
@@ -186,6 +191,7 @@ export const products: Product[] = [
   name: 'Sesame Oil',
   category: 'coldoils',
   description: 'Pure cold pressed sesame oil with deep aroma and essential nutrients.',
+  tags: ['Natural','Fully Organic'],
   image: 'https://res.cloudinary.com/dd4oiwnep/image/upload/v1765181386/WhatsApp_Image_2025-12-08_at_11.17.54_8496d194_oro8d5.jpg',
   sizes: [
     { size: '250ML', price: 109, inStock: true },
@@ -230,6 +236,7 @@ export const products: Product[] = [
     'Chemical Free',
     'Premium Quality'
   ],
+  tags: ['Natural','Fully Organic'],
   howToUse: 'Ideal for frying, deep frying, and daily Indian cooking.'
 },
 
@@ -244,6 +251,7 @@ export const products: Product[] = [
     { size: '500ML', price: 129, inStock: true },
     { size: '1L', price: 249, inStock: true }
   ],
+  tags: ['Natural','Fully Organic'],
   benefits: [
     'Promotes hair growth',
     'Anti-inflammatory',
@@ -269,6 +277,7 @@ export const products: Product[] = [
     { size: '500ML', price: 159, inStock: true },
     { size: '1L', price: 299, inStock: true }
   ],
+  tags: ['Natural','Fully Organic'],
   benefits: [
     'High in Vitamin E',
     'Good for heart',
@@ -294,6 +303,7 @@ export const products: Product[] = [
     { size: '500ML', price: 209, inStock: true },
     { size: '1L', price: 399, inStock: true }
   ],
+  tags: ['Natural','Fully Organic'],
   benefits: [
     'Boosts metabolism',
     'High in Omega 3',
@@ -325,6 +335,7 @@ export const products: Product[] = [
     'Ideal for daily pooja',
     'Smokeless burning'
   ],
+  tags: ['Natural'],
   specifications: [
     'Pure Oil Blend',
     'No Chemicals',
@@ -344,6 +355,7 @@ export const products: Product[] = [
     { size: '500ML', price: 79, inStock: true },
     { size: '1L', price: 159, inStock: true }
   ],
+  tags: ['Natural'],
   benefits: [
     'Brings positivity',
     'Longer diya burning',
@@ -379,6 +391,7 @@ export const products: Product[] = [
     'Strengthens bones',
     'Good for skin & hair'
   ],
+  tags: ['Natural','Fully Organic'],
   specifications: [
     'Pure Cow Milk',
     'Traditional Method',
@@ -404,6 +417,7 @@ export const products: Product[] = [
     'Improves stamina',
     'Rich in nutrients'
   ],
+  tags: ['Natural','Fully Organic'],
   specifications: [
     'Pure Buffalo Milk',
     'Traditional Preparation',
