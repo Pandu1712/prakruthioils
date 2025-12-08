@@ -8,14 +8,20 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ product, onViewDetails }: ProductCardProps) {
-  const [selectedSize, setSelectedSize] = useState<ProductSize>(product.sizes[0]);
+
+  /* DEFAULT SELECT SIZE = "1L" */
+  const defaultSize =
+    product.sizes.find(
+      (s) => s.size.toLowerCase() === "1l" || s.size.toLowerCase() === "1ltr"
+    ) || product.sizes[0];
+
+  const [selectedSize, setSelectedSize] = useState<ProductSize>(defaultSize);
   const [quantity, setQuantity] = useState(1);
   const [isAdded, setIsAdded] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
 
   const { addToCart, cart } = useCart();
 
-  /* Check if size already in cart */
   useEffect(() => {
     const exists = cart.some(
       (item) =>
@@ -53,7 +59,7 @@ export default function ProductCard({ product, onViewDetails }: ProductCardProps
         hover:scale-105
       "
     >
-      {/* PRODUCT IMAGE */}
+      {/* IMAGE */}
       <div
         className="
           relative 
@@ -85,7 +91,7 @@ export default function ProductCard({ product, onViewDetails }: ProductCardProps
             Natural
           </span>
           <span className="px-3 py-1 bg-[#fef08a]/90 text-gray-900 text-xs font-semibold rounded-full">
-            Organic Free
+            Fully Organic
           </span>
         </div>
       </div>
@@ -103,6 +109,7 @@ export default function ProductCard({ product, onViewDetails }: ProductCardProps
           <label className="text-xs font-semibold text-gray-700 mb-2 block">
             Select Size
           </label>
+
           <div className="flex flex-wrap gap-2">
             {product.sizes.map((size) => (
               <button
@@ -144,7 +151,9 @@ export default function ProductCard({ product, onViewDetails }: ProductCardProps
             >
               -
             </button>
+
             <span className="px-4 text-gray-900 font-semibold">{quantity}</span>
+
             <button
               onClick={increaseQuantity}
               className="px-3 py-2 text-[#9EA233] hover:bg-[#fef08a]/20 transition-all"

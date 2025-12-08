@@ -246,13 +246,13 @@ export default function ContactPage() {
     </div>
 
     {/* Banner Image - Right */}
-    <div className="flex-1 h-[420px] rounded-3xl overflow-hidden shadow-xl">
+    {/* <div className="flex-1 h-[420px] rounded-3xl overflow-hidden shadow-xl">
       <img
         src="https://res.cloudinary.com/dd4oiwnep/image/upload/v1765181679/ChatGPT_Image_Dec_8_2025_01_44_09_PM_nfxzit.png"
         alt="Banner"
         className="w-full h-full "
       />
-    </div>
+    </div> */}
   </div>
 </div>
 

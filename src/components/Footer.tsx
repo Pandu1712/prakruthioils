@@ -115,12 +115,18 @@ export default function Footer({ onNavigate, onCategoryClick }: FooterProps) {
               </li>
 
               <li className="flex items-start gap-3">
-                <Phone className="w-5 h-5" />
-                <span className="text-white/90">
-                  +91 8073516982 <br />
-                  +91 9160503662
-                </span>
-              </li>
+  <Phone className="w-5 h-5" />
+
+  <span className="text-white/90 flex flex-col">
+    <a href="tel:8073516982" className="hover:underline">
+      +91 8073516982
+    </a>
+    <a href="tel:9160503662" className="hover:underline">
+      +91 9160503662
+    </a>
+  </span>
+</li>
+
 
               <li className="flex items-start gap-3">
                 <Mail className="w-5 h-5" />

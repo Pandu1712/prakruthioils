@@ -23,14 +23,6 @@ export default function AboutPage() {
           100% natural cold-pressed oils, organic millets, and premium ghee —
           crafted using traditional wooden ghani extraction for unmatched purity.
         </p>
-
-        <div className="mt-10 flex justify-center">
-          <img
-            src="Banner1.png"
-            alt="Prakruthi Oils"
-            className="rounded-3xl w-full max-w-4xl shadow-2xl object-cover"
-          />
-        </div>
       </section>
 
       {/* ===== OUR STORY (NEW LAYOUT) ===== */}
