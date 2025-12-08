@@ -1,15 +1,28 @@
-import { useState } from 'react';
-import { ArrowLeft, Plus, Minus, ShoppingCart, Leaf, Star, Circle } from 'lucide-react';
-import { Product, ProductSize } from '../types';
-import { useCart } from '../context/CartContext';
+import { useState } from "react";
+import {
+  ArrowLeft,
+  Plus,
+  Minus,
+  ShoppingCart,
+  Leaf,
+  Star,
+  Circle,
+} from "lucide-react";
+import { Product, ProductSize } from "../types";
+import { useCart } from "../context/CartContext";
 
 interface ProductDetailPageProps {
   product: Product;
   onBack: () => void;
 }
 
-export default function ProductDetailPage({ product, onBack }: ProductDetailPageProps) {
-  const [selectedSize, setSelectedSize] = useState<ProductSize>(product.sizes[0]);
+export default function ProductDetailPage({
+  product,
+  onBack,
+}: ProductDetailPageProps) {
+  const [selectedSize, setSelectedSize] = useState<ProductSize>(
+    product.sizes[0]
+  );
   const [quantity, setQuantity] = useState(1);
   const [isAdded, setIsAdded] = useState(false);
   const { addToCart } = useCart();
@@ -20,66 +33,83 @@ export default function ProductDetailPage({ product, onBack }: ProductDetailPage
     setTimeout(() => setIsAdded(false), 2000);
   };
 
-  const increaseQuantity = () => setQuantity(q => q + 1);
-  const decreaseQuantity = () => setQuantity(q => Math.max(1, q - 1));
+  const increaseQuantity = () => setQuantity((q) => q + 1);
+  const decreaseQuantity = () => setQuantity((q) => Math.max(1, q - 1));
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-yellow-50 via-[#9EA233] to-white pt-24 pb-20">
-      <div className="container mx-auto px-6">
+    <div className="min-h-screen bg-gradient-to-b from-yellow-50 via-[#9EA233]/10 to-white pt-24 pb-20">
+      <div className="container mx-auto px-4 md:px-6 xl:px-12">
 
         {/* Back Button */}
         <button
           onClick={onBack}
-          className="flex items-center gap-2 text-[#9EA233] hover:text-[#9EA233] font-semibold mb-12 transition-all"
+          className="flex items-center gap-2 text-[#9EA233] font-semibold mb-10 hover:text-[#7c8a27]"
         >
           <ArrowLeft className="w-5 h-5" />
           Back to Products
         </button>
 
-        {/* Hero Section */}
-        <div className="relative lg:flex lg:items-start gap-12">
+        {/* Layout Wrapper */}
+        <div className="lg:flex lg:items-start gap-10">
 
-          {/* Product Image */}
-          <div className="relative lg:w-1/2 mb-8 lg:mb-0">
-            <div className="absolute -top-10 -left-10 w-48 h-48 rounded-full bg-[#9EA233]/30 blur-3xl animate-pulse"></div>
-            <div className="absolute -bottom-10 -right-10 w-48 h-48 rounded-full bg-yellow-200/30 blur-3xl animate-pulse"></div>
+          {/* PRODUCT IMAGE SECTION */}
+          <div className="relative w-full lg:w-1/2 mb-10 lg:mb-0">
+
             <img
               src={product.image}
               alt={product.name}
-              className="rounded-3xl shadow-2xl w-full h-[28rem]  transform hover:scale-105 transition-all duration-500"
+              className="
+                w-full
+                h-[22rem] sm:h-[26rem] md:h-[30rem] lg:h-[34rem] xl:h-[38rem]
+                object-cover 
+                rounded-3xl shadow-2xl
+                transition-transform duration-700
+                hover:scale-105
+              "
             />
-            <div className="absolute bottom-6 left-6 flex flex-col gap-3">
-              <span className="bg-[#9EA233] text-white px-4 py-2 rounded-full font-semibold flex items-center gap-2 shadow-lg">
+
+            {/* Floating tags */}
+            <div className="absolute bottom-6 left-6 flex flex-col gap-2">
+              <span className="bg-[#9EA233] text-white px-4 py-2 rounded-full font-semibold flex items-center gap-2 shadow-lg text-sm">
                 <Leaf className="w-4 h-4" /> 100% Natural
               </span>
-              <span className="bg-white text-[#9EA233] px-4 py-2 rounded-full font-semibold flex items-center gap-2 shadow-lg">
+              <span className="bg-white text-[#9EA233] px-4 py-2 rounded-full font-semibold flex items-center gap-2 shadow-lg text-sm">
                 <Star className="w-4 h-4" /> Premium Quality
               </span>
             </div>
           </div>
 
-          {/* Product Info */}
-          <div className="lg:w-1/2 bg-white rounded-3xl shadow-2xl p-10 relative overflow-hidden">
-            <div className="absolute -top-16 -right-16 w-32 h-32 rounded-full bg-[#9EA233]/20 blur-3xl"></div>
-            <h1 className="text-5xl font-extrabold text-[#9EA233] mb-6">{product.name}</h1>
-            <p className="text-gray-700 text-lg mb-6">{product.description}</p>
+          {/* PRODUCT INFO SECTION */}
+          <div className="lg:w-1/2 bg-white rounded-3xl shadow-xl p-8 relative">
 
-            {/* Sizes */}
+            <h1 className="text-3xl md:text-4xl font-extrabold text-[#9EA233] mb-4">
+              {product.name}
+            </h1>
+
+            <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+              {product.description}
+            </p>
+
+            {/* SIZE SELECTOR */}
             <div className="mb-6">
-              <label className="font-semibold text-gray-700 mb-2 block">Select Size:</label>
+              <label className="font-semibold text-gray-700 mb-2 block">Select Size</label>
+
               <div className="flex flex-wrap gap-3">
-                {product.sizes.map(size => (
+                {product.sizes.map((size) => (
                   <button
                     key={size.size}
                     onClick={() => setSelectedSize(size)}
                     disabled={!size.inStock}
-                    className={`px-6 py-3 rounded-2xl font-semibold transition-all duration-300 ${
-                      selectedSize.size === size.size
-                        ? 'bg-[#9EA233] text-white shadow-lg scale-105'
-                        : size.inStock
-                        ? 'bg-yellow-50 text-[#9EA233] hover:bg-[#9EA233] hover:text-[#9EA233] hover:scale-105'
-                        : 'bg-gray-200 text-gray-400 cursor-not-allowed line-through'
-                    }`}
+                    className={`
+                      px-5 py-2 rounded-xl font-semibold text-sm transition-all duration-300
+                      ${
+                        selectedSize.size === size.size
+                          ? "bg-[#9EA233] text-white shadow-md scale-105"
+                          : size.inStock
+                          ? "bg-yellow-50 text-[#9EA233] hover:bg-[#9EA233] hover:text-white shadow"
+                          : "bg-gray-200 text-gray-400 cursor-not-allowed line-through"
+                      }
+                    `}
                   >
                     {size.size}
                   </button>
@@ -87,76 +117,85 @@ export default function ProductDetailPage({ product, onBack }: ProductDetailPage
               </div>
             </div>
 
-            {/* Price & Quantity */}
+            {/* PRICE + QUANTITY */}
             <div className="flex justify-between items-center mb-6">
-              <div className="text-3xl font-bold text-[#9EA233]">
-                ₹{selectedSize.price} <span className="text-gray-500 text-lg">/{selectedSize.size}</span>
+              <div className="text-2xl md:text-3xl font-bold text-[#9EA233]">
+                ₹{selectedSize.price}
+                <span className="text-gray-500 text-sm md:text-lg ml-1">
+                  /{selectedSize.size}
+                </span>
               </div>
+
+              {/* Quantity Selector */}
               <div className="flex items-center border-2 border-[#9EA233] rounded-full overflow-hidden">
-                <button onClick={decreaseQuantity} className="px-3 py-2 hover:bg-[#9EA233 ">
+                <button
+                  onClick={decreaseQuantity}
+                  className="px-3 py-2 hover:bg-[#9EA233]/10"
+                >
                   <Minus className="w-4 h-4" />
                 </button>
                 <span className="px-6 py-2 font-bold text-gray-900 text-lg">{quantity}</span>
-                <button onClick={increaseQuantity} className="px-3 py-2  hover:bg-[#9EA233] ">
+                <button
+                  onClick={increaseQuantity}
+                  className="px-3 py-2 hover:bg-[#9EA233]/10"
+                >
                   <Plus className="w-4 h-4" />
                 </button>
               </div>
             </div>
 
-            {/* Add to Cart */}
+            {/* ADD TO CART BUTTON */}
             <button
               onClick={handleAddToCart}
-              disabled={!selectedSize.inStock}
-              className={`w-full py-4 rounded-3xl font-bold text-lg flex items-center justify-center gap-3 transition-all duration-300 ${
-                isAdded
-                  ? 'bg-[#9EA233] text-white shadow-2xl scale-105'
-                  : selectedSize.inStock
-                    ? 'bg-[#9EA233] text-white hover:bg-[#9EA233] hover:shadow-2xl hover:scale-[1.03]'
-                    : 'bg-gray-300 text-gray-500 cursor-not-allowed'
-              }`}
+              className={`
+                w-full py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3
+                transition-all duration-300
+                ${
+                  isAdded
+                    ? "bg-green-600 text-white shadow-xl scale-105"
+                    : "bg-[#9EA233] text-white hover:bg-[#7c8a27] hover:shadow-2xl hover:scale-[1.03]"
+                }
+              `}
             >
               <ShoppingCart className="w-6 h-6" />
-              {isAdded ? 'Added!' : 'Add to Cart'}
+              {isAdded ? "Added!" : "Add to Cart"}
             </button>
           </div>
         </div>
 
-        {/* Benefits & Features */}
-        <div className="mt-16 grid md:grid-cols-2 gap-8">
-          <div className="bg-white rounded-3xl shadow-xl p-8 relative overflow-hidden hover:shadow-2xl transition-shadow">
-            <div className="absolute -top-10 -left-10 w-32 h-32 rounded-full bg-[#9EA233]/30 blur-3xl animate-pulse"></div>
+        {/* BENEFITS & SPECIFICATIONS */}
+        <div className="mt-14 grid md:grid-cols-2 gap-8">
+          <div className="bg-white rounded-3xl shadow-xl p-8">
             <h2 className="text-2xl font-bold text-[#9EA233] mb-4 flex items-center gap-2">
-              <Circle className="w-6 h-6" /> Benefits
+              <Circle className="w-5 h-5" /> Benefits
             </h2>
             <ul className="space-y-3">
               {product.benefits.map((b, i) => (
-                <li key={i} className="flex items-start gap-3">
-                  <div className="w-3 h-3 bg-[#9EA233] rounded-full mt-2 flex-shrink-0"></div>
-                  <span className="text-gray-700">{b}</span>
+                <li key={i} className="flex items-start gap-3 text-gray-700">
+                  <div className="w-2 h-2 bg-[#9EA233] rounded-full mt-2"></div>
+                  {b}
                 </li>
               ))}
             </ul>
           </div>
 
-          <div className="bg-yellow-50 rounded-3xl shadow-xl p-8 relative overflow-hidden hover:shadow-2xl transition-shadow">
-            <div className="absolute -bottom-10 -right-10 w-32 h-32 rounded-full bg-yellow-200/20 blur-3xl animate-pulse"></div>
+          <div className="bg-yellow-50 rounded-3xl shadow-xl p-8">
             <h2 className="text-2xl font-bold text-[#9EA233] mb-4 flex items-center gap-2">
-              <Star className="w-6 h-6" /> Specifications
+              <Star className="w-5 h-5" /> Specifications
             </h2>
             <ul className="space-y-3">
               {product.specifications.map((s, i) => (
-                <li key={i} className="flex items-start gap-3">
-                  <Circle className="w-5 h-5 text-[#9EA233] flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">{s}</span>
+                <li key={i} className="flex items-start gap-3 text-gray-700">
+                  <Circle className="w-4 h-4 text-[#9EA233]" />
+                  {s}
                 </li>
               ))}
             </ul>
           </div>
         </div>
 
-        {/* How to Use */}
-        <div className="mt-16 bg-[#9EA233]  rounded-3xl shadow-2xl p-10 text-white relative overflow-hidden">
-          <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-yellow-200/30 blur-3xl animate-pulse"></div>
+        {/* HOW TO USE */}
+        <div className="mt-14 bg-[#9EA233] rounded-3xl shadow-xl p-8 text-white">
           <h2 className="text-2xl font-bold mb-4">How to Use</h2>
           <p className="text-lg leading-relaxed">{product.howToUse}</p>
         </div>

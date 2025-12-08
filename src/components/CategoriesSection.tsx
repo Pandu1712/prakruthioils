@@ -15,7 +15,7 @@ const categories: Category[] = [
   {
     id: "coldoils",
     name: "Cold Pressed Oils",
-    image: "https://res.cloudinary.com/dd4oiwnep/image/upload/v1764735204/DVK_8693_tovhj7.jpg",
+    image: "https://res.cloudinary.com/dd4oiwnep/image/upload/v1765181679/ChatGPT_Image_Dec_8_2025_01_44_09_PM_nfxzit.png",
   },
   {
     id: "ghee",
@@ -38,10 +38,10 @@ export default function CategoriesSection({
 
         {/* Heading */}
         <div className="text-center mb-14">
-         
-           <h1 className="text-4xl md:text-6xl font-extrabold text-gray-900 mb-4 tracking-tight">
-          Explore Our<span className="text-[#9EA233]"> Premium Products</span>
-        </h1>
+
+          <h1 className="text-4xl md:text-6xl font-extrabold text-gray-900 mb-4 tracking-tight">
+            Explore Our<span className="text-[#9EA233]"> Premium Products</span>
+          </h1>
           <p className="text-lg md:text-xl text-gray-700 max-w-2xl mx-auto mt-3">
             Handpicked, natural, and organic products crafted for your healthy lifestyle.
           </p>
@@ -59,7 +59,7 @@ export default function CategoriesSection({
               {/* Square Card */}
               <div
                 className="
-                  w-full h-72 mx-auto bg-white relative rounded-2xl overflow-hidden
+                  w-full h-66 mx-auto bg-white relative rounded-2xl overflow-hidden
                   shadow-lg transition-all duration-500
                   group-hover:scale-105 group-hover:shadow-2xl
                   border-4 border-[#9EA233]
@@ -68,8 +68,17 @@ export default function CategoriesSection({
                 <img
                   src={category.image}
                   alt={category.name}
-                  className="w-full h-full object-cover transition-all duration-500 group-hover:brightness-110"
+                  className="
+    w-full
+    h-48 sm:h-56 md:h-64
+    object-cover
+    rounded-2xl
+    transition-all
+    duration-500
+    group-hover:brightness-110
+  "
                 />
+
 
                 {/* Overlay on hover */}
                 <div className="absolute inset-0 bg-[#9EA233]/20 opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl"></div>

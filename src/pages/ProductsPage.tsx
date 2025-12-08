@@ -43,17 +43,27 @@ export default function ProductsPage({
         </div>
 
         {categoryProducts.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {categoryProducts.map((product, index) => (
-              <div
-                key={product.id}
-                className="animate-fadeIn"
-                style={{ animationDelay: `${index * 50}ms` }}
-              >
-                <ProductCard product={product} onViewDetails={onViewDetails} />
-              </div>
-            ))}
-          </div>
+          <div className="
+  grid 
+  grid-cols-1          /* Mobile: 1 product */
+  sm:grid-cols-2       /* Small screens / tablets: 2 products */
+  md:grid-cols-2       /* Medium screens: 2 products */
+  lg:grid-cols-3       /* Laptop: 3 products */
+  xl:grid-cols-5       /* Large screens: 5 products */
+  2xl:grid-cols-5      /* Very large screens: 5 products */
+  gap-6
+">
+  {categoryProducts.map((product, index) => (
+    <div
+      key={product.id}
+      className="animate-fadeIn"
+      style={{ animationDelay: `${index * 50}ms` }}
+    >
+      <ProductCard product={product} onViewDetails={onViewDetails} />
+    </div>
+  ))}
+</div>
+
         ) : (
           <div className="text-center py-20">
             <p className="text-xl text-gray-600">

@@ -10,15 +10,13 @@ interface ProductCardProps {
 export default function ProductCard({ product, onViewDetails }: ProductCardProps) {
   const [selectedSize, setSelectedSize] = useState<ProductSize>(product.sizes[0]);
   const [quantity, setQuantity] = useState(1);
-
   const [isAdded, setIsAdded] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
 
   const { addToCart, cart } = useCart();
 
   /* --------------------------------------------------
-     If the product-size already exists in the cart,
-     disable button permanently & show "Added!"
+     Disable Add-to-Cart if size already exists in cart
   --------------------------------------------------- */
   useEffect(() => {
     const exists = cart.some(
@@ -36,9 +34,6 @@ export default function ProductCard({ product, onViewDetails }: ProductCardProps
     }
   }, [cart, product.id, selectedSize.size]);
 
-  /* --------------------------------------------------
-     Add to Cart Handler
-  --------------------------------------------------- */
   const handleAddToCart = () => {
     addToCart({ product, selectedSize, quantity });
     setIsAdded(true);
@@ -50,19 +45,34 @@ export default function ProductCard({ product, onViewDetails }: ProductCardProps
   const decreaseQuantity = () => setQuantity((q) => Math.max(1, q - 1));
 
   return (
-    <div className="group relative bg-gradient-to-br from-[#fef08a]/50 to-[#9EA233]/50 rounded-3xl backdrop-blur-lg border border-[#d9f99d]/40 shadow-xl overflow-hidden hover:scale-105 transition-transform duration-500">
+    <div className="
+      h-full group relative 
+      bg-gradient-to-br from-[#fef08a]/50 to-[#9EA233]/50 
+      rounded-3xl backdrop-blur-lg 
+      border border-[#d9f99d]/40 shadow-xl 
+      overflow-hidden transition-transform duration-500 
+      hover:scale-105
+    ">
 
       {/* PRODUCT IMAGE */}
       <div
-        className="relative h-64 w-full overflow-hidden rounded-t-3xl cursor-pointer"
+        className="relative w-full h-72 sm:h-80 lg:h-96 xl:h-[30rem] overflow-hidden rounded-t-3xl cursor-pointer bg-white"
         onClick={() => onViewDetails(product)}
       >
         <img
           src={product.image}
           alt={product.name}
-          className="w-full h-full transition-transform duration-700 group-hover:scale-110"
+          className="
+            w-full
+            h-full
+            object-cover
+            object-center
+            transition-transform duration-700
+            group-hover:scale-110
+          "
         />
 
+        {/* Tags */}
         <div className="absolute bottom-3 left-3 flex flex-col gap-2">
           <span className="px-3 py-1 bg-[#9EA233]/90 text-white text-xs font-semibold rounded-full">
             Natural
@@ -92,14 +102,16 @@ export default function ProductCard({ product, onViewDetails }: ProductCardProps
                 key={size.size}
                 onClick={() => setSelectedSize(size)}
                 disabled={!size.inStock}
-                className={`px-3 py-1.5 rounded-full text-sm font-medium border transition-all duration-300
+                className={`
+                  px-3 py-1.5 rounded-full text-sm font-medium border transition-all duration-300
                   ${
                     selectedSize.size === size.size
                       ? "bg-[#9EA233] text-white border-[#9EA233] shadow-md"
                       : size.inStock
                       ? "bg-white text-gray-800 border-gray-300 hover:border-[#9EA233] hover:text-[#9EA233]"
                       : "bg-gray-200 text-gray-400 border-gray-300 cursor-not-allowed line-through"
-                  }`}
+                  }
+                `}
               >
                 {size.size}
               </button>
@@ -133,7 +145,7 @@ export default function ProductCard({ product, onViewDetails }: ProductCardProps
             </button>
           </div>
 
-          {/* ADD TO CART BUTTON */}
+          {/* ADD TO CART */}
           <button
             onClick={handleAddToCart}
             disabled={!selectedSize.inStock || isDisabled}

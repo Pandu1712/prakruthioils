@@ -34,7 +34,7 @@ export const products: Product[] = [
   name: 'Whole Ground Nuts',
   category: 'millets',
   description: 'Fresh and natural whole groundnuts rich in protein and healthy fats.',
-  image: 'https://chakkiwalle.com/cdn/shop/files/31Q7mf5dD_L.jpg?v=1708589197',
+  image: 'https://res.cloudinary.com/dd4oiwnep/image/upload/v1765185247/WhatsApp_Image_2025-12-08_at_14.42.59_8d7a8006_a0oshe.jpg',
   sizes: [
     { size: '1KG', price: 129, inStock: true }
   ],
@@ -57,7 +57,7 @@ export const products: Product[] = [
   name: 'Forest Honey',
   category: 'millets',
   description: 'Pure, raw forest honey collected from wild forest regions, rich in natural enzymes, antioxidants, and medicinal properties.',
-  image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXXPkE9peBJeg__gOysvdOvLUeEk3W1gnGtQ&s", // replace with your honey image
+  image: "https://res.cloudinary.com/dd4oiwnep/image/upload/v1765185222/ChatGPT_Image_Dec_8_2025_02_41_01_PM_otbrcd.png", // replace with your honey image
   sizes: [
     { size: '250g', price: 149, inStock: true },
     { size: '500g', price: 289, inStock: true },
@@ -79,6 +79,77 @@ export const products: Product[] = [
   howToUse: 'Consume 1–2 teaspoons daily with warm water, use as a natural sweetener, or mix with herbal drinks and milk.'
 }
 ,
+{
+  id: "mm-003",
+  name: "Forming Honey",
+  category: "millets",
+
+  description:
+    "Pure, natural forest honey extracted from wild bee colonies. Unprocessed, chemical-free, and rich in enzymes, vitamins, and antioxidants. Ideal for boosting immunity and overall wellness.",
+
+  image:
+    "https://images.pexels.com/photos/12062925/pexels-photo-12062925.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+
+  sizes: [
+    { size: "500g", price: 200, inStock: true },
+    { size: "1KG", price: 400, inStock: true }
+  ],
+
+  benefits: [
+    "Boosts immunity naturally",
+    "Rich in antioxidants and enzymes",
+    "Soothes sore throat and cough",
+    "Improves digestion and gut health",
+    "Acts as a natural energy booster",
+    "Supports healthy skin glow"
+  ],
+
+  specifications: [
+    "100% Raw & Unprocessed Forest Honey",
+    "No Sugar, Chemicals, or Preservatives",
+    "Collected from Natural Forest Bee Hives",
+    "Cold-filtered to preserve nutrients",
+    "Rich in pollen, enzymes & minerals"
+  ],
+
+  howToUse:
+    "Take 1–2 teaspoons daily. Mix with warm water, milk, or herbal tea. Use as a natural sweetener for foods and beverages."
+}
+,{
+  id: "mm-004",
+  name: "Jagger Powder",
+  category: "millets",
+
+  description:
+    "Pure and traditional jaggery powder made from fresh sugarcane juice. Unrefined, chemical-free, rich in minerals, and a healthier alternative to white sugar.",
+
+  image:
+    "https://www.asavi.in/cdn/shop/files/jaggery_powder_4th_image.png?v=1741151940&width=1445",
+
+  sizes: [
+    { size: "1KG", price: 110, inStock: true }
+  ],
+
+  benefits: [
+    "Boosts digestive health",
+    "Natural detoxifier for the body",
+    "Rich in iron and minerals",
+    "Improves hemoglobin levels",
+    "Provides long-lasting energy"
+  ],
+
+  specifications: [
+    "Made from Pure Sugarcane Juice",
+    "No Sulphur or Bleaching Agents",
+    "Unrefined & Chemical-Free",
+    "Rich in Iron, Magnesium & Minerals",
+    "Traditional slow-made process"
+  ],
+
+  howToUse:
+    "Use as a replacement for white sugar in tea, coffee, sweets, and cooking. Consume 1 teaspoon after meals to improve digestion."
+}
+,
 
 /* ---------------------------------------------------------
    COLD PRESSED OILS
@@ -89,7 +160,7 @@ export const products: Product[] = [
   name: 'Coconut Oil',
   category: 'coldoils',
   description: '100% pure cold pressed coconut oil made from fresh coconuts.',
-  image: 'https://res.cloudinary.com/dd4oiwnep/image/upload/v1764735206/DVK_8702_o0i55s.jpg',
+  image: 'https://res.cloudinary.com/dd4oiwnep/image/upload/v1765181387/WhatsApp_Image_2025-12-08_at_10.33.32_780ad951_bqagse.jpg',
   sizes: [
     { size: '250ML', price: 169, inStock: true },
     { size: '500ML', price: 309, inStock: true },
@@ -115,7 +186,7 @@ export const products: Product[] = [
   name: 'Sesame Oil',
   category: 'coldoils',
   description: 'Pure cold pressed sesame oil with deep aroma and essential nutrients.',
-  image: 'https://res.cloudinary.com/dd4oiwnep/image/upload/v1764735235/DVK_8710_fcdz2p.jpg',
+  image: 'https://res.cloudinary.com/dd4oiwnep/image/upload/v1765181386/WhatsApp_Image_2025-12-08_at_11.17.54_8496d194_oro8d5.jpg',
   sizes: [
     { size: '250ML', price: 109, inStock: true },
     { size: '500ML', price: 209, inStock: true },
@@ -141,7 +212,7 @@ export const products: Product[] = [
   name: 'Groundnut Oil',
   category: 'coldoils',
   description: 'Nutty and flavorful cold pressed groundnut oil for everyday cooking.',
-  image: 'https://res.cloudinary.com/dd4oiwnep/image/upload/v1764735207/DVK_8712_hvjjak.jpg',
+  image: 'https://res.cloudinary.com/dd4oiwnep/image/upload/v1765181387/WhatsApp_Image_2025-12-08_at_10.33.32_2a116e60_f5iody.jpg',
   sizes: [
     { size: '1L', price: 289, inStock: true },
     { size: '2L', price: 569, inStock: true },
@@ -167,7 +238,7 @@ export const products: Product[] = [
   name: 'Castor Oil',
   category: 'coldoils',
   description: 'Pure cold pressed castor oil ideal for hair, skin and wellness.',
-  image: "https://res.cloudinary.com/dd4oiwnep/image/upload/v1764735206/DVK_8701_przzw7.jpg", // REPLACE WITH REAL CASTOR IMAGE
+  image: "https://res.cloudinary.com/dd4oiwnep/image/upload/v1765181386/WhatsApp_Image_2025-12-08_at_10.33.31_e6b7059b_zeviuk.jpg", // REPLACE WITH REAL CASTOR IMAGE
   sizes: [
     { size: '250ML', price: 69, inStock: true },
     { size: '500ML', price: 129, inStock: true },
@@ -218,7 +289,7 @@ export const products: Product[] = [
   name: 'Mustard Oil',
   category: 'coldoils',
   description: 'Strong aromatic cold pressed mustard oil ideal for Indian cooking.',
-  image: 'https://res.cloudinary.com/dd4oiwnep/image/upload/v1764735207/DVK_8711_gekug4.jpg',
+  image: 'https://res.cloudinary.com/dd4oiwnep/image/upload/v1765181388/WhatsApp_Image_2025-12-08_at_11.46.04_6b45fb0e_exmkhd.jpg',
   sizes: [
     { size: '500ML', price: 209, inStock: true },
     { size: '1L', price: 399, inStock: true }
@@ -268,7 +339,7 @@ export const products: Product[] = [
   name: 'Deepam Oil (5 Oils Mix)',
   category: 'coldoils',
   description: 'A sacred blend of 5 oils traditionally used for pooja purposes.',
-  image: 'Deepam Oil (5 Oils Mix)',
+  image: 'https://res.cloudinary.com/dd4oiwnep/image/upload/v1765183924/ChatGPT_Image_Dec_8_2025_02_21_37_PM_n5niec.png',
   sizes: [
     { size: '500ML', price: 79, inStock: true },
     { size: '1L', price: 159, inStock: true }

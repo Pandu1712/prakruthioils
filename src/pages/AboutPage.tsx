@@ -59,13 +59,22 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="relative">
-            <img
-              src="https://res.cloudinary.com/dd4oiwnep/image/upload/v1764697930/DVK_8693_hcjvh7.jpg"
-              alt="Our Story"
-              className="rounded-3xl shadow-2xl w-full h-[380px]"
-            />
-          </div>
+         <div className="relative w-full">
+  <img
+    src="https://res.cloudinary.com/dd4oiwnep/image/upload/v1765181679/ChatGPT_Image_Dec_8_2025_01_44_09_PM_nfxzit.png"
+    alt="Our Story"
+    className="
+      w-full 
+      rounded-3xl 
+      shadow-2xl 
+      object-cover 
+      aspect-[16/9]     /* Desktop ratio */
+      md:aspect-[4/3]    /* Tablet ratio */
+      sm:aspect-[1/1]    /* Mobile square */
+    "
+  />
+</div>
+
         </div>
       </section>
 

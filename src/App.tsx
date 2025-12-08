@@ -3,6 +3,7 @@ import { CartProvider } from "./context/CartContext";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import CategoriesSection from "./components/CategoriesSection";
 
 import HomePage from "./pages/HomePage";
 import ProductsPage from "./pages/ProductsPage";
@@ -24,7 +25,8 @@ type Page =
   | "cart"
   | "checkout"
   | "contact"
-  | "about";
+  | "about"
+  | "categories";
 
 function App() {
   const [currentPage, setCurrentPage] = useState<Page>("home");
@@ -128,6 +130,9 @@ function App() {
 
       case "about":
         return <AboutPage />;
+        case "categories":
+  return <CategoriesSection onCategoryClick={handleCategoryClick} />;
+
 
       default:
         return <HomePage onCategoryClick={handleCategoryClick} />;
