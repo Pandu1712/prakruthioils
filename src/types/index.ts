@@ -1,8 +1,10 @@
 export interface ProductSize {
   size: string;
   price: number;
+  offerPrice?: number;
   inStock: boolean;
 }
+
 
 export interface Product {
   id: string;
@@ -15,13 +17,19 @@ export interface Product {
   specifications: string[];
   howToUse: string;
   tags?: string[];
+
 }
 
 export interface CartItem {
   product: Product;
   selectedSize: ProductSize;
   quantity: number;
+
+  // NEW
+  unitPrice: number;       // final price (offer or regular)
+  originalPrice?: number;  // optional MRP
 }
+
 
 export interface Category {
   id: string;

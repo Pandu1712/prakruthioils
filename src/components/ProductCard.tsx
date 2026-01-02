@@ -38,12 +38,20 @@ export default function ProductCard({ product, onViewDetails }: ProductCardProps
     }
   }, [cart, product.id, selectedSize.size]);
 
-  const handleAddToCart = () => {
-    addToCart({ product, selectedSize, quantity });
-    setIsAdded(true);
-    setIsDisabled(true);
-    setQuantity(1);
-  };
+const handleAddToCart = () => {
+  addToCart({
+    product,
+    selectedSize,
+    quantity,
+    unitPrice: selectedSize.offerPrice ?? selectedSize.price,
+    originalPrice: selectedSize.price,
+  });
+
+  setIsAdded(true);
+  setIsDisabled(true);
+  setQuantity(1);
+};
+
 
   const increaseQuantity = () => setQuantity((q) => q + 1);
   const decreaseQuantity = () => setQuantity((q) => Math.max(1, q - 1));
@@ -84,6 +92,15 @@ export default function ProductCard({ product, onViewDetails }: ProductCardProps
             p-2
           "
         />
+        {/* OFFER TAG */}
+{selectedSize.offerPrice && (
+  <div className="absolute top-3 right-3 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg z-10">
+    {Math.round(
+      ((selectedSize.price - selectedSize.offerPrice) / selectedSize.price) * 100
+    )}% OFF
+  </div>
+)}
+
 
         {/* Tags */}
         {/* TAGS */}
@@ -148,13 +165,23 @@ export default function ProductCard({ product, onViewDetails }: ProductCardProps
         </div>
 
         {/* PRICE */}
-        <div className="text-2xl font-extrabold text-[#9EA233]">
-          ₹{selectedSize.price}
-          <span className="text-sm text-gray-700 font-medium">
-            {" "}
-            /{selectedSize.size}
-          </span>
-        </div>
+  {/* PRICE */}
+<div className="flex items-center gap-3">
+  {selectedSize.offerPrice && (
+    <span className="text-lg text-gray-400 line-through font-medium">
+      ₹{selectedSize.price}
+    </span>
+  )}
+
+  <span className="text-2xl font-extrabold text-[#9EA233]">
+    ₹{selectedSize.offerPrice ?? selectedSize.price}
+    <span className="text-sm text-gray-700 font-medium">
+      {" "} / {selectedSize.size}
+    </span>
+  </span>
+</div>
+
+
 
         {/* QUANTITY + ADD TO CART */}
         <div className="flex items-center gap-3">

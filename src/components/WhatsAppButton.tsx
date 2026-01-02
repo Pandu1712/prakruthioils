@@ -11,7 +11,7 @@ export default function WhatsAppButton() {
   return (
     <button
       onClick={handleWhatsAppClick}
-      className="fixed left-6 bottom-6 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-2xl p-4 transition-all duration-300 hover:scale-110 z-40 group animate-bounce"
+      className="fixed right-6 bottom-6 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-2xl p-4 transition-all duration-300 hover:scale-110 z-40 group animate-bounce"
       aria-label="Chat on WhatsApp"
     >
       <MessageCircle className="w-8 h-8" />

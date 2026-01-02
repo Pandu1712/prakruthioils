@@ -1,5 +1,5 @@
-import { Plus, Minus, Trash2, ShoppingBag, ArrowLeft } from 'lucide-react';
-import { useCart } from '../context/CartContext';
+import { Plus, Minus, Trash2, ShoppingBag, ArrowLeft } from "lucide-react";
+import { useCart } from "../context/CartContext";
 
 interface CartPageProps {
   onBack: () => void;
@@ -7,19 +7,38 @@ interface CartPageProps {
 }
 
 export default function CartPage({ onBack, onCheckout }: CartPageProps) {
-  const { cart, updateQuantity, updateSize, removeFromCart, getTotalPrice } = useCart();
+  const { cart, updateQuantity, updateSize, removeFromCart } = useCart();
+
+  // 🔢 Calculations
+  const subtotal = cart.reduce(
+    (sum, item) => sum + (item.originalPrice ?? item.unitPrice) * item.quantity,
+    0
+  );
+
+  const totalSavings = cart.reduce(
+    (sum, item) =>
+      sum + ((item.originalPrice ?? item.unitPrice) - item.unitPrice) * item.quantity,
+    0
+  );
+
+  const totalAmount = cart.reduce(
+    (sum, item) => sum + item.unitPrice * item.quantity,
+    0
+  );
 
   if (cart.length === 0) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-[#9EA233] via-[#9EA233] to-white px-4">
         <ShoppingBag className="w-32 h-32 text-yellow-300 mb-6 animate-bounce" />
-        <h2 className="text-4xl font-extrabold text-gray-900 mb-2">Oops! Your Cart is Empty</h2>
+        <h2 className="text-4xl font-extrabold text-gray-900 mb-2">
+          Oops! Your Cart is Empty
+        </h2>
         <p className="text-gray-600 mb-6 text-center max-w-md">
-          Looks like you haven't added any goodies yet. Start shopping and fill your cart with natural goodness!
+          Looks like you haven't added any items yet.
         </p>
         <button
           onClick={onBack}
-          className="bg-gradient-to-r from-[#9EA233] to-[#9EA233] text-white font-bold py-3 px-8 rounded-full shadow-lg hover:scale-105 transition-transform"
+          className="bg-[#9EA233] text-white font-bold py-3 px-8 rounded-full shadow-lg hover:scale-105 transition"
         >
           Start Shopping
         </button>
@@ -30,62 +49,77 @@ export default function CartPage({ onBack, onCheckout }: CartPageProps) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#9EA233] via-lime-50 to-white pt-24 pb-16 px-4">
       <div className="max-w-7xl mx-auto">
+
         {/* Back Button */}
         <button
           onClick={onBack}
-          className="flex items-center gap-2 text-lime-700 font-semibold mb-8 hover:text-lime-800 group"
+          className="flex items-center gap-2 text-lime-700 font-semibold mb-8 hover:text-lime-800"
         >
-          <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+          <ArrowLeft className="w-5 h-5" />
           Continue Shopping
         </button>
 
-        {/* Page Title */}
-        <h1 className="text-5xl font-extrabold text-gray-900 mb-12 text-center">Your Cart</h1>
+        <h1 className="text-5xl font-extrabold text-gray-900 mb-12 text-center">
+          Your Cart
+        </h1>
 
         <div className="grid lg:grid-cols-3 gap-10">
-          {/* Cart Items */}
+
+          {/* CART ITEMS */}
           <div className="lg:col-span-2 flex flex-col gap-6">
             {cart.map((item) => (
               <div
                 key={`${item.product.id}-${item.selectedSize.size}`}
-                className="flex flex-col md:flex-row items-center bg-white rounded-3xl shadow-xl p-6 hover:shadow-2xl transition-shadow"
+                className="flex flex-col md:flex-row bg-white rounded-3xl shadow-xl p-6"
               >
-                {/* Product Image */}
-                <div className="flex-shrink-0">
-                  <img
-                    src={item.product.image}
-                    alt={item.product.name}
-                    className="w-40 h-40 rounded-xl object-cover mb-4 md:mb-0 md:mr-6"
-                  />
-                </div>
+                <img
+                  src={item.product.image}
+                  alt={item.product.name}
+                  className="w-40 h-40 rounded-xl object-cover"
+                />
 
-                {/* Product Info */}
-                <div className="flex-1 w-full flex flex-col justify-between">
-                  <div className="flex justify-between items-start mb-4">
+                <div className="flex-1 ml-0 md:ml-6 mt-4 md:mt-0">
+                  <div className="flex justify-between items-start">
                     <div>
-                      <h3 className="text-2xl font-bold text-gray-900">{item.product.name}</h3>
-                      <p className="text-gray-500 mt-1">{item.product.category}</p>
+                      <h3 className="text-2xl font-bold text-gray-900">
+                        {item.product.name}
+                      </h3>
+                      <p className="text-gray-500">
+                        Size: {item.selectedSize.size}
+                      </p>
                     </div>
+
                     <button
-                      onClick={() => removeFromCart(item.product.id, item.selectedSize.size)}
-                      className="text-red-500 hover:text-red-700 p-2 rounded-lg transition-colors"
+                      onClick={() =>
+                        removeFromCart(
+                          item.product.id,
+                          item.selectedSize.size
+                        )
+                      }
+                      className="text-red-500 hover:text-red-700"
                     >
                       <Trash2 className="w-5 h-5" />
                     </button>
                   </div>
 
-                  {/* Size Selector */}
-                  <div className="flex gap-2 flex-wrap mb-4">
+                  {/* Size Switch */}
+                  <div className="flex gap-2 mt-3">
                     {item.product.sizes.map((size) => (
                       <button
                         key={size.size}
-                        className={`px-4 py-1 rounded-full text-sm font-semibold border transition
+                        onClick={() =>
+                          updateSize(
+                            item.product.id,
+                            item.selectedSize.size,
+                            size
+                          )
+                        }
+                        className={`px-4 py-1 rounded-full text-sm font-semibold border
                           ${
                             item.selectedSize.size === size.size
-                              ? 'bg-[#9EA233] text-white border-[#9EA233]'
-                              : 'bg-gray-100 text-gray-700 border-gray-300 hover:bg-[#9EA233]'
+                              ? "bg-[#9EA233] text-white"
+                              : "bg-gray-100 text-gray-700 hover:bg-[#9EA233] hover:text-white"
                           }`}
-                        onClick={() => updateSize(item.product.id, item.selectedSize.size, size)}
                       >
                         {size.size}
                       </button>
@@ -93,66 +127,87 @@ export default function CartPage({ onBack, onCheckout }: CartPageProps) {
                   </div>
 
                   {/* Quantity & Price */}
-                  <div className="flex justify-between items-center mt-2">
+                  <div className="flex justify-between items-center mt-4">
                     <div className="flex items-center border-2 border-[#9EA233] rounded-lg overflow-hidden">
                       <button
                         onClick={() =>
-                          updateQuantity(item.product.id, item.selectedSize.size, item.quantity - 1)
+                          updateQuantity(
+                            item.product.id,
+                            item.selectedSize.size,
+                            item.quantity - 1
+                          )
                         }
-                        className="p-2 bg-lime-50 hover:bg-lime-100 text-lime-600 transition-colors"
+                        className="p-2 hover:bg-lime-100"
                       >
                         <Minus className="w-4 h-4" />
                       </button>
-                      <span className="px-6 py-2 font-semibold text-gray-900">{item.quantity}</span>
+
+                      <span className="px-6 py-2 font-semibold">
+                        {item.quantity}
+                      </span>
+
                       <button
                         onClick={() =>
-                          updateQuantity(item.product.id, item.selectedSize.size, item.quantity + 1)
+                          updateQuantity(
+                            item.product.id,
+                            item.selectedSize.size,
+                            item.quantity + 1
+                          )
                         }
-                        className="p-2 bg- hover:bg-lime-100 text-lime-600 transition-colors"
+                        className="p-2 hover:bg-lime-100"
                       >
                         <Plus className="w-4 h-4" />
                       </button>
                     </div>
 
-                    <span className="text-2xl font-extrabold text-[#9EA233]">
-                      ₹{item.selectedSize.price * item.quantity}
-                    </span>
+                    <div className="text-right">
+                     {item.originalPrice !== undefined &&
+  item.originalPrice > item.unitPrice && (
+    <p className="text-sm text-gray-400 line-through">
+      ₹{item.originalPrice * item.quantity}
+    </p>
+  )}
+
+                      <p className="text-2xl font-bold text-[#9EA233]">
+                        ₹{item.unitPrice * item.quantity}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
             ))}
           </div>
 
-          {/* Order Summary */}
+          {/* ORDER SUMMARY */}
           <div className="lg:col-span-1 sticky top-24">
-            <div className="bg-white rounded-3xl shadow-2xl p-6 flex flex-col gap-6">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">Order Summary</h2>
-              <div className="flex justify-between text-gray-600">
-                <span>Subtotal</span>
-                <span className="font-semibold">₹{getTotalPrice()}</span>
-              </div>
-              <div className="flex justify-between text-gray-600">
-                <span>Shipping</span>
-                <span className="font-semibold text-[#9EA233]">Free</span>
-              </div>
-              <div className="border-t mt-2 pt-4 flex justify-between text-xl font-extrabold text-gray-900">
-                <span>Total</span>
-                <span className="text-[#9EA233]">₹{getTotalPrice()}</span>
-              </div>
-             <div className="text-sm text-gray-700 leading-relaxed mt-3">
-  <p>
-    <strong className="text-[#9EA233] font-semibold">Shipping:</strong>  
-    Delivery charges are location-based and will be calculated accordingly.  
-    <span className="block mt-1 text-[#4b4b4b] font-medium">
-      Free delivery within a 3 km range.
-    </span>
-  </p>
-</div>
+            <div className="bg-white rounded-3xl shadow-2xl p-6">
+              <h2 className="text-2xl font-bold mb-4">Order Summary</h2>
 
+              <div className="flex justify-between mb-2">
+                <span>Subtotal</span>
+                <span>₹{subtotal}</span>
+              </div>
+
+              {totalSavings > 0 && (
+                <div className="flex justify-between text-green-600 mb-2">
+                  <span>You Saved</span>
+                  <span>- ₹{totalSavings}</span>
+                </div>
+              )}
+
+              <div className="flex justify-between mb-2">
+                <span>Shipping</span>
+                <span className="text-green-600">FREE</span>
+              </div>
+
+              <div className="border-t pt-4 flex justify-between text-xl font-bold">
+                <span>Total</span>
+                <span className="text-[#9EA233]">₹{totalAmount}</span>
+              </div>
 
               <button
                 onClick={onCheckout}
-                className="mt-6 bg-gradient-to-r from-[#9EA233] to-[#9EA233] hover:from-lime-500 hover:to-lime-700 text-white font-bold py-4 rounded-2xl shadow-lg hover:scale-105 transition-transform"
+                className="mt-6 w-full bg-[#9EA233] text-white font-bold py-4 rounded-2xl hover:scale-105 transition"
               >
                 Proceed to Checkout
               </button>

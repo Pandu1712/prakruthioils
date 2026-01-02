@@ -17,6 +17,7 @@ import StickyCartIcon from "./components/StickyCartIcon";
 import WhatsAppButton from "./components/WhatsAppButton";
 
 import { Product } from "./types";
+import TrustedBadge from "./components/TrustedBadge";
 
 type Page =
   | "home"
@@ -156,6 +157,7 @@ function App() {
 
         <StickyCartIcon onClick={() => navigateWithHistory("cart")} />
         <WhatsAppButton />
+         <TrustedBadge />
       </div>
     </CartProvider>
   );

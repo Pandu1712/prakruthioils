@@ -27,11 +27,19 @@ export default function ProductDetailPage({
   const [isAdded, setIsAdded] = useState(false);
   const { addToCart } = useCart();
 
-  const handleAddToCart = () => {
-    addToCart({ product, selectedSize, quantity });
-    setIsAdded(true);
-    setTimeout(() => setIsAdded(false), 2000);
-  };
+const handleAddToCart = () => {
+  addToCart({
+    product,
+    selectedSize,
+    quantity,
+    unitPrice: selectedSize.offerPrice ?? selectedSize.price,
+    originalPrice: selectedSize.price,
+  });
+
+  setIsAdded(true);
+  setTimeout(() => setIsAdded(false), 2000);
+};
+
 
   const increaseQuantity = () => setQuantity((q) => q + 1);
   const decreaseQuantity = () => setQuantity((q) => Math.max(1, q - 1));
@@ -49,26 +57,30 @@ export default function ProductDetailPage({
           Back to Products
         </button>
 
-        {/* Layout Wrapper */}
         <div className="lg:flex lg:items-start gap-10">
 
-          {/* PRODUCT IMAGE SECTION */}
+          {/* IMAGE SECTION */}
           <div className="relative w-full lg:w-1/2 mb-10 lg:mb-0">
+
+            {/* OFFER TAG (TOP RIGHT) */}
+            {selectedSize.offerPrice && (
+              <div className="absolute top-5 right-5 bg-red-600 text-white px-4 py-2 rounded-full font-bold shadow-xl z-20">
+                {Math.round(
+                  ((selectedSize.price - selectedSize.offerPrice) /
+                    selectedSize.price) *
+                    100
+                )}
+                % OFF
+              </div>
+            )}
 
             <img
               src={product.image}
               alt={product.name}
-              className="
-                w-full
-                h-[22rem] sm:h-[26rem] md:h-[30rem] lg:h-[34rem] xl:h-[38rem]
-                object-cover 
-                rounded-3xl shadow-2xl
-                transition-transform duration-700
-                hover:scale-105
-              "
+              className="w-full h-[22rem] sm:h-[26rem] md:h-[30rem] lg:h-[34rem] xl:h-[38rem] object-cover rounded-3xl shadow-2xl transition-transform duration-700 hover:scale-105"
             />
 
-            {/* Floating tags */}
+            {/* Bottom Tags */}
             <div className="absolute bottom-6 left-6 flex flex-col gap-2">
               <span className="bg-[#9EA233] text-white px-4 py-2 rounded-full font-semibold flex items-center gap-2 shadow-lg text-sm">
                 <Leaf className="w-4 h-4" /> 100% Natural
@@ -79,20 +91,22 @@ export default function ProductDetailPage({
             </div>
           </div>
 
-          {/* PRODUCT INFO SECTION */}
-          <div className="lg:w-1/2 bg-white rounded-3xl shadow-xl p-8 relative">
+          {/* PRODUCT INFO */}
+          <div className="lg:w-1/2 bg-white rounded-3xl shadow-xl p-8">
 
             <h1 className="text-3xl md:text-4xl font-extrabold text-[#9EA233] mb-4">
               {product.name}
             </h1>
 
-            <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+            <p className="text-gray-700 text-base md:text-lg mb-6">
               {product.description}
             </p>
 
             {/* SIZE SELECTOR */}
             <div className="mb-6">
-              <label className="font-semibold text-gray-700 mb-2 block">Select Size</label>
+              <label className="font-semibold text-gray-700 mb-2 block">
+                Select Size
+              </label>
 
               <div className="flex flex-wrap gap-3">
                 {product.sizes.map((size) => (
@@ -100,16 +114,14 @@ export default function ProductDetailPage({
                     key={size.size}
                     onClick={() => setSelectedSize(size)}
                     disabled={!size.inStock}
-                    className={`
-                      px-5 py-2 rounded-xl font-semibold text-sm transition-all duration-300
+                    className={`px-5 py-2 rounded-xl font-semibold text-sm transition-all duration-300
                       ${
                         selectedSize.size === size.size
                           ? "bg-[#9EA233] text-white shadow-md scale-105"
                           : size.inStock
-                          ? "bg-yellow-50 text-[#9EA233] hover:bg-[#9EA233] hover:text-white shadow"
+                          ? "bg-yellow-50 text-[#9EA233] hover:bg-[#9EA233] hover:text-white"
                           : "bg-gray-200 text-gray-400 cursor-not-allowed line-through"
-                      }
-                    `}
+                      }`}
                   >
                     {size.size}
                   </button>
@@ -117,16 +129,23 @@ export default function ProductDetailPage({
               </div>
             </div>
 
-            {/* PRICE + QUANTITY */}
+            {/* PRICE */}
             <div className="flex justify-between items-center mb-6">
-              <div className="text-2xl md:text-3xl font-bold text-[#9EA233]">
-                ₹{selectedSize.price}
-                <span className="text-gray-500 text-sm md:text-lg ml-1">
-                  /{selectedSize.size}
+              <div className="flex items-center gap-4">
+                {selectedSize.offerPrice && (
+                  <span className="text-xl text-gray-400 line-through font-semibold">
+                    ₹{selectedSize.price}
+                  </span>
+                )}
+
+                <span className="text-3xl font-bold text-[#9EA233]">
+                  ₹{selectedSize.offerPrice ?? selectedSize.price}
+                  <span className="text-gray-500 text-lg ml-1">
+                    /{selectedSize.size}
+                  </span>
                 </span>
               </div>
 
-              {/* Quantity Selector */}
               <div className="flex items-center border-2 border-[#9EA233] rounded-full overflow-hidden">
                 <button
                   onClick={decreaseQuantity}
@@ -134,7 +153,9 @@ export default function ProductDetailPage({
                 >
                   <Minus className="w-4 h-4" />
                 </button>
-                <span className="px-6 py-2 font-bold text-gray-900 text-lg">{quantity}</span>
+                <span className="px-6 py-2 font-bold text-gray-900 text-lg">
+                  {quantity}
+                </span>
                 <button
                   onClick={increaseQuantity}
                   className="px-3 py-2 hover:bg-[#9EA233]/10"
@@ -144,18 +165,15 @@ export default function ProductDetailPage({
               </div>
             </div>
 
-            {/* ADD TO CART BUTTON */}
+            {/* ADD TO CART */}
             <button
               onClick={handleAddToCart}
-              className={`
-                w-full py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3
-                transition-all duration-300
+              className={`w-full py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all duration-300
                 ${
                   isAdded
                     ? "bg-green-600 text-white shadow-xl scale-105"
-                    : "bg-[#9EA233] text-white hover:bg-[#7c8a27] hover:shadow-2xl hover:scale-[1.03]"
-                }
-              `}
+                    : "bg-[#9EA233] text-white hover:bg-[#7c8a27] hover:scale-[1.03]"
+                }`}
             >
               <ShoppingCart className="w-6 h-6" />
               {isAdded ? "Added!" : "Add to Cart"}

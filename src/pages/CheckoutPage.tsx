@@ -29,8 +29,7 @@ export default function CheckoutPage({ onBack, onSuccess }: CheckoutPageProps) {
 
   const billDate = new Date().toLocaleDateString();
 
-  // Calculate total amount for invoice
-  const totalAmount = getTotalPrice();
+
 
   /* ---------------- INPUT HANDLER ---------------- */
   const handleChange = (
@@ -97,12 +96,12 @@ export default function CheckoutPage({ onBack, onSuccess }: CheckoutPageProps) {
       message += `\n${index + 1}. ${item.product.name}\n`;
       message += `Size: ${item.selectedSize.size}\n`;
       message += `Quantity: ${item.quantity}\n`;
-      message += `Price: ₹${item.selectedSize.price} x ${item.quantity} = ₹${
-        item.selectedSize.price * item.quantity
-      }\n`;
+     message += `Price: ₹${item.unitPrice} x ${item.quantity} = ₹${
+  item.unitPrice * item.quantity }\n`;
     });
 
-    message += `\n*Total Amount: ₹${getTotalPrice()}*`;
+message += `\n*Total Amount: ₹${totalAmount}*`;
+    message += `\n\nThank you for your order! We will process it shortly.`;
 
     const whatsappNumber = "918073516982";
     const encoded = encodeURIComponent(message);
@@ -129,6 +128,23 @@ export default function CheckoutPage({ onBack, onSuccess }: CheckoutPageProps) {
     clearCart();
     onSuccess();
   };
+
+
+const subtotal = cart.reduce(
+  (sum, item) => sum + item.unitPrice * item.quantity,
+  0
+);
+
+const totalSavings = cart.reduce(
+  (sum, item) =>
+    sum +
+    ((item.originalPrice ?? item.unitPrice) - item.unitPrice) *
+      item.quantity,
+  0
+);
+
+const totalAmount = subtotal;
+
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#9EA233] to-white pt-24 pb-16 relative">
@@ -270,54 +286,83 @@ export default function CheckoutPage({ onBack, onSuccess }: CheckoutPageProps) {
           </div>
 
           {/* ---------------- ORDER SUMMARY ---------------- */}
-          <div className="lg:col-span-1">
-            <div className="bg-white rounded-2xl shadow-xl p-6 sticky top-24">
-              <h2 className="text-xl font-bold text-gray-900 mb-4">
-                Order Summary
-              </h2>
+        <div className="lg:col-span-1">
+  <div className="bg-white rounded-2xl shadow-xl p-6 sticky top-24">
+    <h2 className="text-xl font-bold text-gray-900 mb-4">
+      Order Summary
+    </h2>
 
-              <div className="space-y-4 mb-6 max-h-[400px] overflow-y-auto">
-                {cart.map((item) => (
-                  <div
-                    key={`${item.product.id}-${item.selectedSize.size}`}
-                    className="flex gap-3 pb-4 border-b border-gray-200"
-                  >
-                    <img
-                      src={item.product.image}
-                      alt={item.product.name}
-                      className="w-16 h-16 object-cover rounded-lg"
-                    />
-                    <div className="flex-1">
-                      <h4 className="font-semibold text-sm text-gray-900 line-clamp-1">
-                        {item.product.name}
-                      </h4>
-                      <p className="text-xs text-gray-600">
-                        {item.selectedSize.size} × {item.quantity}
-                      </p>
-                      <p className="text-sm font-bold text-[#9EA233] mt-1">
-                        ₹{item.selectedSize.price * item.quantity}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
+    {/* ITEMS */}
+    <div className="space-y-4 mb-6 max-h-[400px] overflow-y-auto">
+      {cart.map((item) => {
+        const itemTotal = item.unitPrice * item.quantity;
+        const originalTotal = item.originalPrice
+          ? item.originalPrice * item.quantity
+          : null;
 
-              <div className="space-y-3 mb-6">
-                <div className="flex justify-between text-gray-600">
-                  <span>Subtotal</span>
-                  <span className="font-semibold">₹{getTotalPrice()}</span>
-                </div>
-                <div className="flex justify-between text-gray-600">
-                  <span>Shipping</span>
-                  <span className="font-semibold text-[#9EA233]">Free</span>
-                </div>
-                <div className="border-t pt-3 flex justify-between text-xl font-bold text-gray-900">
-                  <span>Total</span>
-                  <span className="text-[#9EA233]">₹{getTotalPrice()}</span>
-                </div>
-              </div>
+        return (
+          <div
+            key={`${item.product.id}-${item.selectedSize.size}`}
+            className="flex gap-3 pb-4 border-b border-gray-200"
+          >
+            <img
+              src={item.product.image}
+              alt={item.product.name}
+              className="w-16 h-16 object-cover rounded-lg"
+            />
+
+            <div className="flex-1">
+              <h4 className="font-semibold text-sm text-gray-900 line-clamp-1">
+                {item.product.name}
+              </h4>
+
+              <p className="text-xs text-gray-600">
+                {item.selectedSize.size} × {item.quantity}
+              </p>
+
+              {/* PRICE */}
+              {originalTotal && originalTotal > itemTotal && (
+                <p className="text-xs text-gray-400 line-through">
+                  ₹{originalTotal}
+                </p>
+              )}
+
+              <p className="text-sm font-bold text-[#9EA233] mt-1">
+                ₹{itemTotal}
+              </p>
             </div>
           </div>
+        );
+      })}
+    </div>
+
+    {/* TOTALS */}
+    <div className="space-y-3 mb-6">
+      <div className="flex justify-between text-gray-600">
+        <span>Subtotal</span>
+        <span className="font-semibold">₹{subtotal}</span>
+      </div>
+
+      {totalSavings > 0 && (
+        <div className="flex justify-between text-green-600">
+          <span>You Saved</span>
+          <span>-₹{totalSavings}</span>
+        </div>
+      )}
+
+      <div className="flex justify-between text-gray-600">
+        <span>Shipping</span>
+        <span className="font-semibold text-[#9EA233]">Free</span>
+      </div>
+
+      <div className="border-t pt-3 flex justify-between text-xl font-bold text-gray-900">
+        <span>Total</span>
+        <span className="text-[#9EA233]">₹{totalAmount}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
         </div>
       </div>
 
@@ -387,9 +432,10 @@ export default function CheckoutPage({ onBack, onSuccess }: CheckoutPageProps) {
                 <td className="border border-[#e5e5e5] p-2">{item.product.name}</td>
                 <td className="border border-[#e5e5e5] p-2">{item.selectedSize.size}</td>
                 <td className="border border-[#e5e5e5] p-2">{item.quantity}</td>
-                <td className="border border-[#e5e5e5] p-2">₹{item.selectedSize.price}</td>
+                <td className="border border-[#e5e5e5] p-2">₹{item.unitPrice}</td>
                 <td className="border border-[#e5e5e5] p-2">
-                  ₹{item.selectedSize.price * item.quantity}
+                 ₹{item.unitPrice * item.quantity}
+
                 </td>
               </tr>
             ))}
@@ -408,25 +454,30 @@ export default function CheckoutPage({ onBack, onSuccess }: CheckoutPageProps) {
             </p>
           </div>
 
-          <div className="w-64 text-sm">
-            <div className="flex justify-between mb-1">
-              <span>Sub Total:</span>
-              <span>₹{totalAmount}</span>
-            </div>
-            <div className="flex justify-between mb-1">
-              <span>Discount:</span>
-              <span>₹0</span>
-            </div>
-            <div className="flex justify-between font-bold border-t border-[#d4d4d4] pt-2 mt-2 text-[#4a5c0f]">
-              <span>TOTAL AMOUNT:</span>
-              <span>₹{totalAmount}</span>
-            </div>
+          <div className="space-y-3 mb-6">
+  <div className="flex justify-between text-gray-600">
+    <span>Subtotal</span>
+    <span className="font-semibold">₹{subtotal}</span>
+  </div>
 
-            <div className="mt-8 text-right">
-              <p className="text-xs text-gray-600 mb-8">Authorised Signature</p>
-              <div className="border-t border-black w-32 ml-auto" />
-            </div>
-          </div>
+  {totalSavings > 0 && (
+    <div className="flex justify-between text-green-600">
+      <span>You Saved</span>
+      <span>-₹{totalSavings}</span>
+    </div>
+  )}
+
+  <div className="flex justify-between text-gray-600">
+    <span>Shipping</span>
+    <span className="font-semibold text-[#9EA233]">Free</span>
+  </div>
+
+  <div className="border-t pt-3 flex justify-between text-xl font-bold text-gray-900">
+    <span>Total</span>
+    <span className="text-[#9EA233]">₹{totalAmount}</span>
+  </div>
+</div>
+
         </div>
       </div>
     </div>

@@ -36,38 +36,54 @@ export const products: Product[] = [
 ----------------------------------------------------------*/
 
 {
-  id: 'mm-001',
-  name: 'Whole Ground Nuts',
-  category: 'millets',
-  description: 'Fresh and natural whole groundnuts rich in protein and healthy fats.',
-  image: 'https://res.cloudinary.com/dd4oiwnep/image/upload/v1765185247/WhatsApp_Image_2025-12-08_at_14.42.59_8d7a8006_a0oshe.jpg',
+  id: "mm-001",
+  name: "Whole Ground Nuts",
+  category: "millets",
+  description: "Fresh and natural whole groundnuts rich in protein and healthy fats.",
+  image: "https://res.cloudinary.com/dd4oiwnep/image/upload/v1765185247/WhatsApp_Image_2025-12-08_at_14.42.59_8d7a8006_a0oshe.jpg",
+
   sizes: [
-    { size: '1KG', price: 129, inStock: true }
+    {
+      size: "1KG",
+      price: 129,
+      offerPrice: 119,
+      inStock: true
+    },
+    {
+      size: "2KG",
+      price: 300,
+      offerPrice: 269,
+      inStock: true
+    }
   ],
+
   benefits: [
-    'Rich in protein',
-    'Boosts energy',
-    'Good for heart health',
-    'Healthy fats for daily nutrition'
+    "Rich in protein",
+    "Boosts energy",
+    "Good for heart health",
+    "Healthy fats for daily nutrition"
   ],
+
   specifications: [
-    'Unpolished',
-    'Premium Quality Nuts',
-    'No Chemicals',
-    'Fresh & Crunchy'
+    "Unpolished",
+    "Premium Quality Nuts",
+    "No Chemicals",
+    "Fresh & Crunchy"
   ],
-  tags: ['Natural','Fully Organic'],
-  howToUse: 'Use for cooking, snacking, or making chutneys and powders.'
-},
+
+  tags: ["Natural", "Fully Organic"],
+  howToUse: "Use for cooking, snacking, or making chutneys and powders."
+}
+,
 {
   id: 'mm-002',
   name: 'Forest Honey',
   category: 'millets',
   description: 'Pure, raw forest honey collected from wild forest regions, rich in natural enzymes, antioxidants, and medicinal properties.',
-  image: "https://res.cloudinary.com/dgky6sudx/image/upload/v1767329848/WhatsApp_Image_2026-01-01_at_13.55.00_jl8ecf.jpg", // replace with your honey image
+  image: "https://ishavasyamproducts.com/cdn/shop/products/9.jpg?v=1634646181", // replace with your honey image
   sizes: [
 
-    { size: '500g', price: 350, inStock: true },
+    { size: '500G', price: 350, inStock: true,offerPrice: 320 },
 
   ],
   benefits: [
@@ -100,8 +116,8 @@ export const products: Product[] = [
     "https://images.pexels.com/photos/12062925/pexels-photo-12062925.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
 
   sizes: [
-    { size: "500g", price: 200, inStock: true },
-    { size: "1KG", price: 400, inStock: true }
+    { size: "500G", price: 200, inStock: true, offerPrice: 180 },
+    { size: "1KG", price: 400, inStock: true  , offerPrice: 350 }
   ],
 
   benefits: [
@@ -137,7 +153,8 @@ export const products: Product[] = [
     "https://res.cloudinary.com/dgky6sudx/image/upload/v1767329907/WhatsApp_Image_2026-01-01_at_14.01.06_fgmkgh.jpg",
 
   sizes: [
-    { size: "1KG", price: 110, inStock: true }
+        { size: "500G", price: 80, inStock: true, offerPrice: 70 },
+    { size: "1KG", price: 149, inStock: true, offerPrice: 130 }
   ],
 
   benefits: [
@@ -172,7 +189,7 @@ export const products: Product[] = [
   description: "Nutritious little millet packed with fiber and essential minerals, ideal for daily healthy meals.",
   image: "https://justorganik.com/wp-content/uploads/2024/04/little-millet-image.jpg",
   sizes: [
-    { size: "1KG", price: 120, inStock: true }
+    { size: "1KG", price: 120, inStock: true , offerPrice: 110 }
   ],
   benefits: [
     "Helps regulate blood sugar",
@@ -222,7 +239,7 @@ export const products: Product[] = [
   description: "Light and easily digestible millet suitable for fasting and daily meals.",
   image: "https://www.naatigrains.com/image/cache/catalog/naatigrains-products/NG140/unpolished-barnyard-millet-oodalu-udalu-kuthiraivali-sanwn-kavadapullu-naturally-grown-order-online-chennai-bangalore-naati-grains-1000x1000.jpg",
   sizes: [
-    { size: "1KG", price: 130, inStock: true }
+    { size: "1KG", price: 130, inStock: true , offerPrice: 120 }
   ],
   benefits: [
     "Excellent for weight loss",
@@ -247,7 +264,7 @@ export const products: Product[] = [
   description: "Highly nutritious millet rich in antioxidants and dietary fiber.",
   image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjTWZfPM7AgIfaR09DMXtlicRkbeT7sSGmxg&s",
   sizes: [
-    { size: "1KG", price: 100, inStock: true }
+    { size: "1KG", price: 100, inStock: true , offerPrice: 90 }
   ],
   benefits: [
     "Supports gut health",
@@ -272,7 +289,7 @@ export const products: Product[] = [
   description: "A rare and nutritious millet known for detoxifying properties.",
   image: "https://yummy-valley.com/cdn/shop/articles/brown-top-millet-benefits-2048x1152.webp?v=1760620367&width=1920",
   sizes: [
-    { size: "1KG", price: 180, inStock: true }
+    { size: "1KG", price: 180, inStock: true , offerPrice: 160 }
   ],
   benefits: [
     "Supports detoxification",
@@ -297,7 +314,7 @@ export const products: Product[] = [
   description: "Lightweight millet with high protein and essential minerals.",
   image: "https://twobrothersindiashop.com/cdn/shop/articles/Proso_Millet_-_benefits_uses_Nutritional_value.png?v=1689832879&width=1024",
   sizes: [
-    { size: "1KG", price: 130, inStock: true }
+    { size: "1KG", price: 130, inStock: true , offerPrice: 120 }
   ],
   benefits: [
     "Improves metabolism",
@@ -322,7 +339,7 @@ export const products: Product[] = [
   description: "Energy-rich millet ideal for strength and stamina.",
   image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRH5805LsyAh1uP23mU8-Di3sVtJnNOtH9CjQ&s",
   sizes: [
-    { size: "1KG", price: 50, inStock: true }
+    { size: "1KG", price: 50, inStock: true , offerPrice: 45 }
   ],
   benefits: [
     "Improves bone strength",
@@ -372,7 +389,7 @@ export const products: Product[] = [
   description: "Highly nutritious millet rich in calcium and iron.",
   image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiUmHDQleFv1sjD2OdOG_8hyIGvi5hWUrVJw&s",
   sizes: [
-    { size: "1KG", price: 60, inStock: true }
+    { size: "1KG", price: 60, inStock: true, offerPrice: 55 }
   ],
   benefits: [
     "Strengthens bones",
@@ -390,7 +407,80 @@ export const products: Product[] = [
   howToUse: "Used for ragi malt, dosa, porridge, or rotis."
 }
 ,
+{
+  id: "mm-0014",
+  name: "Jaggery Lump / Bucket",
+  category: "millets",
+  description:
+    "Traditional jaggery made from fresh sugarcane juice using natural methods. Rich in minerals, chemical-free, and a healthy alternative to refined sugar.",
 
+  image:
+    "https://res.cloudinary.com/dgky6sudx/image/upload/WhatsApp_Image_2026-01-01_at_13.55.00_jl8ecf.jpg",
+
+  sizes: [
+    { size: "1KG", price: 99, inStock: true }
+  ],
+
+  benefits: [
+    "Improves digestion and gut health",
+    "Boosts energy naturally",
+    "Rich in iron, magnesium, and potassium",
+    "Helps purify blood",
+    "Good for immunity and overall wellness"
+  ],
+
+  tags: ["Natural", "Fully Organic"],
+
+  specifications: [
+    "Made from pure sugarcane juice",
+    "No chemicals or preservatives",
+    "Unrefined and traditionally processed",
+    "Natural dark brown color",
+    "Rich in essential minerals"
+  ],
+
+  howToUse:
+    "Can be used as a natural sweetener in tea, coffee, sweets, and desserts. Also used in traditional recipes, health drinks, and daily cooking."
+}
+,
+
+{
+  id: "mm-0015",
+  name: "Samruddhi Whole Wheat Chakki Atta",
+  category: "millets",
+  description:
+    "Premium quality whole wheat chakki atta made from carefully selected wheat grains. Stone-ground to retain natural fiber, nutrients, and authentic taste.",
+
+  image:
+    "https://res.cloudinary.com/dgky6sudx/image/upload/WhatsApp_Image_2026-01-02_at_13.50.14_fevmwe.jpg",
+
+  sizes: [
+    { size: "1KG", price: 75, inStock: true, offerPrice: 70 },
+    { size: "5KG", price: 360, inStock: true, offerPrice: 340 }
+  ],
+
+  benefits: [
+    "Rich in dietary fiber for better digestion",
+    "Helps maintain steady energy levels",
+    "Supports healthy metabolism",
+    "Good for heart and gut health",
+    "Suitable for daily consumption"
+  ],
+
+  tags: ["Natural", "Stone Ground", "No Preservatives"],
+
+  specifications: [
+    "Made from 100% whole wheat grains",
+    "Stone-ground using traditional chakki method",
+    "No added chemicals or preservatives",
+    "Retains natural fiber and nutrients",
+    "Soft texture for fluffy rotis"
+  ],
+
+  howToUse:
+    "Used to prepare soft rotis, chapatis, parathas, puris, and other traditional Indian breads. Can also be used for baking and cooking purposes."
+}
+,
 /* ---------------------------------------------------------
    COLD PRESSED OILS
 ----------------------------------------------------------*/
@@ -403,9 +493,9 @@ export const products: Product[] = [
   tags: ['Natural','Fully Organic'],
   image: 'https://res.cloudinary.com/dd4oiwnep/image/upload/v1765181387/WhatsApp_Image_2025-12-08_at_10.33.32_780ad951_bqagse.jpg',
   sizes: [
-    { size: '250ML', price: 169, inStock: true },
-    { size: '500ML', price: 309, inStock: true },
-    { size: '1L', price: 599, inStock: true }
+    { size: '250ML', price: 169, inStock: true, offerPrice: 150 },
+    { size: '500ML', price: 309, inStock: true, offerPrice: 280 },
+    { size: '1L', price: 599, inStock: true, offerPrice: 550 }
   ],
   benefits: [
     'Promotes hair growth',
@@ -430,9 +520,9 @@ export const products: Product[] = [
   tags: ['Natural','Fully Organic'],
   image: 'https://res.cloudinary.com/dd4oiwnep/image/upload/v1765181386/WhatsApp_Image_2025-12-08_at_11.17.54_8496d194_oro8d5.jpg',
   sizes: [
-    { size: '250ML', price: 109, inStock: true },
-    { size: '500ML', price: 209, inStock: true },
-    { size: '1L', price: 399, inStock: true }
+    { size: '250ML', price: 109, inStock: true, offerPrice: 100 },
+    { size: '500ML', price: 209, inStock: true, offerPrice: 190 },
+    { size: '1L', price: 399, inStock: true, offerPrice: 360 }
   ],
   benefits: [
     'Strengthens bones',
@@ -456,9 +546,9 @@ export const products: Product[] = [
   description: 'Nutty and flavorful cold pressed groundnut oil for everyday cooking.',
   image: 'https://res.cloudinary.com/dd4oiwnep/image/upload/v1765181387/WhatsApp_Image_2025-12-08_at_10.33.32_2a116e60_f5iody.jpg',
   sizes: [
-    { size: '1L', price: 289, inStock: true },
-    { size: '2L', price: 569, inStock: true },
-    { size: '5L', price: 1349, inStock: true }
+    { size: '1L', price: 289, inStock: true, offerPrice: 260 },
+    { size: '2L', price: 569, inStock: true, offerPrice: 520 },
+    { size: '5L', price: 1349, inStock: true, offerPrice: 1249 }
   ],
   benefits: [
     'Heart friendly',
@@ -483,9 +573,9 @@ export const products: Product[] = [
   description: 'Pure cold pressed castor oil ideal for hair, skin and wellness.',
   image: "https://res.cloudinary.com/dd4oiwnep/image/upload/v1765181386/WhatsApp_Image_2025-12-08_at_10.33.31_e6b7059b_zeviuk.jpg", // REPLACE WITH REAL CASTOR IMAGE
   sizes: [
-    { size: '250ML', price: 69, inStock: true },
-    { size: '500ML', price: 129, inStock: true },
-    { size: '1L', price: 249, inStock: true }
+    { size: '250ML', price: 69, inStock: true , offerPrice: 60 },
+    { size: '500ML', price: 129, inStock: true, offerPrice: 120 },
+    { size: '1L', price: 249, inStock: true, offerPrice: 230 }
   ],
   tags: ['Natural','Fully Organic'],
   benefits: [
@@ -510,8 +600,8 @@ export const products: Product[] = [
   description: 'Light and healthy cold pressed sunflower oil.',
   image: 'https://healthybuddha.in/image/cache/catalog/sunflower-oil-500x500-500x515.jpg',
   sizes: [
-    { size: '500ML', price: 159, inStock: true },
-    { size: '1L', price: 299, inStock: true }
+    { size: '500ML', price: 159, inStock: true, offerPrice: 140 },
+    { size: '1L', price: 299, inStock: true, offerPrice: 270 }
   ],
   tags: ['Natural','Fully Organic'],
   benefits: [
@@ -536,8 +626,8 @@ export const products: Product[] = [
   description: 'Strong aromatic cold pressed mustard oil ideal for Indian cooking.',
   image: 'https://res.cloudinary.com/dd4oiwnep/image/upload/v1765181388/WhatsApp_Image_2025-12-08_at_11.46.04_6b45fb0e_exmkhd.jpg',
   sizes: [
-    { size: '500ML', price: 209, inStock: true },
-    { size: '1L', price: 399, inStock: true }
+    { size: '500ML', price: 209, inStock: true, offerPrice: 190 },
+    { size: '1L', price: 399, inStock: true, offerPrice: 360 }
   ],
   tags: ['Natural','Fully Organic'],
   benefits: [
@@ -562,8 +652,8 @@ export const products: Product[] = [
   description: 'Pure oil blend ideal for daily pooja and diya lighting.',
   image: 'https://images.jdmagicbox.com/quickquotes/images_main/deepam-oil-250ml-traditional-lighting-oil-2021977919-wc7rwi1f.jpg',
   sizes: [
-    { size: '500ML', price: 79, inStock: true },
-    { size: '1L', price: 159, inStock: true }
+    { size: '500ML', price: 79, inStock: true, offerPrice: 70 },
+    { size: '1L', price: 159, inStock: true, offerPrice: 140 }
   ],
   benefits: [
     'Long-lasting flame',
@@ -588,8 +678,8 @@ export const products: Product[] = [
   description: 'A sacred blend of 5 oils traditionally used for pooja purposes.',
   image: 'https://res.cloudinary.com/dd4oiwnep/image/upload/v1765183924/ChatGPT_Image_Dec_8_2025_02_21_37_PM_n5niec.png',
   sizes: [
-    { size: '500ML', price: 79, inStock: true },
-    { size: '1L', price: 159, inStock: true }
+    { size: '500ML', price: 79, inStock: true, offerPrice: 70 },
+    { size: '1L', price: 159, inStock: true, offerPrice: 140 }
   ],
   tags: ['Natural'],
   benefits: [
@@ -618,8 +708,8 @@ export const products: Product[] = [
   description: 'Premium homemade cow ghee with rich aroma and golden texture.',
   image: 'https://cdn.dotpe.in/longtail/store-items/5739802/CDHRtW0x.jpeg',
   sizes: [
-    { size: '500ML', price: 399, inStock: true },
-    { size: '1L', price: 799, inStock: true }
+    { size: '500ML', price: 399, inStock: true, offerPrice: 370 },
+    { size: '1L', price: 799, inStock: true, offerPrice: 750 }
   ],
   benefits: [
     'Boosts immunity',
@@ -644,8 +734,8 @@ export const products: Product[] = [
   description: 'Thick, creamy buffalo ghee with rich taste and high nutrition.',
   image: 'https://pothgaal.com/cdn/shop/files/BuffaloGhee1.jpg?v=1748348974&width=1200',
   sizes: [
-    { size: '500ML', price: 549, inStock: true },
-    { size: '1L', price: 1099, inStock: true }
+    { size: '500ML', price: 549, inStock: true, offerPrice: 520 },
+    { size: '1L', price: 1099, inStock: true, offerPrice: 1040 }
   ],
   benefits: [
     'Strengthens bones',
@@ -669,7 +759,7 @@ export const products: Product[] = [
   description: 'A crunchy and healthy millet-based snack made with natural spices.',
   image: 'https://www.govindjee.store/cdn/shop/products/millet-mixture-211040.jpg?v=1709805227',
   sizes: [
-    { size: '250g', price: 120, inStock: true }
+    { size: '250g', price: 120, inStock: true , offerPrice: 100 }
   ],
   benefits: [
     'Rich in fiber for better digestion',
@@ -693,7 +783,7 @@ export const products: Product[] = [
   description: 'A crunchy and nutritious sweet snack made with popped amaranth and jaggery.',
   image: 'https://img.freepik.com/premium-photo/cholai-ki-chikki-rajgira-chikki-amaranth-chikki-cake-bar_466689-62067.jpg',
   sizes: [
-    { size: '200g', price: 80, inStock: true }
+    { size: '200g', price: 80, inStock: true, offerPrice: 70 }
   ],
   benefits: [
     'High in protein and calcium',
@@ -717,7 +807,7 @@ export const products: Product[] = [
   description: 'A crispy and flavorful snack made using nutritious amaranth grains.',
   image: 'https://5.imimg.com/data5/WN/YK/WZ/SELLER-2044275/whatsapp-image-2020-08-06-at-15-41-11-500x500.jpeg',
   sizes: [
-    { size: '200g', price: 100, inStock: true }
+    { size: '200g', price: 100, inStock: true, offerPrice: 90 }
   ],
   benefits: [
     'Rich in plant protein',
