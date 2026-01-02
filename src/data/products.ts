@@ -667,7 +667,7 @@ export const products: Product[] = [
   name: 'Millet Mixture',
   category: 'snacks',
   description: 'A crunchy and healthy millet-based snack made with natural spices.',
-  image: 'https://cdn.dotpe.in/longtail/store-items/5739802/CDHRtW0x.jpeg',
+  image: 'https://www.govindjee.store/cdn/shop/products/millet-mixture-211040.jpg?v=1709805227',
   sizes: [
     { size: '250g', price: 120, inStock: true }
   ],
@@ -691,7 +691,7 @@ export const products: Product[] = [
   name: 'Amaranth Chikki',
   category: 'snacks',
   description: 'A crunchy and nutritious sweet snack made with popped amaranth and jaggery.',
-  image: 'https://pothgaal.com/cdn/shop/files/BuffaloGhee1.jpg?v=1748348974&width=1200',
+  image: 'https://img.freepik.com/premium-photo/cholai-ki-chikki-rajgira-chikki-amaranth-chikki-cake-bar_466689-62067.jpg',
   sizes: [
     { size: '200g', price: 80, inStock: true }
   ],
@@ -715,7 +715,7 @@ export const products: Product[] = [
   name: 'Amaranth Mixture',
   category: 'snacks',
   description: 'A crispy and flavorful snack made using nutritious amaranth grains.',
-  image: 'https://pothgaal.com/cdn/shop/files/BuffaloGhee1.jpg?v=1748348974&width=1200',
+  image: 'https://5.imimg.com/data5/WN/YK/WZ/SELLER-2044275/whatsapp-image-2020-08-06-at-15-41-11-500x500.jpeg',
   sizes: [
     { size: '200g', price: 100, inStock: true }
   ],
