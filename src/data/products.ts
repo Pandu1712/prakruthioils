@@ -21,6 +21,12 @@ export const categories: Category[] = [
     image: 'https://res.cloudinary.com/dd4oiwnep/image/upload/v1763890872/healthy_u5g2bg.jpg',
     description: 'Pure, aromatic, premium quality ghee'
   },
+  {
+    id: 'Snacks',
+    name: 'Snacks',
+    image: 'https://res.cloudinary.com/dd4oiwnep/image/upload/v1763890872/healthy_u5g2bg.jpg',
+    description: 'Pure, aromatic, premium quality ghee'
+  },
 ];
 
 export const products: Product[] = [
@@ -58,11 +64,11 @@ export const products: Product[] = [
   name: 'Forest Honey',
   category: 'millets',
   description: 'Pure, raw forest honey collected from wild forest regions, rich in natural enzymes, antioxidants, and medicinal properties.',
-  image: "https://res.cloudinary.com/dd4oiwnep/image/upload/v1765185222/ChatGPT_Image_Dec_8_2025_02_41_01_PM_otbrcd.png", // replace with your honey image
+  image: "https://res.cloudinary.com/dgky6sudx/image/upload/v1767329848/WhatsApp_Image_2026-01-01_at_13.55.00_jl8ecf.jpg", // replace with your honey image
   sizes: [
-    { size: '250g', price: 149, inStock: true },
-    { size: '500g', price: 289, inStock: true },
-    { size: '1KG', price: 549, inStock: true }
+
+    { size: '500g', price: 350, inStock: true },
+
   ],
   benefits: [
     'Boosts immunity',
@@ -128,7 +134,7 @@ export const products: Product[] = [
     "Pure and traditional jaggery powder made from fresh sugarcane juice. Unrefined, chemical-free, rich in minerals, and a healthier alternative to white sugar.",
 
   image:
-    "https://www.asavi.in/cdn/shop/files/jaggery_powder_4th_image.png?v=1741151940&width=1445",
+    "https://res.cloudinary.com/dgky6sudx/image/upload/v1767329907/WhatsApp_Image_2026-01-01_at_14.01.06_fgmkgh.jpg",
 
   sizes: [
     { size: "1KG", price: 110, inStock: true }
@@ -152,6 +158,236 @@ export const products: Product[] = [
 
   howToUse:
     "Use as a replacement for white sugar in tea, coffee, sweets, and cooking. Consume 1 teaspoon after meals to improve digestion."
+}
+,
+
+
+
+
+
+{
+  id: "mm-005",
+  name: "Little Millet",
+  category: "millets",
+  description: "Nutritious little millet packed with fiber and essential minerals, ideal for daily healthy meals.",
+  image: "https://justorganik.com/wp-content/uploads/2024/04/little-millet-image.jpg",
+  sizes: [
+    { size: "1KG", price: 120, inStock: true }
+  ],
+  benefits: [
+    "Helps regulate blood sugar",
+    "Improves digestion",
+    "Rich in fiber and iron",
+    "Supports weight management"
+  ],
+  tags: ["Natural", "Fully Organic"],
+  specifications: [
+    "Unpolished whole grain",
+    "Naturally gluten-free",
+    "High dietary fiber",
+    "No preservatives"
+  ],
+  howToUse: "Wash thoroughly and cook like rice. Ideal for pongal, upma, or khichdi."
+},
+
+{
+  id: "mm-006",
+  name: "Foxtail Millet",
+  category: "millets",
+  description: "High-protein millet that supports metabolism and sustained energy.",
+  image: "https://justorganik.com/wp-content/uploads/2024/04/2.jpg",
+  sizes: [
+    { size: "1KG", price: 100, inStock: true }
+  ],
+  benefits: [
+    "Supports heart health",
+    "Good source of plant protein",
+    "Improves digestion",
+    "Controls blood sugar"
+  ],
+  tags: ["Natural", "Fully Organic"],
+  specifications: [
+    "Low glycemic index",
+    "Rich in antioxidants",
+    "Chemical-free processing",
+    "Naturally gluten-free"
+  ],
+  howToUse: "Best for making pongal, pulao, or dosa batter."
+},
+
+{
+  id: "mm-007",
+  name: "Barnyard Millet",
+  category: "millets",
+  description: "Light and easily digestible millet suitable for fasting and daily meals.",
+  image: "https://www.naatigrains.com/image/cache/catalog/naatigrains-products/NG140/unpolished-barnyard-millet-oodalu-udalu-kuthiraivali-sanwn-kavadapullu-naturally-grown-order-online-chennai-bangalore-naati-grains-1000x1000.jpg",
+  sizes: [
+    { size: "1KG", price: 130, inStock: true }
+  ],
+  benefits: [
+    "Excellent for weight loss",
+    "Improves digestion",
+    "High fiber content",
+    "Supports heart health"
+  ],
+  tags: ["Natural", "Fully Organic"],
+  specifications: [
+    "Low carbohydrate content",
+    "High dietary fiber",
+    "No additives or preservatives",
+    "Easy to digest"
+  ],
+  howToUse: "Ideal for khichdi, upma, or replacing rice."
+},
+
+{
+  id: "mm-008",
+  name: "Kodo Millet",
+  category: "millets",
+  description: "Highly nutritious millet rich in antioxidants and dietary fiber.",
+  image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjTWZfPM7AgIfaR09DMXtlicRkbeT7sSGmxg&s",
+  sizes: [
+    { size: "1KG", price: 100, inStock: true }
+  ],
+  benefits: [
+    "Supports gut health",
+    "Helps detoxify the body",
+    "Improves metabolism",
+    "Good for diabetics"
+  ],
+  tags: ["Natural", "Fully Organic"],
+  specifications: [
+    "Unpolished grain",
+    "High antioxidant value",
+    "Naturally gluten-free",
+    "Farm sourced"
+  ],
+  howToUse: "Cook like rice or use in dosa, idli, or porridge."
+},
+
+{
+  id: "mm-009",
+  name: "Brown Top Millet",
+  category: "millets",
+  description: "A rare and nutritious millet known for detoxifying properties.",
+  image: "https://yummy-valley.com/cdn/shop/articles/brown-top-millet-benefits-2048x1152.webp?v=1760620367&width=1920",
+  sizes: [
+    { size: "1KG", price: 180, inStock: true }
+  ],
+  benefits: [
+    "Supports detoxification",
+    "Improves gut health",
+    "Rich in antioxidants",
+    "Helps weight management"
+  ],
+  tags: ["Natural", "Fully Organic"],
+  specifications: [
+    "Traditional Indian millet",
+    "High in dietary fiber",
+    "No artificial processing",
+    "Low glycemic index"
+  ],
+  howToUse: "Best used for rice replacement or health porridges."
+},
+
+{
+  id: "mm-0010",
+  name: "Proso Millet",
+  category: "millets",
+  description: "Lightweight millet with high protein and essential minerals.",
+  image: "https://twobrothersindiashop.com/cdn/shop/articles/Proso_Millet_-_benefits_uses_Nutritional_value.png?v=1689832879&width=1024",
+  sizes: [
+    { size: "1KG", price: 130, inStock: true }
+  ],
+  benefits: [
+    "Improves metabolism",
+    "Helps control cholesterol",
+    "Boosts energy levels",
+    "Supports digestion"
+  ],
+  tags: ["Natural", "Fully Organic"],
+  specifications: [
+    "Rich in protein",
+    "Easily digestible",
+    "Naturally gluten-free",
+    "No preservatives"
+  ],
+  howToUse: "Ideal for pulao, khichdi, or breakfast bowls."
+},
+
+{
+  id: "mm-0011",
+  name: "Pearl Millet (Bajra)",
+  category: "millets",
+  description: "Energy-rich millet ideal for strength and stamina.",
+  image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRH5805LsyAh1uP23mU8-Di3sVtJnNOtH9CjQ&s",
+  sizes: [
+    { size: "1KG", price: 50, inStock: true }
+  ],
+  benefits: [
+    "Improves bone strength",
+    "Boosts metabolism",
+    "High in iron",
+    "Keeps body warm"
+  ],
+  tags: ["Natural", "Fully Organic"],
+  specifications: [
+    "Rich in iron and protein",
+    "Traditionally stone-ground",
+    "No preservatives",
+    "High energy food"
+  ],
+  howToUse: "Used for rotis, porridge, or dosa batter."
+},
+
+{
+  id: "mm-0012",
+  name: "Great Millet (Jowar)",
+  category: "millets",
+  description: "Nutritious millet ideal for gluten-free diets and daily meals.",
+  image: "https://www.jiomart.com/images/product/original/rv3ofu81tj/preeta-mart-organic-great-millet-jowar-500-g-product-images-orv3ofu81tj-p596145885-0-202212071756.png?im=Resize=(420,420)",
+  sizes: [
+    { size: "1KG", price: 60, inStock: true }
+  ],
+  benefits: [
+    "Improves digestion",
+    "Helps regulate blood sugar",
+    "Good for heart health",
+    "High in antioxidants"
+  ],
+  tags: ["Natural", "Fully Organic"],
+  specifications: [
+    "Gluten-free grain",
+    "Rich in fiber",
+    "Naturally grown",
+    "Unpolished"
+  ],
+  howToUse: "Use for rotis, dosa, or healthy porridge."
+},
+
+{
+  id: "mm-0013",
+  name: "Ragi Millet",
+  category: "millets",
+  description: "Highly nutritious millet rich in calcium and iron.",
+  image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiUmHDQleFv1sjD2OdOG_8hyIGvi5hWUrVJw&s",
+  sizes: [
+    { size: "1KG", price: 60, inStock: true }
+  ],
+  benefits: [
+    "Strengthens bones",
+    "Rich in calcium and iron",
+    "Supports weight management",
+    "Good for kids and elders"
+  ],
+  tags: ["Natural", "Fully Organic"],
+  specifications: [
+    "Excellent calcium source",
+    "Naturally gluten-free",
+    "Traditional stone-ground",
+    "No preservatives"
+  ],
+  howToUse: "Used for ragi malt, dosa, porridge, or rotis."
 }
 ,
 
@@ -426,5 +662,78 @@ export const products: Product[] = [
   ],
   howToUse: 'Use in cooking, rotis, desserts, or consume 1 tsp for energy.'
 },
+{
+  id: 'sn-001',
+  name: 'Millet Mixture',
+  category: 'snacks',
+  description: 'A crunchy and healthy millet-based snack made with natural spices.',
+  image: 'https://cdn.dotpe.in/longtail/store-items/5739802/CDHRtW0x.jpeg',
+  sizes: [
+    { size: '250g', price: 120, inStock: true }
+  ],
+  benefits: [
+    'Rich in fiber for better digestion',
+    'Helps maintain healthy gut',
+    'Low in calories and gluten-free',
+    'Supports heart health'
+  ],
+  tags: ['Natural', 'Fully Organic'],
+  specifications: [
+    'Made from premium millets',
+    'No artificial colors or preservatives',
+    'Lightly spiced and roasted',
+    'Suitable for all age groups'
+  ],
+  howToUse: 'Consume directly as a snack or enjoy with tea or evening refreshments.'
+},
+{
+  id: 'sn-002',
+  name: 'Amaranth Chikki',
+  category: 'snacks',
+  description: 'A crunchy and nutritious sweet snack made with popped amaranth and jaggery.',
+  image: 'https://pothgaal.com/cdn/shop/files/BuffaloGhee1.jpg?v=1748348974&width=1200',
+  sizes: [
+    { size: '200g', price: 80, inStock: true }
+  ],
+  benefits: [
+    'High in protein and calcium',
+    'Boosts energy levels naturally',
+    'Good for bone strength',
+    'Healthy alternative to sugar snacks'
+  ],
+  tags: ['Natural', 'Fully Organic'],
+  specifications: [
+    'Made with popped amaranth seeds',
+    'Sweetened using natural jaggery',
+    'No refined sugar',
+    'Crunchy texture'
+  ],
+  howToUse: 'Consume as a healthy snack between meals or after workouts.'
+},
+{
+  id: 'sn-003',
+  name: 'Amaranth Mixture',
+  category: 'snacks',
+  description: 'A crispy and flavorful snack made using nutritious amaranth grains.',
+  image: 'https://pothgaal.com/cdn/shop/files/BuffaloGhee1.jpg?v=1748348974&width=1200',
+  sizes: [
+    { size: '200g', price: 100, inStock: true }
+  ],
+  benefits: [
+    'Rich in plant protein',
+    'Improves digestion',
+    'Provides long-lasting energy',
+    'Supports a healthy lifestyle'
+  ],
+  tags: ['Natural', 'Fully Organic'],
+  specifications: [
+    'Prepared using premium amaranth',
+    'Lightly spiced for balanced taste',
+    'No artificial flavors or preservatives',
+    'Crunchy and fresh texture'
+  ],
+  howToUse: 'Enjoy directly as a snack or serve with tea during evenings.'
+},
+
 
 ];

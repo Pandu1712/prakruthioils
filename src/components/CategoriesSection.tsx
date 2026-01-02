@@ -27,6 +27,11 @@ const categories: Category[] = [
     name: "Organic Millets",
     image: "https://img1.exportersindia.com/product_images/bc-full/dir_115/3435522/organic-millets-1762979.jpg",
   },
+  {
+    id: "snacks",
+    name: "Healthy Snacks",
+    image: "https://res.cloudinary.com/dgky6sudx/image/upload/v1767329160/ChatGPT_Image_Jan_2_2026_10_14_53_AM_c5xwq9.png",
+  },
 ];
 
 export default function CategoriesSection({
