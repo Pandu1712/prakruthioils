@@ -40,7 +40,7 @@ export const products: Product[] = [
   name: "Whole Ground Nuts",
   category: "millets",
   description: "Fresh and natural whole groundnuts rich in protein and healthy fats.",
-  image: "https://res.cloudinary.com/dd4oiwnep/image/upload/v1765185247/WhatsApp_Image_2025-12-08_at_14.42.59_8d7a8006_a0oshe.jpg",
+  image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxmwGxJCsWaQoQAaKYHzy6YjYnSu4INkCA7w&s",
 
   sizes: [
     {
