@@ -45,13 +45,13 @@ export const products: Product[] = [
   sizes: [
     {
       size: "1KG",
-      price: 140,
-      offerPrice: 129,
+      price: 169,
+      offerPrice: 155,
       inStock: true
     },
     {
       size: "2KG",
-      price: 320,
+      price: 330,
       offerPrice: 300,
       inStock: true
     }
@@ -493,9 +493,9 @@ export const products: Product[] = [
   tags: ['Natural','Fully Organic'],
   image: 'https://res.cloudinary.com/dd4oiwnep/image/upload/v1765181387/WhatsApp_Image_2025-12-08_at_10.33.32_780ad951_bqagse.jpg',
   sizes: [
-    { size: '250ML', price: 179, inStock: true, offerPrice: 169 },
-    { size: '500ML', price: 319, inStock: true, offerPrice: 309 },
-    { size: '1L', price: 630, inStock: true, offerPrice: 599 }
+    { size: '200ML', price: 160, inStock: true, offerPrice: 129 },
+    { size: '500ML', price: 340, inStock: true, offerPrice: 309 },
+    { size: '1L', price: 620, inStock: true, offerPrice: 599 }
   ],
   benefits: [
     'Promotes hair growth',
@@ -520,9 +520,9 @@ export const products: Product[] = [
   tags: ['Natural','Fully Organic'],
   image: 'https://res.cloudinary.com/dd4oiwnep/image/upload/v1765181386/WhatsApp_Image_2025-12-08_at_11.17.54_8496d194_oro8d5.jpg',
   sizes: [
-    { size: '250ML', price: 119, inStock: true, offerPrice: 109 },
-    { size: '500ML', price: 219, inStock: true, offerPrice: 209 },
-    { size: '1L', price: 419, inStock: true, offerPrice: 399 }
+    { size: '200ML', price: 155, inStock: true, offerPrice: 109 },
+    { size: '500ML', price: 289, inStock: true, offerPrice: 209 },
+    { size: '1L', price: 549, inStock: true, offerPrice: 399 }
   ],
   benefits: [
     'Strengthens bones',
@@ -546,9 +546,10 @@ export const products: Product[] = [
   description: 'Nutty and flavorful cold pressed groundnut oil for everyday cooking.',
   image: 'https://res.cloudinary.com/dd4oiwnep/image/upload/v1765181387/WhatsApp_Image_2025-12-08_at_10.33.32_2a116e60_f5iody.jpg',
   sizes: [
-    { size: '1L', price: 299, inStock: true, offerPrice: 289 },
-    { size: '2L', price: 579, inStock: true, offerPrice: 569 },
-    { size: '5L', price: 1379, inStock: true, offerPrice: 1349 }
+    { size: '500ml', price: 180, inStock: true, offerPrice: 149 },
+    { size: '1L', price: 349, inStock: true, offerPrice: 289 },
+    { size: '2L', price: 599, inStock: true, offerPrice: 569 },
+    { size: '5L', price: 1750, inStock: true, offerPrice: 1349 }
   ],
   benefits: [
     'Heart friendly',
@@ -573,9 +574,9 @@ export const products: Product[] = [
   description: 'Pure cold pressed castor oil ideal for hair, skin and wellness.',
   image: "https://res.cloudinary.com/dd4oiwnep/image/upload/v1765181386/WhatsApp_Image_2025-12-08_at_10.33.31_e6b7059b_zeviuk.jpg", // REPLACE WITH REAL CASTOR IMAGE
   sizes: [
-    { size: '250ML', price: 79, inStock: true , offerPrice: 69 },
-    { size: '500ML', price: 139, inStock: true, offerPrice: 129 },
-    { size: '1L', price: 269, inStock: true, offerPrice: 249 }
+    { size: '200ML', price: 125, inStock: true , offerPrice: 69 },
+    { size: '500ML', price: 210, inStock: true, offerPrice: 129 },
+    { size: '1L', price: 399, inStock: true, offerPrice: 249 }
   ],
   tags: ['Natural','Fully Organic'],
   benefits: [
@@ -734,7 +735,8 @@ export const products: Product[] = [
   description: 'Thick, creamy buffalo ghee with rich taste and high nutrition.',
   image: 'https://pothgaal.com/cdn/shop/files/BuffaloGhee1.jpg?v=1748348974&width=1200',
   sizes: [
-    { size: '500ML', price: 569, inStock: true, offerPrice: 549 },
+    { size: '200ML', price: 300, inStock: true, offerPrice: 260 },
+    { size: '500ML', price: 609, inStock: true, offerPrice: 550 },
     { size: '1L', price: 1199, inStock: true, offerPrice: 1099 }
   ],
   benefits: [
