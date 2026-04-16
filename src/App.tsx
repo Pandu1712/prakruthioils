@@ -12,6 +12,8 @@ import CartPage from "./pages/CartPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import ContactPage from "./pages/ContactPage";
 import AboutPage from "./pages/AboutPage";
+import GalleryPage from "./pages/GalleryPage";
+import ReviewsPage from "./pages/ReviewsPage";
 
 import StickyCartIcon from "./components/StickyCartIcon";
 import WhatsAppButton from "./components/WhatsAppButton";
@@ -27,16 +29,16 @@ type Page =
   | "checkout"
   | "contact"
   | "about"
-  | "categories";
+  | "categories"
+  | "reviews"
+  | "gallery";
 
 function App() {
   const [currentPage, setCurrentPage] = useState<Page>("home");
   const [selectedCategory, setSelectedCategory] = useState<string>("");
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [searchQuery, setSearchQuery] = useState<string>("");
 
-  /* -----------------------------------
-     BACK BUTTON SUPPORT
-  -------------------------------------- */
   useEffect(() => {
     const handlePopState = (event: PopStateEvent) => {
       if (event.state?.page) {
@@ -50,9 +52,6 @@ function App() {
     return () => window.removeEventListener("popstate", handlePopState);
   }, []);
 
-  /* -----------------------------------
-     NAVIGATION HELPERS
-  -------------------------------------- */
   const navigateWithHistory = (page: Page) => {
     window.history.pushState({ page }, "", "");
     setCurrentPage(page);
@@ -60,20 +59,25 @@ function App() {
   };
 
   const handleNavigate = (page: string) => {
+    if (page === "products") {
+      setSelectedCategory("");
+      setSearchQuery("");
+    }
     navigateWithHistory(page as Page);
   };
 
-  /* -----------------------------------
-     CATEGORY CLICK HANDLER
-  -------------------------------------- */
-  const handleCategoryClick = (categoryId: string) => {
-    setSelectedCategory(categoryId);
-    navigateWithHistory("products"); // always go to products page
+  const handleSearch = (query: string) => {
+    setSearchQuery(query);
+    setSelectedCategory(""); // clear category when searching from header
+    navigateWithHistory("products");
   };
 
-  /* -----------------------------------
-     PRODUCT CLICK HANDLER
-  -------------------------------------- */
+  const handleCategoryClick = (categoryId: string) => {
+    setSelectedCategory(categoryId);
+    setSearchQuery(""); // clear search when clicking category
+    navigateWithHistory("products");
+  };
+
   const handleViewDetails = (product: Product) => {
     setSelectedProduct(product);
     navigateWithHistory("product-detail");
@@ -83,18 +87,22 @@ function App() {
     navigateWithHistory("home");
   };
 
-  /* -----------------------------------
-     PAGE ROUTING
-  -------------------------------------- */
   const renderPage = () => {
     switch (currentPage) {
       case "home":
-        return <HomePage onCategoryClick={handleCategoryClick} />;
+        return (
+          <HomePage 
+            onCategoryClick={handleCategoryClick} 
+            onViewProduct={handleViewDetails} 
+            onNavigate={handleNavigate}
+          />
+        );
 
       case "products":
         return (
           <ProductsPage
             categoryId={selectedCategory}
+            initialSearchQuery={searchQuery}
             onBack={() => navigateWithHistory("home")}
             onViewDetails={handleViewDetails}
           />
@@ -131,22 +139,30 @@ function App() {
 
       case "about":
         return <AboutPage />;
-        case "categories":
-  return <CategoriesSection onCategoryClick={handleCategoryClick} />;
 
+      case "categories":
+        return <CategoriesSection onCategoryClick={handleCategoryClick} />;
+
+      case "reviews":
+        return <ReviewsPage onBack={() => navigateWithHistory("home")} />;
+
+      case "gallery":
+        return <GalleryPage onBack={() => navigateWithHistory("home")} />;
 
       default:
-        return <HomePage onCategoryClick={handleCategoryClick} />;
+        return <HomePage onCategoryClick={handleCategoryClick} onViewProduct={handleViewDetails} />;
     }
   };
 
-  /* -----------------------------------
-     FINAL LAYOUT
-  -------------------------------------- */
   return (
     <CartProvider>
       <div className="min-h-screen bg-white">
-        <Navbar onNavigate={handleNavigate} currentPage={currentPage} />
+        <Navbar 
+          onNavigate={handleNavigate} 
+          currentPage={currentPage} 
+          onSearch={handleSearch}
+          onViewProduct={handleViewDetails}
+        />
 
         <main>{renderPage()}</main>
 
@@ -157,7 +173,7 @@ function App() {
 
         <StickyCartIcon onClick={() => navigateWithHistory("cart")} />
         <WhatsAppButton />
-         <TrustedBadge />
+        <TrustedBadge />
       </div>
     </CartProvider>
   );

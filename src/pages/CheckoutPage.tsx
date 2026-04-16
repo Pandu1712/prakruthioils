@@ -6,6 +6,8 @@ import {
   MapPin,
   Mail,
   Phone,
+  ShieldCheck,
+  CreditCard,
 } from "lucide-react";
 import { useCart } from "../context/CartContext";
 import jsPDF from "jspdf";
@@ -17,8 +19,7 @@ interface CheckoutPageProps {
 }
 
 export default function CheckoutPage({ onBack, onSuccess }: CheckoutPageProps) {
-  const { cart, getTotalPrice, clearCart } = useCart();
-
+  const { cart, getTotalItems, clearCart } = useCart();
   const [formData, setFormData] = useState({
     name: "",
     address: "",
@@ -27,458 +28,244 @@ export default function CheckoutPage({ onBack, onSuccess }: CheckoutPageProps) {
     location: "",
   });
 
-  const billDate = new Date().toLocaleDateString();
+  const billDate = new Date().toLocaleDateString('en-IN', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+  });
 
+  const subtotal = cart.reduce((sum, item) => sum + item.unitPrice * item.quantity, 0);
+  const totalSavings = cart.reduce((sum, item) => sum + ((item.originalPrice ?? item.unitPrice) - item.unitPrice) * item.quantity, 0);
+  const totalAmount = subtotal;
 
-
-  /* ---------------- INPUT HANDLER ---------------- */
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  /* ---------------- GET CURRENT LOCATION ---------------- */
   const handleGetLocation = () => {
     if (!navigator.geolocation) {
-      alert("Your device doesn't support location access.");
+      alert("Location access not supported.");
       return;
     }
-
     navigator.geolocation.getCurrentPosition(
       (pos) => {
-        const lat = pos.coords.latitude;
-        const lon = pos.coords.longitude;
-        const link = `https://www.google.com/maps?q=${lat},${lon}`;
-
-        setFormData((prev) => ({ ...prev, location: link }));
-        alert("Location added successfully!");
+        const link = `https://www.google.com/maps?q=${pos.coords.latitude},${pos.coords.longitude}`;
+        setFormData(prev => ({ ...prev, location: link }));
       },
-      () => {
-        alert("Please allow location permission.");
-      }
+      () => alert("Please allow location access.")
     );
   };
 
-  /* ---------------- GENERATE PDF INVOICE ---------------- */
   const generateInvoicePDF = async () => {
     const invoiceElement = document.getElementById("prakruthi-invoice");
     if (!invoiceElement) return;
-
     const canvas = await html2canvas(invoiceElement, { scale: 2 });
-    const imgData = canvas.toDataURL("image/png");
-
     const pdf = new jsPDF("p", "mm", "a4");
     const pdfWidth = pdf.internal.pageSize.getWidth();
-    const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
-
-    pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
-    pdf.save(`Prakruthi_Invoice_${Date.now()}.pdf`);
+    pdf.addImage(canvas.toDataURL("image/png"), "PNG", 0, 0, pdfWidth, (canvas.height * pdfWidth) / canvas.width);
+    pdf.save(`Prakruthi_Receipt_${Date.now()}.pdf`);
   };
 
-  /* ---------------- SEND ORDER TO WHATSAPP ---------------- */
-  const sendOrderToWhatsApp = () => {
-    let message = `*New Order from Prakruthi Cold Oils*\n\n`;
-
-    message += `*Customer Details:*\n`;
-    message += `Name: ${formData.name}\n`;
-    message += `Phone: ${formData.phone}\n`;
-    message += `Email: ${formData.email}\n`;
-    message += `Address: ${formData.address}\n`;
-    message += `Location: ${formData.location || "Not Provided"}\n\n`;
-
-    message += `*Order Details:*\n`;
-
-    cart.forEach((item, index) => {
-      message += `\n${index + 1}. ${item.product.name}\n`;
-      message += `Size: ${item.selectedSize.size}\n`;
-      message += `Quantity: ${item.quantity}\n`;
-     message += `Price: ₹${item.unitPrice} x ${item.quantity} = ₹${
-  item.unitPrice * item.quantity }\n`;
-    });
-
-message += `\n*Total Amount: ₹${totalAmount}*`;
-    message += `\n\nThank you for your order! We will process it shortly.`;
-
-    const whatsappNumber = "918073516982";
-    const encoded = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encoded}`;
-
-    window.open(whatsappUrl, "_blank");
-  };
-
-  /* ---------------- HANDLE SUBMIT ----------------
-     Flow:
-     1) Generate & download Invoice PDF
-     2) Open WhatsApp with order text + location
-  ------------------------------------------------- */
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    // 1. Generate PDF invoice (auto download)
     await generateInvoicePDF();
+    
+    let msg = `*New Harvest Order - Prakruthi Cold Oils*\n\n`;
+    msg += `*Customer:* ${formData.name}\n`;
+    msg += `*Phone:* ${formData.phone}\n`;
+    msg += `*Address:* ${formData.address}\n\n`;
+    msg += `*Items:*\n`;
+    cart.forEach((item, i) => {
+      msg += `${i+1}. ${item.product.name} (${item.selectedSize.size}) x ${item.quantity}\n`;
+    });
+    msg += `\n*Total Amount: ₹${totalAmount}*\n\n`;
+    msg += formData.location ? `*Delivery Location:* ${formData.location}` : "";
 
-    // 2. Open WhatsApp with full order + location
-    sendOrderToWhatsApp();
-
-    // 3. Clear cart & call success handler
+    window.open(`https://wa.me/918073516982?text=${encodeURIComponent(msg)}`, "_blank");
     clearCart();
     onSuccess();
   };
 
-
-const subtotal = cart.reduce(
-  (sum, item) => sum + item.unitPrice * item.quantity,
-  0
-);
-
-const totalSavings = cart.reduce(
-  (sum, item) =>
-    sum +
-    ((item.originalPrice ?? item.unitPrice) - item.unitPrice) *
-      item.quantity,
-  0
-);
-
-const totalAmount = subtotal;
-
-
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#9EA233] to-white pt-24 pb-16 relative">
-      <div className="container mx-auto px-4 max-w-4xl">
-        {/* BACK BUTTON */}
-        <button
-          onClick={onBack}
-          className="flex items-center gap-2 text-[#9EA233] font-semibold mb-8 group"
-        >
-          <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-          Back to Cart
-        </button>
+    <div className="min-h-screen bg-[#FFFEF9] pt-40 pb-24">
+      <div className="container mx-auto px-6">
+        
+        {/* Cinematic Header */}
+        <div className="mb-20">
+          <button
+            onClick={onBack}
+            className="group flex items-center gap-3 text-gray-400 hover:text-[#9EA233] font-bold text-[14px] uppercase tracking-[0.3em] mb-10 transition-all"
+          >
+            <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+            Back to Selection
+          </button>
+          
+          <h1 className="text-[36px] font-bold text-gray-900 tracking-tight leading-[1.1]">
+            Confirm Your <br />
+            <span className="text-[#9EA233]">Harvest Order.</span>
+          </h1>
+        </div>
 
-        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-12">
-          Checkout
-        </h1>
-
-        <div className="grid lg:grid-cols-3 gap-8">
-          {/* ---------------- CUSTOMER FORM ---------------- */}
+        <div className="grid lg:grid-cols-3 gap-20 items-start">
+          
+          {/* Checkout Form */}
           <div className="lg:col-span-2">
-            <form
-              onSubmit={handleSubmit}
-              className="bg-white rounded-2xl shadow-xl p-8"
-            >
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">
-                Customer Information
-              </h2>
+            <form onSubmit={handleSubmit} className="space-y-12">
+               <div className="bg-white rounded-[50px] p-12 border border-gray-100 shadow-sm">
+                  <h2 className="text-xs font-black uppercase tracking-[0.4em] text-gray-900 mb-12">1. Delivery Details</h2>
+                  <div className="grid md:grid-cols-2 gap-8">
+                     <div className="space-y-3">
+                        <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-4">Full Legal Name</label>
+                        <div className="relative">
+                          <User className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-300" />
+                          <input required name="name" value={formData.name} onChange={handleChange} placeholder="First and last name" className="w-full h-16 pl-14 pr-6 rounded-2xl bg-gray-50 border-none focus:ring-2 focus:ring-[#9EA233]/20 font-bold" />
+                        </div>
+                     </div>
+                     <div className="space-y-3">
+                        <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-4">Phone Number</label>
+                        <div className="relative">
+                          <Phone className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-300" />
+                          <input required type="tel" pattern="[0-9]{10}" name="phone" value={formData.phone} onChange={handleChange} placeholder="10-digit mobile" className="w-full h-16 pl-14 pr-6 rounded-2xl bg-gray-50 border-none focus:ring-2 focus:ring-[#9EA233]/20 font-bold" />
+                        </div>
+                     </div>
+                  </div>
 
-              <div className="space-y-6">
-                {/* NAME */}
-                <div>
-                  <label className="flex items-center gap-2 text-sm font-semibold text-gray-700 mb-2">
-                    <User className="w-4 h-4 text-[#9EA233]" />
-                    Full Name *
-                  </label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border-2 rounded-xl border-gray-300 focus:border-[#9EA233] focus:outline-none"
-                    placeholder="Enter your full name"
-                  />
-                </div>
+                  <div className="mt-8 space-y-3">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-4">Delivery Address</label>
+                    <div className="relative">
+                      <MapPin className="absolute left-6 top-6 w-4 h-4 text-gray-300" />
+                      <textarea required name="address" value={formData.address} onChange={handleChange} rows={4} placeholder="Full address including landmarks" className="w-full pl-14 pr-6 py-6 rounded-2xl bg-gray-50 border-none focus:ring-2 focus:ring-[#9EA233]/20 font-bold resize-none" />
+                    </div>
+                  </div>
 
-                {/* PHONE */}
-                <div>
-                  <label className="flex items-center gap-2 text-sm font-semibold text-gray-700 mb-2">
-                    <Phone className="w-4 h-4 text-[#9EA233]" />
-                    Phone Number * (10 digits)
-                  </label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    required
-                    pattern="[0-9]{10}"
-                    className="w-full px-4 py-3 border-2 rounded-xl border-gray-300 focus:border-[#9EA233] focus:outline-none"
-                    placeholder="10 digit mobile number"
-                  />
-                </div>
-
-                {/* EMAIL */}
-                <div>
-                  <label className="flex items-center gap-2 text-sm font-semibold text-gray-700 mb-2">
-                    <Mail className="w-4 h-4 text-[#9EA233]" />
-                    Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border-2 rounded-xl border-gray-300 focus:border-[#9EA233] focus:outline-none"
-                    placeholder="your.email@example.com"
-                  />
-                </div>
-
-                {/* ADDRESS */}
-                <div>
-                  <label className="flex items-center gap-2 text-sm font-semibold text-gray-700 mb-2">
-                    <MapPin className="w-4 h-4 text-[#9EA233]" />
-                    Delivery Address *
-                  </label>
-                  <textarea
-                    name="address"
-                    value={formData.address}
-                    onChange={handleChange}
-                    required
-                    rows={4}
-                    className="w-full px-4 py-3 border-2 rounded-xl border-gray-300 focus:border-[#9EA233] focus:outline-none resize-none"
-                    placeholder="Full address with pincode"
-                  />
-                </div>
-
-                {/* CURRENT LOCATION */}
-                <div>
-                  <label className="text-sm font-semibold text-gray-700 mb-2 block">
-                    Current Location (Optional)
-                  </label>
-                  <div className="flex gap-3">
-                    <input
-                      type="text"
-                      name="location"
-                      value={formData.location}
-                      readOnly
-                      className="w-full px-4 py-3 border-2 rounded-xl bg-gray-100 border-gray-300 focus:outline-none"
-                      placeholder="Click 'Get' to auto-fill location"
-                    />
-                    <button
-                      type="button"
-                      onClick={handleGetLocation}
-                      className="px-4 py-3 bg-[#9EA233] text-white rounded-xl font-semibold hover:scale-105 transition"
-                    >
-                      Get
+                  <div className="mt-8">
+                    <button type="button" onClick={handleGetLocation} className="flex items-center gap-3 text-xs font-bold text-[#9EA233] uppercase tracking-widest hover:translate-x-2 transition-transform">
+                       <MapPin className="w-4 h-4" /> {formData.location ? "Location Captured" : "Auto-detect current location"}
                     </button>
                   </div>
-                </div>
-              </div>
+               </div>
 
-              {/* SUBMIT BUTTON */}
-              <button
-                type="submit"
-                className="w-full mt-8 bg-[#9EA233] hover:bg-[#8a932d] text-white py-4 rounded-xl font-bold text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl flex items-center justify-center gap-3"
-              >
-                <Send className="w-6 h-6" />
-                Generate Invoice & Send to WhatsApp
-              </button>
+               <div className="bg-white rounded-[50px] p-12 border border-gray-100 shadow-sm">
+                  <h2 className="text-xs font-black uppercase tracking-[0.4em] text-gray-900 mb-12">2. Payment Method</h2>
+                  <div className="p-8 rounded-3xl bg-gray-900 text-white flex items-center justify-between group cursor-pointer border border-transparent hover:border-[#9EA233]/50 transition-all">
+                     <div className="flex items-center gap-6">
+                        <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center">
+                           <CreditCard className="w-6 h-6 text-[#9EA233]" />
+                        </div>
+                        <div>
+                           <p className="font-bold">Cash on Delivery</p>
+                           <p className="text-xs text-white/50 font-bold uppercase tracking-widest">Pay upon safe harvest delivery</p>
+                        </div>
+                     </div>
+                     <div className="w-6 h-6 rounded-full border-2 border-[#9EA233] flex items-center justify-center">
+                        <div className="w-3 h-3 bg-[#9EA233] rounded-full"></div>
+                     </div>
+                  </div>
+               </div>
 
-              <p className="mt-3 text-sm text-gray-600 text-center">
-                We will download your invoice and open WhatsApp with your full
-                order details. You can attach the invoice PDF from your
-                downloads if needed.
-              </p>
+               <button type="submit" className="w-full bg-[#9EA233] text-white h-20 rounded-[30px] font-black text-xs uppercase tracking-[0.3em] shadow-2xl shadow-[#9EA233]/20 hover:-translate-y-1 transition-all flex items-center justify-center gap-4">
+                  <Send className="w-5 h-5" /> Finalize Order via WhatsApp
+               </button>
             </form>
           </div>
 
-          {/* ---------------- ORDER SUMMARY ---------------- */}
-        <div className="lg:col-span-1">
-  <div className="bg-white rounded-2xl shadow-xl p-6 sticky top-24">
-    <h2 className="text-xl font-bold text-gray-900 mb-4">
-      Order Summary
-    </h2>
+          {/* Right Summary */}
+          <div className="lg:col-span-1 sticky top-32">
+             <div className="bg-gray-50 rounded-[60px] p-10 space-y-8">
+                <h3 className="text-xs font-black uppercase tracking-[0.4em] text-gray-900">Your Selection ({getTotalItems()})</h3>
+                <div className="space-y-6 max-h-[300px] overflow-y-auto pr-2 custom-scrollbar">
+                   {cart.map(item => (
+                     <div key={item.product.id} className="flex items-center gap-4">
+                        <div className="w-16 h-16 bg-white rounded-2xl p-2 border border-gray-100 flex-shrink-0">
+                           <img src={item.product.image} className="w-full h-full object-contain" />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                           <p className="font-bold text-sm text-gray-900 truncate">{item.product.name}</p>
+                           <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest">{item.selectedSize.size} x {item.quantity}</p>
+                        </div>
+                        <p className="font-bold text-sm text-[#9EA233]">₹{item.unitPrice * item.quantity}</p>
+                     </div>
+                   ))}
+                </div>
+                
+                <div className="pt-8 border-t border-gray-200 space-y-4">
+                   <div className="flex justify-between text-xs font-bold uppercase tracking-widest text-gray-400">
+                      <span>Subtotal</span>
+                      <span className="text-gray-900">₹{subtotal}</span>
+                   </div>
+                   <div className="flex justify-between text-xs font-bold uppercase tracking-widest text-[#9EA233]">
+                      <span>Loyalty Gift</span>
+                      <span>Free Shipping</span>
+                   </div>
+                   <div className="flex justify-between items-end pt-4">
+                      <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400">Total</span>
+                      <span className="text-4xl font-bold tracking-tighter text-gray-900">₹{totalAmount}</span>
+                   </div>
+                </div>
 
-    {/* ITEMS */}
-    <div className="space-y-4 mb-6 max-h-[400px] overflow-y-auto">
-      {cart.map((item) => {
-        const itemTotal = item.unitPrice * item.quantity;
-        const originalTotal = item.originalPrice
-          ? item.originalPrice * item.quantity
-          : null;
+                <div className="bg-white p-6 rounded-3xl border border-gray-100 flex items-center gap-4">
+                   <ShieldCheck className="w-6 h-6 text-[#9EA233]" />
+                   <div>
+                      <p className="text-[10px] font-black uppercase tracking-widest text-[#9EA233]">Guaranteed Freshness</p>
+                      <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">Packed and shipped within 24h</p>
+                   </div>
+                </div>
+             </div>
+          </div>
+        </div>
+      </div>
 
-        return (
-          <div
-            key={`${item.product.id}-${item.selectedSize.size}`}
-            className="flex gap-3 pb-4 border-b border-gray-200"
-          >
-            <img
-              src={item.product.image}
-              alt={item.product.name}
-              className="w-16 h-16 object-cover rounded-lg"
-            />
-
-            <div className="flex-1">
-              <h4 className="font-semibold text-sm text-gray-900 line-clamp-1">
-                {item.product.name}
-              </h4>
-
-              <p className="text-xs text-gray-600">
-                {item.selectedSize.size} × {item.quantity}
-              </p>
-
-              {/* PRICE */}
-              {originalTotal && originalTotal > itemTotal && (
-                <p className="text-xs text-gray-400 line-through">
-                  ₹{originalTotal}
-                </p>
-              )}
-
-              <p className="text-sm font-bold text-[#9EA233] mt-1">
-                ₹{itemTotal}
-              </p>
+      {/* Hidden Invoice */}
+      <div id="prakruthi-invoice" className="absolute -left-[9999px] top-0 bg-white p-12 w-[800px] text-gray-900">
+         <div className="flex justify-between border-b-4 border-[#9EA233] pb-10 mb-10">
+            <div className="flex items-center gap-6">
+               <img src="/coldLogo.jpg" className="w-24 h-24 rounded-full border-2 border-[#9EA233]" />
+               <div>
+                  <h1 className="text-3xl font-black text-[#9EA233]">PRAKRUTHI COLD OILS</h1>
+                  <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">Pure Organic Heritage</p>
+               </div>
             </div>
-          </div>
-        );
-      })}
-    </div>
-
-    {/* TOTALS */}
-    <div className="space-y-3 mb-6">
-      <div className="flex justify-between text-gray-600">
-        <span>Subtotal</span>
-        <span className="font-semibold">₹{subtotal}</span>
-      </div>
-
-      {totalSavings > 0 && (
-        <div className="flex justify-between text-green-600">
-          <span>You Saved</span>
-          <span>-₹{totalSavings}</span>
-        </div>
-      )}
-
-      <div className="flex justify-between text-gray-600">
-        <span>Shipping</span>
-        <span className="font-semibold text-[#9EA233]">Free</span>
-      </div>
-
-      <div className="border-t pt-3 flex justify-between text-xl font-bold text-gray-900">
-        <span>Total</span>
-        <span className="text-[#9EA233]">₹{totalAmount}</span>
-      </div>
-    </div>
-  </div>
-</div>
-
-        </div>
-      </div>
-
-      {/* ---------- HIDDEN INVOICE LAYOUT FOR PDF (OFFSCREEN, NOT VISIBLE) ---------- */}
-     <div
-        id="prakruthi-invoice"
-        className="absolute -left-[9999px] top-0 bg-white text-black p-8 w-[794px] border border-[#9EA233]"
-      >
-        {/* Header with green theme */}
-        <div className="flex items-center border-b-4 border-[#9EA233] pb-4 mb-4">
-          <div className="w-20 h-20 mr-4 rounded-full border-2 border-[#9EA233] flex items-center justify-center overflow-hidden bg-white">
-            <img
-              src="/coldLogo.jpg"
-              alt="Prakruthi Logo"
-              className="w-full h-full object-contain"
-            />
-          </div>
-          <div className="flex-1">
-            <h1 className="text-2xl font-extrabold text-[#4a5c0f]">
-              PRAKRUTHI COLD PRESS OIL
-            </h1>
-            <p className="text-sm text-gray-700">Tata Nagar, Bengaluru, Karnataka - 560094</p>
-            <p className="text-sm text-gray-700">Phone: 8073516982</p>
-          </div>
-          <div className="text-right">
-            <div className="text-xl font-bold text-[#9EA233]">INVOICE</div>
-           
-            <div className="text-xs text-gray-600">
-              Date: <span className="font-semibold">{billDate}</span>
+            <div className="text-right">
+               <h2 className="text-4xl font-black mb-2">RECEIPT</h2>
+               <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">{billDate}</p>
             </div>
-          </div>
-        </div>
-
-        {/* Customer + Location */}
-        <div className="grid grid-cols-2 gap-4 mb-4 rounded-lg border border-[#d9f99d] bg-[#fefce8] p-4">
-          <div>
-            <h2 className="font-semibold text-[#4a5c0f] mb-1">Bill To:</h2>
-            <p className="text-sm"><span className="font-semibold">Name:</span> {formData.name}</p>
-            <p className="text-sm"><span className="font-semibold">Phone:</span> {formData.phone}</p>
-            <p className="text-sm"><span className="font-semibold">Email:</span> {formData.email}</p>
-            <p className="text-sm"><span className="font-semibold">Address:</span> {formData.address}</p>
-          </div>
-          <div>
-            <h2 className="font-semibold text-[#4a5c0f] mb-1">Delivery Location:</h2>
-            <p className="text-xs break-all">
-              {formData.location ? formData.location : "Not Provided"}
-            </p>
-          </div>
-        </div>
-
-        {/* Items Table */}
-        <table className="w-full text-sm border-collapse mb-6">
-          <thead>
-            <tr className="bg-[#ecfccb] text-[#4a5c0f]">
-              <th className="border border-[#d4d4d4] p-2 text-left w-10">No</th>
-              <th className="border border-[#d4d4d4] p-2 text-left">Item Name</th>
-              <th className="border border-[#d4d4d4] p-2 text-left w-24">Size</th>
-              <th className="border border-[#d4d4d4] p-2 text-left w-16">Qty</th>
-              <th className="border border-[#d4d4d4] p-2 text-left w-24">Rate</th>
-              <th className="border border-[#d4d4d4] p-2 text-left w-28">Amount</th>
-            </tr>
-          </thead>
-          <tbody>
-            {cart.map((item, index) => (
-              <tr key={`${item.product.id}-${item.selectedSize.size}`}>
-                <td className="border border-[#e5e5e5] p-2">{index + 1}</td>
-                <td className="border border-[#e5e5e5] p-2">{item.product.name}</td>
-                <td className="border border-[#e5e5e5] p-2">{item.selectedSize.size}</td>
-                <td className="border border-[#e5e5e5] p-2">{item.quantity}</td>
-                <td className="border border-[#e5e5e5] p-2">₹{item.unitPrice}</td>
-                <td className="border border-[#e5e5e5] p-2">
-                 ₹{item.unitPrice * item.quantity}
-
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-
-        {/* Totals & Signature */}
-        <div className="flex justify-between items-start mt-4">
-          <div className="text-xs text-gray-600 max-w-xs">
-            <p className="font-semibold text-[#4a5c0f] mb-1">
-              Notes:
-            </p>
-            <p>
-              Thank you for choosing Prakruthi Cold Press Oil. Consume fresh, natural, and chemical-free
-              products for a healthy lifestyle.
-            </p>
-          </div>
-
-          <div className="space-y-3 mb-6">
-  <div className="flex justify-between text-gray-600">
-    <span>Subtotal</span>
-    <span className="font-semibold">₹{subtotal}</span>
-  </div>
-
-  {totalSavings > 0 && (
-    <div className="flex justify-between text-green-600">
-      <span>You Saved</span>
-      <span>-₹{totalSavings}</span>
-    </div>
-  )}
-
-  <div className="flex justify-between text-gray-600">
-    <span>Shipping</span>
-    <span className="font-semibold text-[#9EA233]">Free</span>
-  </div>
-
-  <div className="border-t pt-3 flex justify-between text-xl font-bold text-gray-900">
-    <span>Total</span>
-    <span className="text-[#9EA233]">₹{totalAmount}</span>
-  </div>
-</div>
-
-        </div>
+         </div>
+         <div className="grid grid-cols-2 gap-10 mb-10 bg-gray-50 p-8 rounded-3xl">
+            <div>
+               <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-2">Bill To</p>
+               <p className="font-bold text-xl">{formData.name}</p>
+               <p className="text-sm text-gray-500">{formData.phone}</p>
+               <p className="text-sm text-gray-500">{formData.address}</p>
+            </div>
+            <div className="text-right">
+               <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-2">Total Payable</p>
+               <p className="font-bold text-4xl text-[#9EA233]">₹{totalAmount}</p>
+               <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mt-2">Cash on Delivery</p>
+            </div>
+         </div>
+         <table className="w-full mb-10">
+            <thead className="border-b-2 border-gray-100">
+               <tr className="text-[10px] font-black uppercase tracking-widest text-gray-400">
+                 <th className="text-left py-4">Product</th>
+                 <th className="text-center py-4">Size</th>
+                 <th className="text-center py-4">Qty</th>
+                 <th className="text-right py-4">Total</th>
+               </tr>
+            </thead>
+            <tbody>
+               {cart.map(item => (
+                 <tr key={item.product.id} className="border-b border-gray-50 font-bold">
+                    <td className="py-6">{item.product.name}</td>
+                    <td className="text-center py-6">{item.selectedSize.size}</td>
+                    <td className="text-center py-6">{item.quantity}</td>
+                    <td className="text-right py-6">₹{item.unitPrice * item.quantity}</td>
+                 </tr>
+               ))}
+            </tbody>
+         </table>
+         <div className="text-center pt-10 border-t border-gray-100">
+            <p className="text-xs font-bold text-gray-400 uppercase tracking-[0.2em]">Thank you for supporting pure, traditional roots.</p>
+         </div>
       </div>
     </div>
   );

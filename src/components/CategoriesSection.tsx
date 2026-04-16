@@ -1,5 +1,3 @@
-import { ArrowRight } from "lucide-react";
-
 interface Category {
   id: string;
   name: string;
@@ -10,11 +8,10 @@ interface CategoriesSectionProps {
   onCategoryClick: (categoryId: string) => void;
 }
 
-// Sample 3 categories
 const categories: Category[] = [
   {
     id: "coldoils",
-    name: "Cold Pressed Oils",
+    name: "Pure Oils",
     image: "https://res.cloudinary.com/dd4oiwnep/image/upload/v1765181679/ChatGPT_Image_Dec_8_2025_01_44_09_PM_nfxzit.png",
   },
   {
@@ -24,84 +21,63 @@ const categories: Category[] = [
   },
   {
     id: "millets",
-    name: "Organic Millets",
+    name: "Millets",
     image: "https://img1.exportersindia.com/product_images/bc-full/dir_115/3435522/organic-millets-1762979.jpg",
   },
   {
     id: "snacks",
-    name: "Healthy Snacks",
+    name: "Snacks",
     image: "https://res.cloudinary.com/dgky6sudx/image/upload/v1767329160/ChatGPT_Image_Jan_2_2026_10_14_53_AM_c5xwq9.png",
   },
+  {
+    id: "honey",
+    name: "Honey",
+    image: "https://ishavasyamproducts.com/cdn/shop/products/9.jpg?v=1634646181",
+  }
 ];
 
-export default function CategoriesSection({
-  onCategoryClick,
-}: CategoriesSectionProps) {
+export default function CategoriesSection({ onCategoryClick }: CategoriesSectionProps) {
   return (
-    <section id="categories" className="py-20 bg-[#FFFDF3] mt-5">
-      <div className="container mx-auto px-4">
-
+    <section className="py-20 bg-white">
+      <div className="container mx-auto px-6">
+        
         {/* Heading */}
-        <div className="text-center mb-14">
-
-          <h1 className="text-4xl md:text-6xl font-extrabold text-gray-900 mb-4 tracking-tight">
-            Explore Our<span className="text-[#9EA233]"> Premium Products</span>
-          </h1>
-          <p className="text-lg md:text-xl text-gray-700 max-w-2xl mx-auto mt-3">
-            Handpicked, natural, and organic products crafted for your healthy lifestyle.
-          </p>
+        <div className="text-center mb-16 animate-fadeIn">
+          <span className="text-xs font-bold text-[#9EA233] uppercase tracking-widest bg-[#9EA233]/10 px-4 py-2 rounded-full">Our Selection</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-6 mb-4">Explore Our Categories</h2>
+          <p className="text-gray-500 max-w-2xl mx-auto font-medium">From pure oils to healthy snacks, find everything you need for a better lifestyle.</p>
         </div>
 
-        {/* Categories Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 text-center">
-          {categories.map((category, index) => (
-            <div
-              key={category.id}
-              onClick={() => onCategoryClick(category.id)}
-              style={{ animationDelay: `${index * 100}ms` }}
-              className="group cursor-pointer animate-slideUp"
+        {/* Categories Grid - Circular Style */}
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
+          {categories.map((cat, idx) => (
+            <div 
+               key={cat.id} 
+               onClick={() => onCategoryClick(cat.id)}
+               className="group flex flex-col items-center cursor-pointer animate-slideUp"
+               style={{ animationDelay: `${idx * 100}ms` }}
             >
-              {/* Square Card */}
-              <div
-                className="
-                  w-full h-66 mx-auto bg-white relative rounded-2xl overflow-hidden
-                  shadow-lg transition-all duration-500
-                  group-hover:scale-105 group-hover:shadow-2xl
-                  border-4 border-[#9EA233]
-                "
-              >
-                <img
-                  src={category.image}
-                  alt={category.name}
-                  className="
-    w-full
-    h-48 sm:h-56 md:h-64
-    object-cover
-    rounded-2xl
-    transition-all
-    duration-500
-    group-hover:brightness-110
-  "
-                />
-
-
-                {/* Overlay on hover */}
-                <div className="absolute inset-0 bg-[#9EA233]/20 opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl"></div>
-              </div>
-
-              {/* Category Name */}
-              <h3 className="text-2xl font-semibold text-gray-900 mt-4 group-hover:text-[#9EA233] transition-colors">
-                {category.name}
-              </h3>
-
-              {/* Explore Button */}
-              <div className="flex items-center justify-center gap-2 mt-2 text-[#9EA233] font-semibold opacity-90 group-hover:opacity-100 transition-all">
-                <span>Explore</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
-              </div>
+               <div className="relative w-32 h-32 md:w-40 md:h-40 mb-6">
+                  {/* Outer Ring */}
+                  <div className="absolute inset-0 rounded-full border border-gray-100 group-hover:border-[#9EA233] transition-colors duration-500"></div>
+                  
+                  {/* Image Container */}
+                  <div className="absolute inset-2 rounded-full overflow-hidden border-2 border-white shadow-lg group-hover:scale-105 transition-transform duration-500">
+                     <img 
+                        src={cat.image} 
+                        alt={cat.name} 
+                        className="w-full h-full object-cover group-hover:brightness-110 transition-all"
+                     />
+                  </div>
+               </div>
+               
+               <h3 className="text-sm md:text-base font-bold text-gray-800 uppercase tracking-tighter group-hover:text-[#9EA233] transition-colors">
+                  {cat.name}
+               </h3>
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );
