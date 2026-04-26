@@ -8,7 +8,7 @@ interface AdminLoginPageProps {
 }
 
 const ADMIN_EMAIL = 'Prakruthioilsales@gmail.com';
-const RESEND_API_KEY = 're_aZKtKcur_L6UE5Gyz8nrXkGWgAFQaNjLs';
+const RESEND_API_KEY = import.meta.env.VITE_RESEND_API_KEY || 're_aZKtKcur_L6UE5Gyz8nrXkGWgAFQaNjLs';
 
 const AdminLoginPage: React.FC<AdminLoginPageProps> = ({ onBack, onLoginSuccess }) => {
   const { isAdmin, loading: authLoading, signInAdmin } = useAdminAuth();
