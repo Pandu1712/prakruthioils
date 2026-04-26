@@ -7,4 +7,13 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['lucide-react'],
   },
+  server: {
+    proxy: {
+      '/api/resend': {
+        target: 'https://api.resend.com/emails',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api\/resend/, ''),
+      }
+    }
+  }
 });

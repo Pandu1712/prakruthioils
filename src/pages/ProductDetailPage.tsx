@@ -14,7 +14,7 @@ import {
 import { Product, ProductSize } from "../types";
 import { useCart } from "../context/CartContext";
 import ProductCard from "../components/ProductCard";
-import { products } from "../data/products";
+import { useData } from "../context/DataContext";
 
 interface ProductDetailPageProps {
   product: Product;
@@ -30,6 +30,7 @@ export default function ProductDetailPage({
   const [isAdded, setIsAdded] = useState(false);
   const [activeTab, setActiveTab] = useState<'benefits' | 'specs' | 'usage'>('benefits');
   const { addToCart } = useCart();
+  const { products } = useData();
 
   const handleAddToCart = () => {
     addToCart({
@@ -49,76 +50,76 @@ export default function ProductDetailPage({
 
   return (
     <div className="min-h-screen bg-white pt-32 pb-24">
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto max-w-7xl px-6 md:px-12">
         
         {/* Navigation Breadcrumb */}
-        <div className="flex items-center justify-between mb-12">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
           <button
             onClick={onBack}
-            className="group flex items-center gap-3 text-gray-400 hover:text-[#9EA233] font-bold text-xs uppercase tracking-[0.3em] transition-all"
+            className="group flex items-center gap-3 text-gray-400 hover:text-[#9EA233] font-medium text-xs md:text-base tracking-[0.2em] transition-all"
           >
-            <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+            <ArrowLeft className="w-5 h-5 md:w-6 md:h-6 group-hover:-translate-x-1 transition-transform" />
             Back to Catalog
           </button>
-          <div className="hidden md:flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-gray-300">
-             <span>Shop</span>
+          <div className="flex items-center gap-2 text-[10px] md:text-xs font-medium uppercase tracking-widest text-gray-300">
+             <button onClick={onBack} className="hover:text-[#9EA233] transition-colors">Shop</button>
              <span className="w-1 h-1 bg-gray-200 rounded-full"></span>
-             <span>{product.category}</span>
+             <span className="text-[#9EA233]">{product.category}</span>
              <span className="w-1 h-1 bg-gray-200 rounded-full"></span>
              <span className="text-gray-900">{product.name}</span>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start mb-32">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start mb-16 md:mb-24">
           
-          {/* Left: Cinematic Image Section */}
+          {/* Left: Premium Image Section */}
           <div className="relative group">
-            <div className="relative aspect-square overflow-hidden rounded-[80px] bg-gray-50 border-[20px] border-gray-50 shadow-2xl transition-all duration-700 group-hover:shadow-[#9EA233]/10">
+            <div className="relative aspect-square overflow-hidden rounded-[30px] md:rounded-[60px] bg-zinc-50/80 flex items-center justify-center p-8 md:p-16 transition-all duration-700">
                <img
                   src={product.image}
                   alt={product.name}
-                  className="w-full h-full object-contain p-12 transition-transform duration-1000 group-hover:scale-110"
+                  className="w-full h-full max-w-[280px] md:max-w-[400px] object-contain mix-blend-multiply transition-transform duration-1000 group-hover:scale-105"
                 />
                 
                 {selectedSize.offerPrice && (
-                  <div className="absolute top-10 right-10 bg-red-600 text-white px-6 py-3 rounded-full font-black shadow-2xl animate-bounce-slow">
+                  <div className="absolute top-6 right-6 md:top-8 md:right-8 bg-red-600 text-white px-3 py-1.5 md:px-4 md:py-2 rounded-xl font-medium text-xs md:text-base uppercase tracking-widest shadow-xl">
                     {Math.round(((selectedSize.price - selectedSize.offerPrice) / selectedSize.price) * 100)}% OFF
                   </div>
                 )}
-
-                <div className="absolute bottom-10 left-10 flex flex-col gap-3">
-                   <div className="inline-flex items-center gap-3 px-6 py-3 bg-white rounded-full shadow-xl text-[10px] font-black uppercase tracking-widest text-[#9EA233]">
-                      <Leaf className="w-4 h-4" /> 100% Raw & Pure
-                   </div>
-                   <div className="inline-flex items-center gap-3 px-6 py-3 bg-[#9EA233] rounded-full shadow-xl text-[10px] font-black uppercase tracking-widest text-white">
-                      <ShieldCheck className="w-4 h-4" /> Trusted Quality
-                   </div>
-                </div>
             </div>
           </div>
 
           {/* Right: Premium Product Info */}
           <div className="md:col-span-1 space-y-8 animate-fadeIn">
-            {/* Breadcrumbs */}
-            <nav className="flex items-center gap-2 text-[14px] font-bold uppercase tracking-widest text-gray-400">
-              <button onClick={onBack} className="hover:text-[#9EA233] transition-colors">Shop</button>
-              <span>/</span>
-              <span className="text-[#9EA233]">{product.category}</span>
-            </nav>
+            {/* Product Category Tag */}
+            <div className="inline-block px-3 py-1 bg-[#9EA233]/5 text-[#9EA233] text-[10px] font-medium uppercase tracking-[0.2em] rounded-full">
+              {product.category}
+            </div>
 
             <div className="space-y-4">
-              <h1 className="text-[36px] font-bold text-gray-900 tracking-tight leading-none">
+              <h1 className="text-[36px] font-medium text-gray-900 tracking-tight leading-none">
                 {product.name}
               </h1>
-              <div className="flex items-center gap-4">
-                <div className="flex items-center gap-1 text-yellow-400">
+              
+              <div className="flex flex-wrap items-center gap-4">
+                <div className="flex items-center gap-1 text-[#9EA233]">
                   <Star className="w-4 h-4 fill-current" />
                   <Star className="w-4 h-4 fill-current" />
                   <Star className="w-4 h-4 fill-current" />
                   <Star className="w-4 h-4 fill-current" />
                   <Star className="w-4 h-4 fill-current" />
                 </div>
-                <span className="text-[14px] font-bold text-gray-400">50+ Reviews</span>
+                <span className="text-base font-medium text-gray-400">50+ Reviews</span>
+              </div>
+
+              {/* Trust Badges moved to Product Info area */}
+              <div className="flex flex-wrap gap-2 pt-2">
+                 <div className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-50 rounded-lg text-xs font-medium uppercase tracking-widest text-emerald-600">
+                    <Leaf className="w-4 h-4" /> 100% Raw & Pure
+                 </div>
+                 <div className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#9EA233]/10 rounded-lg text-xs font-medium uppercase tracking-widest text-[#9EA233]">
+                    <ShieldCheck className="w-4 h-4" /> Trusted Quality
+                 </div>
               </div>
             </div>
 
@@ -126,32 +127,32 @@ export default function ProductDetailPage({
             <div className="flex items-end gap-6 mb-12">
                <div className="flex flex-col">
                   {selectedSize.offerPrice && (
-                    <span className="text-lg text-gray-300 line-through font-bold decoration-2">₹{selectedSize.price}</span>
+                    <span className="text-[24px] text-gray-300 line-through font-medium decoration-2 leading-none mb-1">₹{selectedSize.price}</span>
                   )}
-                  <span className="text-5xl font-bold text-[#9EA233] tracking-tighter">
+                  <span className="text-[36px] font-medium text-[#9EA233] tracking-tight leading-none">
                     ₹{selectedSize.offerPrice ?? selectedSize.price}
                   </span>
                </div>
-               <span className="bg-gray-100 px-4 py-2 rounded-xl text-xs font-black text-gray-400 uppercase tracking-widest mb-2">
+               <span className="bg-gray-100 px-4 py-2 rounded-xl text-base font-medium text-gray-400 uppercase tracking-widest mb-1">
                  Per {selectedSize.size}
                </span>
             </div>
 
             {/* Size Selector */}
-            <div className="mb-12">
-               <h3 className="text-xs font-black uppercase tracking-[0.2em] text-gray-900 mb-6">Available Sizes</h3>
+            <div className="mb-10">
+               <h3 className="text-base font-medium uppercase tracking-widest text-zinc-400 mb-4">Available Sizes</h3>
                <div className="flex flex-wrap gap-3">
                   {product.sizes.map((size) => (
                     <button
                       key={size.size}
                       onClick={() => setSelectedSize(size)}
                       disabled={!size.inStock}
-                      className={`h-14 px-8 rounded-2xl text-sm font-bold transition-all duration-500 border-2
+                      className={`h-14 px-8 rounded-xl text-base font-medium transition-all duration-300 border-2 tracking-widest
                         ${selectedSize.size === size.size
-                          ? "bg-[#9EA233] border-[#9EA233] text-white shadow-2xl shadow-[#9EA233]/40"
+                          ? "bg-[#9EA233] border-[#9EA233] text-white shadow-lg shadow-[#9EA233]/20"
                           : size.inStock
-                          ? "bg-white border-gray-100 text-gray-600 hover:border-[#9EA233] hover:text-[#9EA233]"
-                          : "bg-gray-50 border-gray-50 text-gray-300 cursor-not-allowed line-through"}`}
+                          ? "bg-white border-zinc-200 text-zinc-600 hover:border-zinc-900 hover:text-zinc-900"
+                          : "bg-zinc-50 border-zinc-100 text-zinc-300 cursor-not-allowed line-through"}`}
                     >
                       {size.size}
                     </button>
@@ -160,28 +161,28 @@ export default function ProductDetailPage({
             </div>
 
             {/* Quantity and CTA */}
-            <div className="flex flex-col sm:flex-row gap-6 mt-auto pt-10 border-t border-gray-50">
-               <div className="flex items-center h-16 rounded-2xl bg-gray-50 border border-gray-100 px-4">
-                  <button onClick={() => setQuantity(q => Math.max(1, q - 1))} className="p-2 text-gray-400 hover:text-gray-900"><Minus className="w-4 h-4" /></button>
-                  <span className="w-12 text-center text-lg font-bold text-gray-900">{quantity}</span>
-                  <button onClick={() => setQuantity(q => q + 1)} className="p-2 text-gray-400 hover:text-gray-900"><Plus className="w-4 h-4" /></button>
+            <div className="flex gap-4 mt-auto pt-8 border-t border-zinc-100">
+               <div className="flex items-center h-14 rounded-xl bg-zinc-50 border border-zinc-200 px-3 flex-shrink-0">
+                  <button onClick={() => setQuantity(q => Math.max(1, q - 1))} className="p-2 text-zinc-400 hover:text-zinc-900 transition-colors"><Minus className="w-5 h-5" /></button>
+                  <span className="w-10 text-center text-base font-medium text-zinc-900">{quantity}</span>
+                  <button onClick={() => setQuantity(q => q + 1)} className="p-2 text-zinc-400 hover:text-zinc-900 transition-colors"><Plus className="w-5 h-5" /></button>
                </div>
                <button 
                 onClick={handleAddToCart}
-                className={`flex-1 flex items-center justify-center gap-4 h-16 rounded-2xl font-black text-xs uppercase tracking-[0.2em] transition-all duration-500 shadow-2xl
+                className={`flex-1 flex items-center justify-center gap-3 h-14 rounded-xl font-medium text-base uppercase tracking-widest transition-all duration-300 shadow-xl
                   ${isAdded 
-                    ? "bg-green-500 text-white" 
-                    : "bg-[#9EA233] text-white hover:bg-[#7D8128] hover:-translate-y-1"}`}
+                    ? "bg-zinc-900 text-white shadow-zinc-900/20" 
+                    : "bg-[#9EA233] text-white hover:bg-[#7D8128] hover:-translate-y-0.5 shadow-[#9EA233]/20"}`}
                >
                  <ShoppingCart className="w-5 h-5" />
-                 {isAdded ? "Successfully Added!" : "Add to Cart"}
+                 {isAdded ? "Added!" : "Add to Cart"}
                </button>
             </div>
           </div>
         </div>
 
         {/* Tabbed Info Section */}
-        <div className="mb-32">
+        <div className="mb-16 md:mb-24">
            <div className="flex border-b border-gray-100 mb-16 overflow-x-auto scrollbar-hide">
               {[
                 { id: 'benefits', label: 'Nutritional Benefits', icon: Zap },
@@ -191,12 +192,12 @@ export default function ProductDetailPage({
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id as any)}
-                  className={`flex items-center gap-3 px-10 py-6 text-xs font-black uppercase tracking-[0.2em] transition-all relative
-                    ${activeTab === tab.id ? "text-[#9EA233]" : "text-gray-400 hover:text-gray-900"}`}
+                  className={`flex items-center gap-3 px-10 py-6 text-base font-medium uppercase tracking-widest transition-all relative whitespace-nowrap
+                    ${activeTab === tab.id ? "text-zinc-900" : "text-gray-400 hover:text-gray-900"}`}
                 >
-                  <tab.icon className="w-4 h-4" />
+                  <tab.icon className="w-5 h-5" />
                   {tab.label}
-                  {activeTab === tab.id && <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#9EA233] rounded-t-full"></div>}
+                  {activeTab === tab.id && <div className="absolute bottom-0 left-0 right-0 h-1 bg-zinc-900 rounded-t-full"></div>}
                 </button>
               ))}
            </div>
@@ -207,7 +208,7 @@ export default function ProductDetailPage({
                    {product.benefits.map((b, i) => (
                      <div key={i} className="flex items-center gap-4 bg-gray-50 p-6 rounded-3xl border border-gray-100">
                         <CheckCircle2 className="w-6 h-6 text-[#9EA233]" />
-                        <span className="text-gray-700 font-bold">{b}</span>
+                        <span className="text-gray-700 font-medium">{b}</span>
                      </div>
                    ))}
                 </div>
@@ -216,7 +217,7 @@ export default function ProductDetailPage({
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                    {product.specifications.map((s, i) => (
                      <div key={i} className="flex items-center gap-4 border-l-4 border-[#9EA233] pl-6 py-2">
-                        <span className="text-gray-900 font-bold">{s}</span>
+                        <span className="text-gray-900 font-medium">{s}</span>
                      </div>
                    ))}
                 </div>
@@ -231,13 +232,13 @@ export default function ProductDetailPage({
            </div>
         </div>
 
-        {/* Related Products */}
+         {/* Related Products */}
         {relatedProducts.length > 0 && (
           <div>
             <div className="flex items-end justify-between mb-12">
                <div>
-                  <span className="text-xs font-bold text-[#9EA233] uppercase tracking-[0.3em] mb-4 block">More Choice</span>
-                  <h2 className="text-4xl font-bold text-gray-900 tracking-tight">You might also like</h2>
+                  <span className="text-base font-medium text-[#9EA233] uppercase tracking-widest mb-4 block">More Choice</span>
+                  <h2 className="text-[36px] font-medium text-gray-900 tracking-tight leading-none">You might also like</h2>
                </div>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">

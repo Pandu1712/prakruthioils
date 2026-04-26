@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Menu, X, ShoppingCart, Search, ArrowRight } from "lucide-react";
 import { useCart } from "../context/CartContext";
-import { products } from "../data/products";
+import { useData } from "../context/DataContext";
 import { Product } from "../types";
 
 const navItems = [
@@ -26,6 +26,7 @@ export default function Navbar({ onNavigate, currentPage, onSearch, onViewProduc
   const [searchTerm, setSearchTerm] = useState("");
   const [liveResults, setLiveResults] = useState<Product[]>([]);
   const [showDropdown, setShowDropdown] = useState(false);
+  const { products } = useData();
   const { getTotalItems } = useCart();
   const totalItemsCount = getTotalItems();
   const searchRef = useRef<HTMLDivElement>(null);
@@ -79,31 +80,32 @@ export default function Navbar({ onNavigate, currentPage, onSearch, onViewProduc
   };
 
   return (
+    <>
     <div className="fixed top-0 left-0 right-0 z-50">
       <nav
         className={`transition-all duration-700 ${
           isScrolled 
-            ? "bg-white/95 backdrop-blur-md py-4 shadow-lg border-b border-gray-100" 
+            ? "bg-white/95 backdrop-blur-md py-4 shadow-sm border-b border-zinc-100" 
             : "bg-white py-6"
         }`}
       >
-        <div className="w-full px-8 md:px-16">
-          <div className="flex items-center justify-between gap-10">
+        <div className="container mx-auto max-w-7xl px-4 md:px-12">
+          <div className="flex items-center justify-between gap-6 md:gap-10">
             {/* Logo Section */}
             <div
               onClick={() => onNavigate("home")}
-              className="flex items-center gap-4 cursor-pointer group flex-shrink-0"
+              className="flex items-center gap-3 md:gap-4 cursor-pointer group flex-shrink-0 max-w-[50%] md:max-w-none"
             >
-              <div className="relative overflow-hidden rounded-full shadow-2xl border-2 border-[#9EA233]/20 group-hover:border-[#9EA233] transition-all duration-500">
+              <div className="relative overflow-hidden rounded-full shadow-lg border border-[#9EA233]/20 group-hover:border-[#9EA233] transition-all duration-500 flex-shrink-0">
                 <img
                   src="/coldLogo.jpg"
                   alt="Logo"
-                  className="w-12 h-12 md:w-16 md:h-16 object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="w-10 h-10 md:w-14 md:h-14 object-cover transition-transform duration-700 group-hover:scale-110"
                 />
               </div>
-              <div className="flex flex-col">
-                <span className="text-xl md:text-2xl font-bold text-[#9EA233] tracking-tight leading-none">Prakruthi</span>
-                <span className="text-[10px] uppercase font-bold tracking-widest text-gray-400 mt-1">Cold Oils</span>
+              <div className="flex flex-col min-w-0">
+                <span className="text-base md:text-2xl font-medium text-zinc-900 tracking-tight leading-none truncate">Prakruthi</span>
+                <span className="text-xs font-medium tracking-[0.2em] md:tracking-widest text-[#9EA233] mt-1 truncate">Cold Pressed Oils</span>
               </div>
             </div>
 
@@ -113,7 +115,7 @@ export default function Navbar({ onNavigate, currentPage, onSearch, onViewProduc
                 <button
                   key={item.id}
                   onClick={() => onNavigate(item.id)}
-                  className={`text-sm font-bold uppercase tracking-wide transition-all duration-300 relative group
+                  className={`text-base font-medium tracking-wide transition-all duration-300 relative group
                     ${currentPage === item.id ? "text-[#9EA233]" : "text-gray-900 hover:text-[#9EA233]"}`}
                 >
                   {item.name}
@@ -134,7 +136,7 @@ export default function Navbar({ onNavigate, currentPage, onSearch, onViewProduc
                          onChange={(e) => setSearchTerm(e.target.value)}
                          onFocus={() => searchTerm.trim().length >= 2 && setShowDropdown(true)}
                          placeholder="Search pure oils, ghee, millets..." 
-                         className="w-full h-11 pl-12 pr-4 rounded-full bg-gray-50 border border-gray-100 text-sm font-medium focus:ring-2 focus:ring-[#9EA233]/10 focus:border-[#9EA233] focus:bg-white transition-all outline-none"
+                         className="w-full h-12 pl-12 pr-4 rounded-full bg-gray-50 border border-gray-100 text-base font-medium focus:ring-2 focus:ring-[#9EA233]/10 focus:border-[#9EA233] focus:bg-white transition-all outline-none"
                        />
                     </div>
                  </form>
@@ -155,22 +157,22 @@ export default function Navbar({ onNavigate, currentPage, onSearch, onViewProduc
                                   <img src={product.image} alt={product.name} className="w-full h-full object-contain" />
                                 </div>
                                 <div className="flex-1 min-w-0">
-                                  <p className="text-sm font-bold text-gray-900 truncate">{product.name}</p>
-                                  <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">{product.category}</p>
+                                  <p className="text-base font-medium text-gray-900 truncate">{product.name}</p>
+                                  <p className="text-xs text-gray-400 font-medium tracking-widest">{product.category}</p>
                                 </div>
                                 <ArrowRight className="w-4 h-4 text-[#9EA233] opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all" />
                               </button>
                             ))}
                             <button 
                               onClick={handleSearchSubmit}
-                              className="w-full p-4 text-center border-t border-gray-50 text-[#9EA233] text-[10px] font-black uppercase tracking-[0.2em] hover:bg-gray-50 transition-all mt-1"
+                              className="w-full p-4 text-center border-t border-gray-50 text-[#9EA233] text-xs font-medium uppercase tracking-[0.2em] hover:bg-gray-50 transition-all mt-1"
                             >
                                View all results — "{searchTerm}"
                             </button>
                           </>
                         ) : (
                           <div className="p-8 text-center">
-                             <p className="text-sm text-gray-500 font-medium">No products found for "{searchTerm}"</p>
+                             <p className="text-base text-gray-500 font-medium">No products found for "{searchTerm}"</p>
                           </div>
                         )}
                       </div>
@@ -185,7 +187,7 @@ export default function Navbar({ onNavigate, currentPage, onSearch, onViewProduc
                 >
                   <ShoppingCart className="w-5 h-5" />
                   {totalItemsCount > 0 && (
-                    <span className="absolute -top-1 -right-1 bg-white text-[#9EA233] text-[10px] font-bold rounded-full w-5 h-5 flex items-center justify-center shadow-md">
+                    <span className="absolute -top-1 -right-1 bg-white text-[#9EA233] text-[10px] font-medium rounded-full w-5 h-5 flex items-center justify-center shadow-md">
                       {totalItemsCount}
                     </span>
                   )}
@@ -202,22 +204,54 @@ export default function Navbar({ onNavigate, currentPage, onSearch, onViewProduc
           </div>
         </div>
 
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="xl:hidden absolute top-full left-0 right-0 bg-white shadow-2xl border-t border-gray-100 animate-slideDown">
-            <div className="px-8 py-8 space-y-2">
-              <div className="mb-6 md:hidden">
+      </nav>
+    </div>
+
+    {/* Premium Mobile Menu (Side Drawer) */}
+    {isMobileMenuOpen && (
+      <div className="fixed inset-0 z-[100] xl:hidden">
+        {/* Backdrop */}
+        <div 
+            className="absolute inset-0 bg-zinc-900/60 backdrop-blur-sm transition-opacity" 
+            onClick={() => setIsMobileMenuOpen(false)} 
+        />
+        
+        {/* Drawer */}
+        <div className="absolute top-0 right-0 h-full w-[85%] max-w-sm bg-white shadow-2xl flex flex-col transform transition-transform duration-300 translate-x-0 z-50">
+            
+            {/* Drawer Header */}
+            <div className="px-6 py-6 border-b border-zinc-100 flex items-center justify-between bg-white flex-shrink-0">
+              <div className="flex items-center gap-3">
+                  <img src="/coldLogo.jpg" alt="Logo" className="w-12 h-12 rounded-full border border-[#9EA233]/20" />
+                  <div className="flex flex-col">
+                    <span className="text-2xl font-medium text-zinc-900 tracking-tight leading-none">Prakruthi</span>
+                    <span className="text-xs font-medium tracking-widest text-[#9EA233] mt-1">Cold Oils</span>
+                  </div>
+              </div>
+              <button 
+                onClick={() => setIsMobileMenuOpen(false)} 
+                className="p-2 bg-zinc-50 rounded-full text-zinc-400 hover:text-zinc-900 hover:bg-zinc-100 transition-colors"
+              >
+                  <X className="w-5 h-5" />
+              </button>
+            </div>
+            
+            {/* Drawer Body (Scrollable) */}
+            <div className="px-6 py-8 space-y-2 flex-1 overflow-y-auto bg-white" style={{ overscrollBehavior: 'contain' }}>
+              <div className="mb-8">
                 <form onSubmit={handleSearchSubmit} className="relative">
                   <input 
                     type="text" 
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     placeholder="Search products..."
-                    className="w-full h-12 bg-gray-50 border-none rounded-full py-4 pl-12 pr-4 text-sm font-bold placeholder:text-gray-300 outline-none focus:ring-2 focus:ring-[#9EA233]/20"
+                    className="w-full h-14 bg-zinc-50 border border-zinc-200 rounded-xl py-4 pl-12 pr-4 text-base font-medium text-zinc-800 placeholder:text-zinc-400 outline-none focus:border-[#9EA233] focus:ring-1 focus:ring-[#9EA233] transition-all"
                   />
-                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-300" />
+                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-zinc-400" />
                 </form>
               </div>
+
+              <span className="text-xs font-medium tracking-widest text-zinc-400 block mb-4 ml-2">Navigation</span>
               {navItems.map((item) => (
                 <button
                   key={item.id}
@@ -225,16 +259,29 @@ export default function Navbar({ onNavigate, currentPage, onSearch, onViewProduc
                     onNavigate(item.id);
                     setIsMobileMenuOpen(false);
                   }}
-                  className={`block w-full text-left px-6 py-4 rounded-2xl text-sm font-bold uppercase tracking-wide transition-all
-                    ${currentPage === item.id ? "bg-[#9EA233] text-white" : "text-gray-900 hover:bg-gray-50 hover:text-[#9EA233]"}`}
+                  className={`block w-full text-left px-4 py-4 rounded-xl text-base font-medium tracking-wide transition-all
+                    ${currentPage === item.id 
+                      ? "bg-[#9EA233] text-white shadow-md shadow-[#9EA233]/20" 
+                      : "text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900"}`}
                 >
                   {item.name}
                 </button>
               ))}
             </div>
-          </div>
-        )}
-      </nav>
-    </div>
+            
+            {/* Drawer Footer */}
+            <div className="px-6 py-8 border-t border-zinc-100 bg-zinc-50 flex-shrink-0">
+              <span className="text-xs font-medium tracking-widest text-zinc-400 block mb-4">Need Help?</span>
+              <a href="tel:8073516982" className="flex items-center gap-3 text-base font-medium text-zinc-800 hover:text-[#9EA233] transition-colors">
+                  <div className="w-8 h-8 rounded-full bg-zinc-200/50 flex items-center justify-center">
+                    <span className="text-lg">📞</span>
+                  </div>
+                  +91 80735 16982
+              </a>
+            </div>
+        </div>
+      </div>
+    )}
+    </>
   );
 }

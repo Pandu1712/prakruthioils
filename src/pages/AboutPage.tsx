@@ -45,7 +45,7 @@ export default function AboutPage() {
     <div className="min-h-screen bg-[#FFFEF9]">
       
       {/* ===== CINEMATIC HERO SECTION ===== */}
-      <section className="relative pt-40 pb-32 overflow-hidden bg-white">
+      <section className="relative pt-32 md:pt-40 pb-16 md:pb-24 overflow-hidden bg-white">
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
              style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
         
@@ -56,13 +56,13 @@ export default function AboutPage() {
             <span className="text-[#9EA233]">Traditional Roots.</span>
           </h1>
           <p className="text-[16px] text-gray-500 font-medium max-w-2xl mx-auto leading-relaxed animate-fadeIn" style={{ animationDelay: '0.2s' }}>
-            At Prakruthi, we believe in the intelligence of nature. Our oils are extracted using ancient wooden Ghani methods to preserve every drop of vital nutrition.
+            At Prakruthi cold pressed oils, we believe in the intelligence of nature. Our oils are extracted using ancient wooden Ghani methods to preserve every drop of vital nutrition.
           </p>
         </div>
       </section>
 
       {/* ===== STATS SECTION ===== */}
-      <section className="container mx-auto px-6 -mt-16 relative z-10 mb-32">
+      <section className="container mx-auto max-w-7xl px-6 md:px-12 -mt-16 md:-mt-20 relative z-10 mb-20 md:mb-24">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
            {[
              { label: "Happy Customers", value: "10,000+" },
@@ -78,8 +78,8 @@ export default function AboutPage() {
       </section>
 
       {/* ===== OUR STORY SECTION (PREMIUM) ===== */}
-      <section className="py-24 bg-white overflow-hidden">
-        <div className="container mx-auto px-6">
+      <section className="py-16 md:py-20 bg-white overflow-hidden">
+        <div className="container mx-auto max-w-7xl px-6 md:px-12">
           <div className="flex flex-col md:flex-row items-center gap-20">
             {/* Left: Content */}
             <div className="flex-1 space-y-10 animate-fadeInUp">
@@ -93,7 +93,7 @@ export default function AboutPage() {
               
               <div className="space-y-6 text-gray-500 font-medium leading-relaxed text-lg">
                 <p>
-                  Prakruthi Cold Pressed Oils was born from a simple realization: the soul of great cooking lies in the purity of its foundation. Modern refinement strips away the very nutrients our bodies crave.
+                  Prakruthi cold pressed oils was born from a simple realization: the soul of great cooking lies in the purity of its foundation. Modern refinement strips away the very nutrients our bodies crave.
                 </p>
                 <p>
                   By reviving the traditional wood-press method, we ensure that every bottle preserves the natural antioxidants, intense aroma, and therapeutic properties that nature intended.
@@ -128,8 +128,8 @@ export default function AboutPage() {
       </section>
 
       {/* ===== CORE VALUES (GRID DESIGN) ===== */}
-      <section className="py-24 bg-[#FFFEF9]">
-        <div className="container mx-auto px-6">
+      <section className="py-16 md:py-20 bg-[#FFFEF9]">
+        <div className="container mx-auto max-w-7xl px-6 md:px-12">
            <div className="text-center mb-16">
               <span className="text-xs font-bold text-[#9EA233] uppercase tracking-[0.3em] mb-4 block">Our DNA</span>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 tracking-tight">Built on Core Values</h2>
@@ -150,8 +150,8 @@ export default function AboutPage() {
       </section>
 
       {/* ===== MISSION & EXTRA POINTS (CLEAN VERSION) ===== */}
-      <section className="py-24 bg-white">
-         <div className="container mx-auto px-6">
+      <section className="py-16 md:py-20 bg-white">
+         <div className="container mx-auto max-w-7xl px-6 md:px-12">
             <div className="text-center mb-20">
                <span className="text-xs font-bold text-[#9EA233] uppercase tracking-[0.3em] mb-4 block">Our Commitment</span>
                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 tracking-tight">Our Mission & Vision</h2>

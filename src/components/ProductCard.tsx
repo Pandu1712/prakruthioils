@@ -9,12 +9,24 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ product, onViewDetails }: ProductCardProps) {
-  const defaultSize =
-    product.sizes.find(
-      (s) => s.size.toLowerCase() === "1l" || s.size.toLowerCase() === "1ltr"
-    ) || product.sizes[0];
+  // Sort sizes by weight/price to find the highest variant
+  const sortedSizes = [...product.sizes].sort((a, b) => {
+    const getWeight = (s: string) => {
+      const lower = s.toLowerCase();
+      const match = lower.match(/(\d+(\.\d+)?)/);
+      const val = match ? parseFloat(match[1]) : 0;
+      
+      // Liters and Kilograms should be multiplied by 1000, 
+      // but Milliliters (ML) should stay as is.
+      if (lower.includes('kg') || (lower.includes('l') && !lower.includes('ml'))) {
+        return val * 1000;
+      }
+      return val;
+    };
+    return getWeight(b.size) - getWeight(a.size);
+  });
 
-  const [selectedSize, setSelectedSize] = useState<ProductSize>(defaultSize);
+  const [selectedSize, setSelectedSize] = useState<ProductSize>(sortedSizes[0]);
   const [isAdded, setIsAdded] = useState(false);
   const { addToCart, cart } = useCart();
 
@@ -43,71 +55,73 @@ export default function ProductCard({ product, onViewDetails }: ProductCardProps
 
   return (
     <div 
-      className="group relative bg-[#9EA233]/[0.03] rounded-[40px] p-6 border border-gray-100 hover:border-[#9EA233]/20 hover:bg-white transition-all duration-700 animate-fadeIn flex flex-col h-full"
+      className="group relative bg-white rounded-[24px] p-4 border border-zinc-100 hover:shadow-[0_10px_30px_rgba(0,0,0,0.05)] transition-all duration-500 animate-fadeIn flex flex-col h-full"
     >
-      {/* Image Container with Yellow-Green Accent bg */}
+      {/* Image Container */}
       <div 
         onClick={() => onViewDetails(product)}
-        className="relative aspect-square mb-8 rounded-[30px] bg-[#9EA233]/[0.05] overflow-hidden p-6 cursor-pointer group-hover:scale-105 transition-transform duration-700"
+        className="relative aspect-square mb-4 rounded-xl bg-white overflow-hidden cursor-pointer"
       >
         <img 
           src={product.image} 
           alt={product.name}
-          className="w-full h-full object-contain mix-blend-multiply"
+          className="w-full h-full object-contain"
         />
         {/* Offer Badge */}
         {selectedSize.offerPrice && (
-          <div className="absolute top-3 left-3 bg-red-500 text-white text-[10px] font-bold px-2 py-1 rounded-md">
-            {Math.round(((selectedSize.price - selectedSize.offerPrice) / selectedSize.price) * 100)}% OFF
+          <div className="absolute top-0 left-0 bg-[#0A3221] text-white text-[10px] font-bold px-2 py-1 rounded-br-lg">
+            {Math.round(((selectedSize.price - selectedSize.offerPrice) / selectedSize.price) * 100)}%
           </div>
         )}
       </div>
 
       {/* Product Details */}
-      <div className="p-4 flex flex-col flex-1 gap-3">
-        <div>
-          <h3 className="text-sm font-bold text-gray-800 line-clamp-1 group-hover:underline cursor-pointer" onClick={() => onViewDetails(product)}>
+      <div className="flex flex-col flex-1">
+        <div className="mb-2">
+          <p className="text-[11px] text-zinc-400 font-medium mb-1">{product.category}</p>
+          <h3 className="text-[15px] font-bold text-zinc-900 line-clamp-1 cursor-pointer" onClick={() => onViewDetails(product)}>
             {product.name}
           </h3>
-          <p className="text-[10px] text-gray-400 font-medium uppercase mt-1">{product.category}</p>
         </div>
 
-        {/* Size Selection Pills */}
-        <div className="flex flex-wrap gap-1.5">
-          {product.sizes.map((size) => (
-            <button
-              key={size.size}
-              onClick={(e) => { e.stopPropagation(); setSelectedSize(size); }}
-              className={`text-[10px] font-bold px-2.5 py-1 rounded-full border transition-all ${
-                selectedSize.size === size.size
-                  ? "bg-[#9EA233] text-white border-[#9EA233]"
-                  : "bg-gray-50 text-gray-500 border-gray-200 hover:border-[#9EA233]"
-              }`}
-            >
-              {size.size}
-            </button>
-          ))}
+        {/* Variants Dropdown */}
+        <div className="mb-4">
+          <select 
+            value={selectedSize.size}
+            onChange={(e) => {
+              const size = product.sizes.find(s => s.size === e.target.value);
+              if (size) setSelectedSize(size);
+            }}
+            className="w-full bg-zinc-50 border border-zinc-100 rounded-lg px-3 py-2 text-xs font-bold text-zinc-600 outline-none focus:border-[#9EA233] transition-all cursor-pointer appearance-none"
+            style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 0.5rem center', backgroundSize: '1rem' }}
+          >
+            {product.sizes.map((size) => (
+              <option key={size.size} value={size.size}>
+                {size.size} - ₹{size.offerPrice ?? size.price}
+              </option>
+            ))}
+          </select>
         </div>
 
         {/* Bottom Section: Price + Add Button */}
-        <div className="mt-auto pt-3 flex items-center justify-between border-t border-dotted border-gray-100">
-          <div className="flex flex-col">
-            <span className="text-lg font-black text-[#9EA233]">
-              ₹{selectedSize.offerPrice ?? selectedSize.price}
+        <div className="mt-auto flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <span className="text-[16px] font-bold text-zinc-900">
+              ₹{selectedSize.offerPrice ?? selectedSize.price}.00
             </span>
             {selectedSize.offerPrice && (
-              <span className="text-[10px] text-gray-400 line-through font-medium leading-none">
-                ₹{selectedSize.price}
+              <span className="text-[12px] text-zinc-300 line-through">
+                ₹{selectedSize.price}.00
               </span>
             )}
           </div>
 
           <button
             onClick={handleAddToCart}
-            className={`w-8 h-8 rounded-lg flex items-center justify-center transition-all ${
+            className={`w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-300 ${
               isAdded 
-                ? "bg-green-500 text-white" 
-                : "bg-[#9EA233]/10 text-[#9EA233] hover:bg-[#9EA233] hover:text-white"
+                ? "bg-zinc-900 text-white" 
+                : "bg-[#F7F3E9] text-[#9EA233] hover:bg-[#9EA233] hover:text-white"
             }`}
           >
             {isAdded ? <Check className="w-4 h-4" /> : <ShoppingCart className="w-4 h-4" />}

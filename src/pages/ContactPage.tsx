@@ -25,22 +25,22 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FFFEF9] pt-40 pb-24">
-      <div className="container mx-auto px-6">
+    <div className="min-h-screen bg-[#FFFEF9] pt-32 md:pt-40 pb-24">
+      <div className="container mx-auto max-w-7xl px-6 md:px-12">
         
         {/* Cinematic Header */}
-        <div className="text-center mb-24">
-          <span className="text-[14px] font-bold text-[#9EA233] uppercase tracking-[0.4em] mb-6 block animate-fadeIn">Get in Touch</span>
-          <h1 className="text-[36px] md:text-[48px] font-bold text-gray-900 tracking-tight leading-tight mb-8 animate-slideUp">
+        <div className="text-center mb-16 md:mb-20">
+          <span className="text-[12px] md:text-[14px] font-bold text-[#9EA233] uppercase tracking-[0.4em] mb-4 md:mb-6 block animate-fadeIn">Get in Touch</span>
+          <h1 className="text-[32px] md:text-[48px] font-bold text-gray-900 tracking-tight leading-tight mb-6 md:mb-8 animate-slideUp">
             Let's Start a <br />
             <span className="text-[#9EA233]">Healthy Conversation.</span>
           </h1>
-          <p className="text-[16px] text-gray-500 font-medium max-w-2xl mx-auto leading-relaxed animate-fadeIn" style={{ animationDelay: '0.2s' }}>
+          <p className="text-[14px] md:text-[16px] text-gray-500 font-medium max-w-2xl mx-auto leading-relaxed animate-fadeIn" style={{ animationDelay: '0.2s' }}>
             Whether you have a question about our traditional wood-pressing methods or need assistance with an order, our team is here for you.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-20 items-start max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-12 md:gap-20 items-start max-w-6xl mx-auto">
           
           {/* Left Side: Information */}
           <div className="space-y-12 animate-fadeInLeft">

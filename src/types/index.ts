@@ -38,6 +38,18 @@ export interface Category {
   description: string;
 }
 
+export interface Order {
+  id: string;
+  customerName: string;
+  phone: string;
+  address: string;
+  location?: string;
+  items: CartItem[];
+  totalAmount: number;
+  status: 'pending' | 'confirmed' | 'dispatched' | 'delivered' | 'cancelled';
+  createdAt: any; // Firestore Timestamp
+}
+
 export interface OrderDetails {
   name: string;
   address: string;
@@ -45,4 +57,10 @@ export interface OrderDetails {
   phone: string;
   items: CartItem[];
   totalPrice: number;
+}
+export interface GalleryImage {
+  id: string;
+  url: string;
+  caption: string;
+  createdAt: any;
 }

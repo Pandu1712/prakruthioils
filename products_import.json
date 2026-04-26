@@ -1,0 +1,2144 @@
+[
+  {
+    "id": "ground-nut-oil",
+    "name": "Ground nut oil",
+    "category": "coldoils",
+    "description": "Pure and natural Ground nut oil, extracted using traditional wood-pressing methods to retain all nutrients and aroma.",
+    "image": "/cold_pressed_oils_1777167064203.png",
+    "sizes": [
+      {
+        "size": "1L",
+        "price": 435,
+        "offerPrice": 355,
+        "inStock": true
+      },
+      {
+        "size": "0.5L",
+        "price": 232,
+        "offerPrice": 188,
+        "inStock": true
+      },
+      {
+        "size": "2L",
+        "price": 871,
+        "offerPrice": 700,
+        "inStock": true
+      },
+      {
+        "size": "5L",
+        "price": 2010,
+        "offerPrice": 1666,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "Rich in Vitamin E and antioxidants",
+      "Heart-healthy unsaturated fats",
+      "Traditional cold-pressed extraction",
+      "Chemical-free and unrefined"
+    ],
+    "specifications": [
+      "Extraction: Wood Pressed (Marachekku)",
+      "Purity: 100% Pure & Natural",
+      "Shelf Life: 6 Months"
+    ],
+    "howToUse": "Perfect for daily cooking, deep frying, and traditional Indian recipes. Can also be used for body massage."
+  },
+  {
+    "id": "sesame-oil",
+    "name": "Sesame oil",
+    "category": "coldoils",
+    "description": "Pure and natural Sesame oil, extracted using traditional wood-pressing methods to retain all nutrients and aroma.",
+    "image": "/cold_pressed_oils_1777167064203.png",
+    "sizes": [
+      {
+        "size": "1L",
+        "price": 517,
+        "offerPrice": 444,
+        "inStock": true
+      },
+      {
+        "size": "0.5L",
+        "price": 282,
+        "offerPrice": 233,
+        "inStock": true
+      },
+      {
+        "size": "0.2L",
+        "price": 127,
+        "offerPrice": 111,
+        "inStock": true
+      },
+      {
+        "size": "5L",
+        "price": 2483,
+        "offerPrice": 2111,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "Rich in Vitamin E and antioxidants",
+      "Heart-healthy unsaturated fats",
+      "Traditional cold-pressed extraction",
+      "Chemical-free and unrefined"
+    ],
+    "specifications": [
+      "Extraction: Wood Pressed (Marachekku)",
+      "Purity: 100% Pure & Natural",
+      "Shelf Life: 6 Months"
+    ],
+    "howToUse": "Perfect for daily cooking, deep frying, and traditional Indian recipes. Can also be used for body massage."
+  },
+  {
+    "id": "coconut-oil",
+    "name": "Coconut oil",
+    "category": "coldoils",
+    "description": "Pure and natural Coconut oil, extracted using traditional wood-pressing methods to retain all nutrients and aroma.",
+    "image": "/cold_pressed_oils_1777167064203.png",
+    "sizes": [
+      {
+        "size": "1L",
+        "price": 725,
+        "offerPrice": 611,
+        "inStock": true
+      },
+      {
+        "size": "0.5L",
+        "price": 373,
+        "offerPrice": 322,
+        "inStock": true
+      },
+      {
+        "size": "0.2L",
+        "price": 193,
+        "offerPrice": 166,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "Rich in Vitamin E and antioxidants",
+      "Heart-healthy unsaturated fats",
+      "Traditional cold-pressed extraction",
+      "Chemical-free and unrefined"
+    ],
+    "specifications": [
+      "Extraction: Wood Pressed (Marachekku)",
+      "Purity: 100% Pure & Natural",
+      "Shelf Life: 6 Months"
+    ],
+    "howToUse": "Perfect for daily cooking, deep frying, and traditional Indian recipes. Can also be used for body massage."
+  },
+  {
+    "id": "castor-oil",
+    "name": "Castor Oil",
+    "category": "coldoils",
+    "description": "Pure and natural Castor Oil, extracted using traditional wood-pressing methods to retain all nutrients and aroma.",
+    "image": "/cold_pressed_oils_1777167064203.png",
+    "sizes": [
+      {
+        "size": "1L",
+        "price": 369,
+        "offerPrice": 311,
+        "inStock": true
+      },
+      {
+        "size": "0.5L",
+        "price": 207,
+        "offerPrice": 166,
+        "inStock": true
+      },
+      {
+        "size": "0.2L",
+        "price": 97,
+        "offerPrice": 88,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "Rich in Vitamin E and antioxidants",
+      "Heart-healthy unsaturated fats",
+      "Traditional cold-pressed extraction",
+      "Chemical-free and unrefined"
+    ],
+    "specifications": [
+      "Extraction: Wood Pressed (Marachekku)",
+      "Purity: 100% Pure & Natural",
+      "Shelf Life: 6 Months"
+    ],
+    "howToUse": "Perfect for daily cooking, deep frying, and traditional Indian recipes. Can also be used for body massage."
+  },
+  {
+    "id": "sunflower-oil",
+    "name": "Sunflower Oil",
+    "category": "coldoils",
+    "description": "Pure and natural Sunflower Oil, extracted using traditional wood-pressing methods to retain all nutrients and aroma.",
+    "image": "/cold_pressed_oils_1777167064203.png",
+    "sizes": [
+      {
+        "size": "1L",
+        "price": 524,
+        "offerPrice": 444,
+        "inStock": true
+      },
+      {
+        "size": "0.5L",
+        "price": 259,
+        "offerPrice": 233,
+        "inStock": true
+      },
+      {
+        "size": "5L",
+        "price": 2668,
+        "offerPrice": 2111,
+        "inStock": true
+      },
+      {
+        "size": "0.2",
+        "price": 132,
+        "offerPrice": 111,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "Rich in Vitamin E and antioxidants",
+      "Heart-healthy unsaturated fats",
+      "Traditional cold-pressed extraction",
+      "Chemical-free and unrefined"
+    ],
+    "specifications": [
+      "Extraction: Wood Pressed (Marachekku)",
+      "Purity: 100% Pure & Natural",
+      "Shelf Life: 6 Months"
+    ],
+    "howToUse": "Perfect for daily cooking, deep frying, and traditional Indian recipes. Can also be used for body massage."
+  },
+  {
+    "id": "mustard-oil",
+    "name": "Mustard oil",
+    "category": "coldoils",
+    "description": "Pure and natural Mustard oil, extracted using traditional wood-pressing methods to retain all nutrients and aroma.",
+    "image": "/cold_pressed_oils_1777167064203.png",
+    "sizes": [
+      {
+        "size": "1L",
+        "price": 576,
+        "offerPrice": 444,
+        "inStock": true
+      },
+      {
+        "size": "0.5L",
+        "price": 289,
+        "offerPrice": 233,
+        "inStock": true
+      },
+      {
+        "size": "0.2L",
+        "price": 124,
+        "offerPrice": 111,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "Rich in Vitamin E and antioxidants",
+      "Heart-healthy unsaturated fats",
+      "Traditional cold-pressed extraction",
+      "Chemical-free and unrefined"
+    ],
+    "specifications": [
+      "Extraction: Wood Pressed (Marachekku)",
+      "Purity: 100% Pure & Natural",
+      "Shelf Life: 6 Months"
+    ],
+    "howToUse": "Perfect for daily cooking, deep frying, and traditional Indian recipes. Can also be used for body massage."
+  },
+  {
+    "id": "pooja-oil",
+    "name": "Pooja Oil",
+    "category": "coldoils",
+    "description": "Pure and natural Pooja Oil, extracted using traditional wood-pressing methods to retain all nutrients and aroma.",
+    "image": "/cold_pressed_oils_1777167064203.png",
+    "sizes": [
+      {
+        "size": "1L",
+        "price": 193,
+        "offerPrice": 175,
+        "inStock": true
+      },
+      {
+        "size": "0.5L",
+        "price": 114,
+        "offerPrice": 90,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "Rich in Vitamin E and antioxidants",
+      "Heart-healthy unsaturated fats",
+      "Traditional cold-pressed extraction",
+      "Chemical-free and unrefined"
+    ],
+    "specifications": [
+      "Extraction: Wood Pressed (Marachekku)",
+      "Purity: 100% Pure & Natural",
+      "Shelf Life: 6 Months"
+    ],
+    "howToUse": "Perfect for daily cooking, deep frying, and traditional Indian recipes. Can also be used for body massage."
+  },
+  {
+    "id": "toor-dal",
+    "name": "Toor Dal",
+    "category": "pulses",
+    "description": "High-quality Toor Dal, sourced from organic farms. Packed with protein and fiber for a healthy diet.",
+    "image": "/pulses_and_dal_1777167085195.png",
+    "sizes": [
+      {
+        "size": "1KG",
+        "price": 207,
+        "offerPrice": 184,
+        "inStock": true
+      },
+      {
+        "size": "0.5KG",
+        "price": 105,
+        "offerPrice": 94,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "High protein content",
+      "Sourced from organic farms",
+      "No artificial polishing",
+      "Rich in dietary fiber"
+    ],
+    "specifications": [
+      "Type: Organic Pulses",
+      "Cleaning: Machine Cleaned & Sorted",
+      "Storage: Store in a cool, dry place"
+    ],
+    "howToUse": "Soak for 30 minutes before cooking. Use in dal, sambar, or as a protein-rich base for various dishes."
+  },
+  {
+    "id": "gram-chana-dal",
+    "name": "Gram/Chana Dal",
+    "category": "pulses",
+    "description": "High-quality Gram/Chana Dal, sourced from organic farms. Packed with protein and fiber for a healthy diet.",
+    "image": "/pulses_and_dal_1777167085195.png",
+    "sizes": [
+      {
+        "size": "1KG",
+        "price": 172,
+        "offerPrice": 136,
+        "inStock": true
+      },
+      {
+        "size": "0.5KG",
+        "price": 82,
+        "offerPrice": 73,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "High protein content",
+      "Sourced from organic farms",
+      "No artificial polishing",
+      "Rich in dietary fiber"
+    ],
+    "specifications": [
+      "Type: Organic Pulses",
+      "Cleaning: Machine Cleaned & Sorted",
+      "Storage: Store in a cool, dry place"
+    ],
+    "howToUse": "Soak for 30 minutes before cooking. Use in dal, sambar, or as a protein-rich base for various dishes."
+  },
+  {
+    "id": "moong-dal",
+    "name": "Moong Dal",
+    "category": "pulses",
+    "description": "High-quality Moong Dal, sourced from organic farms. Packed with protein and fiber for a healthy diet.",
+    "image": "/pulses_and_dal_1777167085195.png",
+    "sizes": [
+      {
+        "size": "1KG",
+        "price": 198,
+        "offerPrice": 168,
+        "inStock": true
+      },
+      {
+        "size": "0.5KG",
+        "price": 103,
+        "offerPrice": 89,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "High protein content",
+      "Sourced from organic farms",
+      "No artificial polishing",
+      "Rich in dietary fiber"
+    ],
+    "specifications": [
+      "Type: Organic Pulses",
+      "Cleaning: Machine Cleaned & Sorted",
+      "Storage: Store in a cool, dry place"
+    ],
+    "howToUse": "Soak for 30 minutes before cooking. Use in dal, sambar, or as a protein-rich base for various dishes."
+  },
+  {
+    "id": "urad-dal",
+    "name": "Urad Dal",
+    "category": "pulses",
+    "description": "High-quality Urad Dal, sourced from organic farms. Packed with protein and fiber for a healthy diet.",
+    "image": "/pulses_and_dal_1777167085195.png",
+    "sizes": [
+      {
+        "size": "1KG",
+        "price": 239,
+        "offerPrice": 189,
+        "inStock": true
+      },
+      {
+        "size": "0.5KG",
+        "price": 128,
+        "offerPrice": 100,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "High protein content",
+      "Sourced from organic farms",
+      "No artificial polishing",
+      "Rich in dietary fiber"
+    ],
+    "specifications": [
+      "Type: Organic Pulses",
+      "Cleaning: Machine Cleaned & Sorted",
+      "Storage: Store in a cool, dry place"
+    ],
+    "howToUse": "Soak for 30 minutes before cooking. Use in dal, sambar, or as a protein-rich base for various dishes."
+  },
+  {
+    "id": "black-rice",
+    "name": "Black Rice",
+    "category": "pulses",
+    "description": "High-quality Black Rice, sourced from organic farms. Packed with protein and fiber for a healthy diet.",
+    "image": "/pulses_and_dal_1777167085195.png",
+    "sizes": [
+      {
+        "size": "1KG",
+        "price": 243,
+        "offerPrice": 189,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "High protein content",
+      "Sourced from organic farms",
+      "No artificial polishing",
+      "Rich in dietary fiber"
+    ],
+    "specifications": [
+      "Type: Organic Pulses",
+      "Cleaning: Machine Cleaned & Sorted",
+      "Storage: Store in a cool, dry place"
+    ],
+    "howToUse": "Soak for 30 minutes before cooking. Use in dal, sambar, or as a protein-rich base for various dishes."
+  },
+  {
+    "id": "rajmudi-rice",
+    "name": "Rajmudi Rice",
+    "category": "pulses",
+    "description": "High-quality Rajmudi Rice, sourced from organic farms. Packed with protein and fiber for a healthy diet.",
+    "image": "/pulses_and_dal_1777167085195.png",
+    "sizes": [
+      {
+        "size": "1KG",
+        "price": 117,
+        "offerPrice": 105,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "High protein content",
+      "Sourced from organic farms",
+      "No artificial polishing",
+      "Rich in dietary fiber"
+    ],
+    "specifications": [
+      "Type: Organic Pulses",
+      "Cleaning: Machine Cleaned & Sorted",
+      "Storage: Store in a cool, dry place"
+    ],
+    "howToUse": "Soak for 30 minutes before cooking. Use in dal, sambar, or as a protein-rich base for various dishes."
+  },
+  {
+    "id": "moringa-powder",
+    "name": "Moringa Powder",
+    "category": "pulses",
+    "description": "High-quality Moringa Powder, sourced from organic farms. Packed with protein and fiber for a healthy diet.",
+    "image": "/pulses_and_dal_1777167085195.png",
+    "sizes": [
+      {
+        "size": "100GM",
+        "price": 114,
+        "offerPrice": 95,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "High protein content",
+      "Sourced from organic farms",
+      "No artificial polishing",
+      "Rich in dietary fiber"
+    ],
+    "specifications": [
+      "Type: Organic Pulses",
+      "Cleaning: Machine Cleaned & Sorted",
+      "Storage: Store in a cool, dry place"
+    ],
+    "howToUse": "Soak for 30 minutes before cooking. Use in dal, sambar, or as a protein-rich base for various dishes."
+  },
+  {
+    "id": "samruddhi-atta",
+    "name": "Samruddhi Atta",
+    "category": "pulses",
+    "description": "High-quality Samruddhi Atta, sourced from organic farms. Packed with protein and fiber for a healthy diet.",
+    "image": "/pulses_and_dal_1777167085195.png",
+    "sizes": [
+      {
+        "size": "1KG",
+        "price": 93,
+        "offerPrice": 75,
+        "inStock": true
+      },
+      {
+        "size": "5KG",
+        "price": 451,
+        "offerPrice": 360,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "High protein content",
+      "Sourced from organic farms",
+      "No artificial polishing",
+      "Rich in dietary fiber"
+    ],
+    "specifications": [
+      "Type: Organic Pulses",
+      "Cleaning: Machine Cleaned & Sorted",
+      "Storage: Store in a cool, dry place"
+    ],
+    "howToUse": "Soak for 30 minutes before cooking. Use in dal, sambar, or as a protein-rich base for various dishes."
+  },
+  {
+    "id": "malinadu-coffee-powder",
+    "name": "Malinadu Coffee Powder",
+    "category": "pulses",
+    "description": "High-quality Malinadu Coffee Powder, sourced from organic farms. Packed with protein and fiber for a healthy diet.",
+    "image": "/pulses_and_dal_1777167085195.png",
+    "sizes": [
+      {
+        "size": "0.2KG",
+        "price": 180,
+        "offerPrice": 160,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "High protein content",
+      "Sourced from organic farms",
+      "No artificial polishing",
+      "Rich in dietary fiber"
+    ],
+    "specifications": [
+      "Type: Organic Pulses",
+      "Cleaning: Machine Cleaned & Sorted",
+      "Storage: Store in a cool, dry place"
+    ],
+    "howToUse": "Soak for 30 minutes before cooking. Use in dal, sambar, or as a protein-rich base for various dishes."
+  },
+  {
+    "id": "malinadu-tea-powder",
+    "name": "Malinadu Tea Powder",
+    "category": "pulses",
+    "description": "High-quality Malinadu Tea Powder, sourced from organic farms. Packed with protein and fiber for a healthy diet.",
+    "image": "/pulses_and_dal_1777167085195.png",
+    "sizes": [
+      {
+        "size": "0.2KG",
+        "price": 143,
+        "offerPrice": 120,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "High protein content",
+      "Sourced from organic farms",
+      "No artificial polishing",
+      "Rich in dietary fiber"
+    ],
+    "specifications": [
+      "Type: Organic Pulses",
+      "Cleaning: Machine Cleaned & Sorted",
+      "Storage: Store in a cool, dry place"
+    ],
+    "howToUse": "Soak for 30 minutes before cooking. Use in dal, sambar, or as a protein-rich base for various dishes."
+  },
+  {
+    "id": "chilli-powder",
+    "name": "Chilli Powder",
+    "category": "spices",
+    "description": "Authentic Chilli Powder, made from hand-picked ingredients to bring the true flavors of India to your kitchen.",
+    "image": "/indian_spices_mix_1777167103492.png",
+    "sizes": [
+      {
+        "size": "0.25KG",
+        "price": 103,
+        "offerPrice": 94,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "No artificial colors or preservatives",
+      "Strong natural aroma",
+      "Hand-picked ingredients",
+      "Traditional grinding process"
+    ],
+    "specifications": [
+      "Ingredients: 100% Pure Spices",
+      "Form: Powdered",
+      "Shelf Life: 12 Months"
+    ],
+    "howToUse": "Add to curries, gravies, or marinades to enhance flavor and aroma. Use as per taste."
+  },
+  {
+    "id": "coriander-powder",
+    "name": "Coriander Powder",
+    "category": "spices",
+    "description": "Authentic Coriander Powder, made from hand-picked ingredients to bring the true flavors of India to your kitchen.",
+    "image": "/indian_spices_mix_1777167103492.png",
+    "sizes": [
+      {
+        "size": "0.25KG",
+        "price": 75,
+        "offerPrice": 68,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "No artificial colors or preservatives",
+      "Strong natural aroma",
+      "Hand-picked ingredients",
+      "Traditional grinding process"
+    ],
+    "specifications": [
+      "Ingredients: 100% Pure Spices",
+      "Form: Powdered",
+      "Shelf Life: 12 Months"
+    ],
+    "howToUse": "Add to curries, gravies, or marinades to enhance flavor and aroma. Use as per taste."
+  },
+  {
+    "id": "sambar-powder",
+    "name": "Sambar Powder",
+    "category": "spices",
+    "description": "Authentic Sambar Powder, made from hand-picked ingredients to bring the true flavors of India to your kitchen.",
+    "image": "/indian_spices_mix_1777167103492.png",
+    "sizes": [
+      {
+        "size": "0.25KG",
+        "price": 140,
+        "offerPrice": 115,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "No artificial colors or preservatives",
+      "Strong natural aroma",
+      "Hand-picked ingredients",
+      "Traditional grinding process"
+    ],
+    "specifications": [
+      "Ingredients: 100% Pure Spices",
+      "Form: Powdered",
+      "Shelf Life: 12 Months"
+    ],
+    "howToUse": "Add to curries, gravies, or marinades to enhance flavor and aroma. Use as per taste."
+  },
+  {
+    "id": "rasam-powder",
+    "name": "Rasam Powder",
+    "category": "spices",
+    "description": "Authentic Rasam Powder, made from hand-picked ingredients to bring the true flavors of India to your kitchen.",
+    "image": "/indian_spices_mix_1777167103492.png",
+    "sizes": [
+      {
+        "size": "0.25KG",
+        "price": 162,
+        "offerPrice": 126,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "No artificial colors or preservatives",
+      "Strong natural aroma",
+      "Hand-picked ingredients",
+      "Traditional grinding process"
+    ],
+    "specifications": [
+      "Ingredients: 100% Pure Spices",
+      "Form: Powdered",
+      "Shelf Life: 12 Months"
+    ],
+    "howToUse": "Add to curries, gravies, or marinades to enhance flavor and aroma. Use as per taste."
+  },
+  {
+    "id": "turmeric-powder",
+    "name": "Turmeric Powder",
+    "category": "spices",
+    "description": "Authentic Turmeric Powder, made from hand-picked ingredients to bring the true flavors of India to your kitchen.",
+    "image": "/indian_spices_mix_1777167103492.png",
+    "sizes": [
+      {
+        "size": "100KG",
+        "price": 60,
+        "offerPrice": 52,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "No artificial colors or preservatives",
+      "Strong natural aroma",
+      "Hand-picked ingredients",
+      "Traditional grinding process"
+    ],
+    "specifications": [
+      "Ingredients: 100% Pure Spices",
+      "Form: Powdered",
+      "Shelf Life: 12 Months"
+    ],
+    "howToUse": "Add to curries, gravies, or marinades to enhance flavor and aroma. Use as per taste."
+  },
+  {
+    "id": "pepper",
+    "name": "Pepper",
+    "category": "spices",
+    "description": "Authentic Pepper, made from hand-picked ingredients to bring the true flavors of India to your kitchen.",
+    "image": "/indian_spices_mix_1777167103492.png",
+    "sizes": [
+      {
+        "size": "100gm",
+        "price": 129,
+        "offerPrice": 110,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "No artificial colors or preservatives",
+      "Strong natural aroma",
+      "Hand-picked ingredients",
+      "Traditional grinding process"
+    ],
+    "specifications": [
+      "Ingredients: 100% Pure Spices",
+      "Form: Powdered",
+      "Shelf Life: 12 Months"
+    ],
+    "howToUse": "Add to curries, gravies, or marinades to enhance flavor and aroma. Use as per taste."
+  },
+  {
+    "id": "fenugreek-(methi)",
+    "name": "FenuGreek (Methi)",
+    "category": "spices",
+    "description": "Authentic FenuGreek (Methi), made from hand-picked ingredients to bring the true flavors of India to your kitchen.",
+    "image": "/indian_spices_mix_1777167103492.png",
+    "sizes": [
+      {
+        "size": "100gm",
+        "price": 30,
+        "offerPrice": 25,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "No artificial colors or preservatives",
+      "Strong natural aroma",
+      "Hand-picked ingredients",
+      "Traditional grinding process"
+    ],
+    "specifications": [
+      "Ingredients: 100% Pure Spices",
+      "Form: Powdered",
+      "Shelf Life: 12 Months"
+    ],
+    "howToUse": "Add to curries, gravies, or marinades to enhance flavor and aroma. Use as per taste."
+  },
+  {
+    "id": "jeera",
+    "name": "Jeera",
+    "category": "spices",
+    "description": "Authentic Jeera, made from hand-picked ingredients to bring the true flavors of India to your kitchen.",
+    "image": "/indian_spices_mix_1777167103492.png",
+    "sizes": [
+      {
+        "size": "250gm",
+        "price": 122,
+        "offerPrice": 100,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "No artificial colors or preservatives",
+      "Strong natural aroma",
+      "Hand-picked ingredients",
+      "Traditional grinding process"
+    ],
+    "specifications": [
+      "Ingredients: 100% Pure Spices",
+      "Form: Powdered",
+      "Shelf Life: 12 Months"
+    ],
+    "howToUse": "Add to curries, gravies, or marinades to enhance flavor and aroma. Use as per taste."
+  },
+  {
+    "id": "mustard",
+    "name": "Mustard",
+    "category": "spices",
+    "description": "Authentic Mustard, made from hand-picked ingredients to bring the true flavors of India to your kitchen.",
+    "image": "/indian_spices_mix_1777167103492.png",
+    "sizes": [
+      {
+        "size": "250gm",
+        "price": 49,
+        "offerPrice": 45,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "No artificial colors or preservatives",
+      "Strong natural aroma",
+      "Hand-picked ingredients",
+      "Traditional grinding process"
+    ],
+    "specifications": [
+      "Ingredients: 100% Pure Spices",
+      "Form: Powdered",
+      "Shelf Life: 12 Months"
+    ],
+    "howToUse": "Add to curries, gravies, or marinades to enhance flavor and aroma. Use as per taste."
+  },
+  {
+    "id": "corn-mixture",
+    "name": "Corn Mixture",
+    "category": "snacks",
+    "description": "Authentic and healthy Corn Mixture, prepared with care using traditional methods and natural ingredients.",
+    "image": "/indian_snacks_platter_1777167125845.png",
+    "sizes": [
+      {
+        "size": "0.25KG",
+        "price": 88,
+        "offerPrice": 80,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "Natural and healthy ingredients",
+      "Traditional preparation",
+      "No artificial flavors",
+      "Wholesome and nutritious"
+    ],
+    "specifications": [
+      "Type: Natural/Homemade",
+      "Purity: 100% Guaranteed",
+      "Packaging: Secure Box/Packet"
+    ],
+    "howToUse": "Ready to consume. Store in an airtight container to maintain freshness."
+  },
+  {
+    "id": "ribbon-murukulu",
+    "name": "Ribbon Murukulu",
+    "category": "snacks",
+    "description": "Authentic and healthy Ribbon Murukulu, prepared with care using traditional methods and natural ingredients.",
+    "image": "/indian_snacks_platter_1777167125845.png",
+    "sizes": [
+      {
+        "size": "0.25KG",
+        "price": 125,
+        "offerPrice": 100,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "Natural and healthy ingredients",
+      "Traditional preparation",
+      "No artificial flavors",
+      "Wholesome and nutritious"
+    ],
+    "specifications": [
+      "Type: Natural/Homemade",
+      "Purity: 100% Guaranteed",
+      "Packaging: Secure Box/Packet"
+    ],
+    "howToUse": "Ready to consume. Store in an airtight container to maintain freshness."
+  },
+  {
+    "id": "kodubele",
+    "name": "Kodubele",
+    "category": "snacks",
+    "description": "Authentic and healthy Kodubele, prepared with care using traditional methods and natural ingredients.",
+    "image": "/indian_snacks_platter_1777167125845.png",
+    "sizes": [
+      {
+        "size": "0.25KG",
+        "price": 121,
+        "offerPrice": 100,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "Natural and healthy ingredients",
+      "Traditional preparation",
+      "No artificial flavors",
+      "Wholesome and nutritious"
+    ],
+    "specifications": [
+      "Type: Natural/Homemade",
+      "Purity: 100% Guaranteed",
+      "Packaging: Secure Box/Packet"
+    ],
+    "howToUse": "Ready to consume. Store in an airtight container to maintain freshness."
+  },
+  {
+    "id": "kaara-boondi",
+    "name": "Kaara Boondi",
+    "category": "snacks",
+    "description": "Authentic and healthy Kaara Boondi, prepared with care using traditional methods and natural ingredients.",
+    "image": "/indian_snacks_platter_1777167125845.png",
+    "sizes": [
+      {
+        "size": "0.25KG",
+        "price": 124,
+        "offerPrice": 100,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "Natural and healthy ingredients",
+      "Traditional preparation",
+      "No artificial flavors",
+      "Wholesome and nutritious"
+    ],
+    "specifications": [
+      "Type: Natural/Homemade",
+      "Purity: 100% Guaranteed",
+      "Packaging: Secure Box/Packet"
+    ],
+    "howToUse": "Ready to consume. Store in an airtight container to maintain freshness."
+  },
+  {
+    "id": "congress",
+    "name": "Congress",
+    "category": "snacks",
+    "description": "Authentic and healthy Congress, prepared with care using traditional methods and natural ingredients.",
+    "image": "/indian_snacks_platter_1777167125845.png",
+    "sizes": [
+      {
+        "size": "0.25KG",
+        "price": 115,
+        "offerPrice": 100,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "Natural and healthy ingredients",
+      "Traditional preparation",
+      "No artificial flavors",
+      "Wholesome and nutritious"
+    ],
+    "specifications": [
+      "Type: Natural/Homemade",
+      "Purity: 100% Guaranteed",
+      "Packaging: Secure Box/Packet"
+    ],
+    "howToUse": "Ready to consume. Store in an airtight container to maintain freshness."
+  },
+  {
+    "id": "garlic-mixture",
+    "name": "Garlic Mixture",
+    "category": "snacks",
+    "description": "Authentic and healthy Garlic Mixture, prepared with care using traditional methods and natural ingredients.",
+    "image": "/indian_snacks_platter_1777167125845.png",
+    "sizes": [
+      {
+        "size": "0.25KG",
+        "price": 112,
+        "offerPrice": 100,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "Natural and healthy ingredients",
+      "Traditional preparation",
+      "No artificial flavors",
+      "Wholesome and nutritious"
+    ],
+    "specifications": [
+      "Type: Natural/Homemade",
+      "Purity: 100% Guaranteed",
+      "Packaging: Secure Box/Packet"
+    ],
+    "howToUse": "Ready to consume. Store in an airtight container to maintain freshness."
+  },
+  {
+    "id": "chakralu",
+    "name": "Chakralu",
+    "category": "snacks",
+    "description": "Authentic and healthy Chakralu, prepared with care using traditional methods and natural ingredients.",
+    "image": "/indian_snacks_platter_1777167125845.png",
+    "sizes": [
+      {
+        "size": "0.25KG",
+        "price": 129,
+        "offerPrice": 100,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "Natural and healthy ingredients",
+      "Traditional preparation",
+      "No artificial flavors",
+      "Wholesome and nutritious"
+    ],
+    "specifications": [
+      "Type: Natural/Homemade",
+      "Purity: 100% Guaranteed",
+      "Packaging: Secure Box/Packet"
+    ],
+    "howToUse": "Ready to consume. Store in an airtight container to maintain freshness."
+  },
+  {
+    "id": "groundnut-muruku",
+    "name": "Groundnut Muruku",
+    "category": "snacks",
+    "description": "Authentic and healthy Groundnut Muruku, prepared with care using traditional methods and natural ingredients.",
+    "image": "/indian_snacks_platter_1777167125845.png",
+    "sizes": [
+      {
+        "size": "0.25KG",
+        "price": 110,
+        "offerPrice": 100,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "Natural and healthy ingredients",
+      "Traditional preparation",
+      "No artificial flavors",
+      "Wholesome and nutritious"
+    ],
+    "specifications": [
+      "Type: Natural/Homemade",
+      "Purity: 100% Guaranteed",
+      "Packaging: Secure Box/Packet"
+    ],
+    "howToUse": "Ready to consume. Store in an airtight container to maintain freshness."
+  },
+  {
+    "id": "foxtail-millet",
+    "name": "Foxtail Millet",
+    "category": "snacks",
+    "description": "Authentic and healthy Foxtail Millet, prepared with care using traditional methods and natural ingredients.",
+    "image": "/indian_snacks_platter_1777167125845.png",
+    "sizes": [
+      {
+        "size": "1KG",
+        "price": 157,
+        "offerPrice": 130,
+        "inStock": true
+      },
+      {
+        "size": "0.5KG",
+        "price": 87,
+        "offerPrice": 75,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "Natural and healthy ingredients",
+      "Traditional preparation",
+      "No artificial flavors",
+      "Wholesome and nutritious"
+    ],
+    "specifications": [
+      "Type: Natural/Homemade",
+      "Purity: 100% Guaranteed",
+      "Packaging: Secure Box/Packet"
+    ],
+    "howToUse": "Ready to consume. Store in an airtight container to maintain freshness."
+  },
+  {
+    "id": "little-millet",
+    "name": "Little Millet",
+    "category": "snacks",
+    "description": "Authentic and healthy Little Millet, prepared with care using traditional methods and natural ingredients.",
+    "image": "/indian_snacks_platter_1777167125845.png",
+    "sizes": [
+      {
+        "size": "1KG",
+        "price": 193,
+        "offerPrice": 161,
+        "inStock": true
+      },
+      {
+        "size": "0.5KG",
+        "price": 102,
+        "offerPrice": 86,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "Natural and healthy ingredients",
+      "Traditional preparation",
+      "No artificial flavors",
+      "Wholesome and nutritious"
+    ],
+    "specifications": [
+      "Type: Natural/Homemade",
+      "Purity: 100% Guaranteed",
+      "Packaging: Secure Box/Packet"
+    ],
+    "howToUse": "Ready to consume. Store in an airtight container to maintain freshness."
+  },
+  {
+    "id": "proso-millet",
+    "name": "Proso Millet",
+    "category": "snacks",
+    "description": "Authentic and healthy Proso Millet, prepared with care using traditional methods and natural ingredients.",
+    "image": "/indian_snacks_platter_1777167125845.png",
+    "sizes": [
+      {
+        "size": "1KG",
+        "price": 233,
+        "offerPrice": 182,
+        "inStock": true
+      },
+      {
+        "size": "0.5KG",
+        "price": 111,
+        "offerPrice": 96,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "Natural and healthy ingredients",
+      "Traditional preparation",
+      "No artificial flavors",
+      "Wholesome and nutritious"
+    ],
+    "specifications": [
+      "Type: Natural/Homemade",
+      "Purity: 100% Guaranteed",
+      "Packaging: Secure Box/Packet"
+    ],
+    "howToUse": "Ready to consume. Store in an airtight container to maintain freshness."
+  },
+  {
+    "id": "barnyard-millet",
+    "name": "Barnyard Millet",
+    "category": "snacks",
+    "description": "Authentic and healthy Barnyard Millet, prepared with care using traditional methods and natural ingredients.",
+    "image": "/indian_snacks_platter_1777167125845.png",
+    "sizes": [
+      {
+        "size": "1KG",
+        "price": 202,
+        "offerPrice": 182,
+        "inStock": true
+      },
+      {
+        "size": "0.5KG",
+        "price": 106,
+        "offerPrice": 96,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "Natural and healthy ingredients",
+      "Traditional preparation",
+      "No artificial flavors",
+      "Wholesome and nutritious"
+    ],
+    "specifications": [
+      "Type: Natural/Homemade",
+      "Purity: 100% Guaranteed",
+      "Packaging: Secure Box/Packet"
+    ],
+    "howToUse": "Ready to consume. Store in an airtight container to maintain freshness."
+  },
+  {
+    "id": "browntop-millet",
+    "name": "Browntop Millet",
+    "category": "snacks",
+    "description": "Authentic and healthy Browntop Millet, prepared with care using traditional methods and natural ingredients.",
+    "image": "/indian_snacks_platter_1777167125845.png",
+    "sizes": [
+      {
+        "size": "1KG",
+        "price": 281,
+        "offerPrice": 225,
+        "inStock": true
+      },
+      {
+        "size": "0.5KG",
+        "price": 134,
+        "offerPrice": 118,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "Natural and healthy ingredients",
+      "Traditional preparation",
+      "No artificial flavors",
+      "Wholesome and nutritious"
+    ],
+    "specifications": [
+      "Type: Natural/Homemade",
+      "Purity: 100% Guaranteed",
+      "Packaging: Secure Box/Packet"
+    ],
+    "howToUse": "Ready to consume. Store in an airtight container to maintain freshness."
+  },
+  {
+    "id": "jola-whole-millet",
+    "name": "Jola Whole Millet",
+    "category": "snacks",
+    "description": "Authentic and healthy Jola Whole Millet, prepared with care using traditional methods and natural ingredients.",
+    "image": "/indian_snacks_platter_1777167125845.png",
+    "sizes": [
+      {
+        "size": "1KG",
+        "price": 85,
+        "offerPrice": 75,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "Natural and healthy ingredients",
+      "Traditional preparation",
+      "No artificial flavors",
+      "Wholesome and nutritious"
+    ],
+    "specifications": [
+      "Type: Natural/Homemade",
+      "Purity: 100% Guaranteed",
+      "Packaging: Secure Box/Packet"
+    ],
+    "howToUse": "Ready to consume. Store in an airtight container to maintain freshness."
+  },
+  {
+    "id": "kodo-millet",
+    "name": "Kodo Millet",
+    "category": "snacks",
+    "description": "Authentic and healthy Kodo Millet, prepared with care using traditional methods and natural ingredients.",
+    "image": "/indian_snacks_platter_1777167125845.png",
+    "sizes": [
+      {
+        "size": "1KG",
+        "price": 161,
+        "offerPrice": 139,
+        "inStock": true
+      },
+      {
+        "size": "0.5KG",
+        "price": 90,
+        "offerPrice": 75,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "Natural and healthy ingredients",
+      "Traditional preparation",
+      "No artificial flavors",
+      "Wholesome and nutritious"
+    ],
+    "specifications": [
+      "Type: Natural/Homemade",
+      "Purity: 100% Guaranteed",
+      "Packaging: Secure Box/Packet"
+    ],
+    "howToUse": "Ready to consume. Store in an airtight container to maintain freshness."
+  },
+  {
+    "id": "dry-dates",
+    "name": "Dry Dates",
+    "category": "dryfruits",
+    "description": "Premium quality Dry Dates, carefully selected for size and taste. A perfect healthy snack for any time of the day.",
+    "image": "/premium_dry_fruits_mix_1777167146932.png",
+    "sizes": [
+      {
+        "size": "0.5KG",
+        "price": 193,
+        "offerPrice": 172,
+        "inStock": true
+      },
+      {
+        "size": "0.25KG",
+        "price": 111,
+        "offerPrice": 96,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "Packed with essential vitamins and minerals",
+      "Boosts energy and immunity",
+      "Premium export quality",
+      "Perfect for healthy snacking"
+    ],
+    "specifications": [
+      "Grade: Premium",
+      "Packaging: Vacuum Sealed for Freshness",
+      "Type: Raw/Natural"
+    ],
+    "howToUse": "Eat as a healthy snack, or add to smoothies, desserts, and salads for extra nutrition and crunch."
+  },
+  {
+    "id": "raisins",
+    "name": "Raisins",
+    "category": "dryfruits",
+    "description": "Premium quality Raisins, carefully selected for size and taste. A perfect healthy snack for any time of the day.",
+    "image": "/premium_dry_fruits_mix_1777167146932.png",
+    "sizes": [
+      {
+        "size": "0.25KG",
+        "price": 222,
+        "offerPrice": 172,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "Packed with essential vitamins and minerals",
+      "Boosts energy and immunity",
+      "Premium export quality",
+      "Perfect for healthy snacking"
+    ],
+    "specifications": [
+      "Grade: Premium",
+      "Packaging: Vacuum Sealed for Freshness",
+      "Type: Raw/Natural"
+    ],
+    "howToUse": "Eat as a healthy snack, or add to smoothies, desserts, and salads for extra nutrition and crunch."
+  },
+  {
+    "id": "anjeer",
+    "name": "Anjeer",
+    "category": "dryfruits",
+    "description": "Premium quality Anjeer, carefully selected for size and taste. A perfect healthy snack for any time of the day.",
+    "image": "/premium_dry_fruits_mix_1777167146932.png",
+    "sizes": [
+      {
+        "size": "0.25KG",
+        "price": 564,
+        "offerPrice": 440,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "Packed with essential vitamins and minerals",
+      "Boosts energy and immunity",
+      "Premium export quality",
+      "Perfect for healthy snacking"
+    ],
+    "specifications": [
+      "Grade: Premium",
+      "Packaging: Vacuum Sealed for Freshness",
+      "Type: Raw/Natural"
+    ],
+    "howToUse": "Eat as a healthy snack, or add to smoothies, desserts, and salads for extra nutrition and crunch."
+  },
+  {
+    "id": "cashew",
+    "name": "Cashew",
+    "category": "dryfruits",
+    "description": "Premium quality Cashew, carefully selected for size and taste. A perfect healthy snack for any time of the day.",
+    "image": "/premium_dry_fruits_mix_1777167146932.png",
+    "sizes": [
+      {
+        "size": "1KG",
+        "price": 1288,
+        "offerPrice": 1075,
+        "inStock": true
+      },
+      {
+        "size": "0.5KG",
+        "price": 688,
+        "offerPrice": 559,
+        "inStock": true
+      },
+      {
+        "size": "0.25KG",
+        "price": 325,
+        "offerPrice": 290,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "Packed with essential vitamins and minerals",
+      "Boosts energy and immunity",
+      "Premium export quality",
+      "Perfect for healthy snacking"
+    ],
+    "specifications": [
+      "Grade: Premium",
+      "Packaging: Vacuum Sealed for Freshness",
+      "Type: Raw/Natural"
+    ],
+    "howToUse": "Eat as a healthy snack, or add to smoothies, desserts, and salads for extra nutrition and crunch."
+  },
+  {
+    "id": "walnuts-tulasi",
+    "name": "Walnuts Tulasi",
+    "category": "dryfruits",
+    "description": "Premium quality Walnuts Tulasi, carefully selected for size and taste. A perfect healthy snack for any time of the day.",
+    "image": "/premium_dry_fruits_mix_1777167146932.png",
+    "sizes": [
+      {
+        "size": "0.2KG",
+        "price": 423,
+        "offerPrice": 376,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "Packed with essential vitamins and minerals",
+      "Boosts energy and immunity",
+      "Premium export quality",
+      "Perfect for healthy snacking"
+    ],
+    "specifications": [
+      "Grade: Premium",
+      "Packaging: Vacuum Sealed for Freshness",
+      "Type: Raw/Natural"
+    ],
+    "howToUse": "Eat as a healthy snack, or add to smoothies, desserts, and salads for extra nutrition and crunch."
+  },
+  {
+    "id": "pista-tulsi",
+    "name": "Pista Tulsi",
+    "category": "dryfruits",
+    "description": "Premium quality Pista Tulsi, carefully selected for size and taste. A perfect healthy snack for any time of the day.",
+    "image": "/premium_dry_fruits_mix_1777167146932.png",
+    "sizes": [
+      {
+        "size": "0.2KG",
+        "price": 406,
+        "offerPrice": 365,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "Packed with essential vitamins and minerals",
+      "Boosts energy and immunity",
+      "Premium export quality",
+      "Perfect for healthy snacking"
+    ],
+    "specifications": [
+      "Grade: Premium",
+      "Packaging: Vacuum Sealed for Freshness",
+      "Type: Raw/Natural"
+    ],
+    "howToUse": "Eat as a healthy snack, or add to smoothies, desserts, and salads for extra nutrition and crunch."
+  },
+  {
+    "id": "pista-popular",
+    "name": "Pista Popular",
+    "category": "dryfruits",
+    "description": "Premium quality Pista Popular, carefully selected for size and taste. A perfect healthy snack for any time of the day.",
+    "image": "/premium_dry_fruits_mix_1777167146932.png",
+    "sizes": [
+      {
+        "size": "0.2KG",
+        "price": 487,
+        "offerPrice": 419,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "Packed with essential vitamins and minerals",
+      "Boosts energy and immunity",
+      "Premium export quality",
+      "Perfect for healthy snacking"
+    ],
+    "specifications": [
+      "Grade: Premium",
+      "Packaging: Vacuum Sealed for Freshness",
+      "Type: Raw/Natural"
+    ],
+    "howToUse": "Eat as a healthy snack, or add to smoothies, desserts, and salads for extra nutrition and crunch."
+  },
+  {
+    "id": "melon-seeds",
+    "name": "Melon Seeds",
+    "category": "dryfruits",
+    "description": "Premium quality Melon Seeds, carefully selected for size and taste. A perfect healthy snack for any time of the day.",
+    "image": "/premium_dry_fruits_mix_1777167146932.png",
+    "sizes": [
+      {
+        "size": "0.25KG",
+        "price": 250,
+        "offerPrice": 215,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "Packed with essential vitamins and minerals",
+      "Boosts energy and immunity",
+      "Premium export quality",
+      "Perfect for healthy snacking"
+    ],
+    "specifications": [
+      "Grade: Premium",
+      "Packaging: Vacuum Sealed for Freshness",
+      "Type: Raw/Natural"
+    ],
+    "howToUse": "Eat as a healthy snack, or add to smoothies, desserts, and salads for extra nutrition and crunch."
+  },
+  {
+    "id": "falx-seeds",
+    "name": "Falx Seeds",
+    "category": "dryfruits",
+    "description": "Premium quality Falx Seeds, carefully selected for size and taste. A perfect healthy snack for any time of the day.",
+    "image": "/premium_dry_fruits_mix_1777167146932.png",
+    "sizes": [
+      {
+        "size": "0.25KG",
+        "price": 98,
+        "offerPrice": 86,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "Packed with essential vitamins and minerals",
+      "Boosts energy and immunity",
+      "Premium export quality",
+      "Perfect for healthy snacking"
+    ],
+    "specifications": [
+      "Grade: Premium",
+      "Packaging: Vacuum Sealed for Freshness",
+      "Type: Raw/Natural"
+    ],
+    "howToUse": "Eat as a healthy snack, or add to smoothies, desserts, and salads for extra nutrition and crunch."
+  },
+  {
+    "id": "sunflower-seeds",
+    "name": "Sunflower Seeds",
+    "category": "dryfruits",
+    "description": "Premium quality Sunflower Seeds, carefully selected for size and taste. A perfect healthy snack for any time of the day.",
+    "image": "/premium_dry_fruits_mix_1777167146932.png",
+    "sizes": [
+      {
+        "size": "0.2KG",
+        "price": 242,
+        "offerPrice": 193,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "Packed with essential vitamins and minerals",
+      "Boosts energy and immunity",
+      "Premium export quality",
+      "Perfect for healthy snacking"
+    ],
+    "specifications": [
+      "Grade: Premium",
+      "Packaging: Vacuum Sealed for Freshness",
+      "Type: Raw/Natural"
+    ],
+    "howToUse": "Eat as a healthy snack, or add to smoothies, desserts, and salads for extra nutrition and crunch."
+  },
+  {
+    "id": "makhana-plain",
+    "name": "Makhana Plain",
+    "category": "dryfruits",
+    "description": "Premium quality Makhana Plain, carefully selected for size and taste. A perfect healthy snack for any time of the day.",
+    "image": "/premium_dry_fruits_mix_1777167146932.png",
+    "sizes": [
+      {
+        "size": "0.25KG",
+        "price": 343,
+        "offerPrice": 280,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "Packed with essential vitamins and minerals",
+      "Boosts energy and immunity",
+      "Premium export quality",
+      "Perfect for healthy snacking"
+    ],
+    "specifications": [
+      "Grade: Premium",
+      "Packaging: Vacuum Sealed for Freshness",
+      "Type: Raw/Natural"
+    ],
+    "howToUse": "Eat as a healthy snack, or add to smoothies, desserts, and salads for extra nutrition and crunch."
+  },
+  {
+    "id": "makhana-masala",
+    "name": "Makhana Masala",
+    "category": "dryfruits",
+    "description": "Premium quality Makhana Masala, carefully selected for size and taste. A perfect healthy snack for any time of the day.",
+    "image": "/premium_dry_fruits_mix_1777167146932.png",
+    "sizes": [
+      {
+        "size": "100G Box",
+        "price": 240,
+        "offerPrice": 210,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "Packed with essential vitamins and minerals",
+      "Boosts energy and immunity",
+      "Premium export quality",
+      "Perfect for healthy snacking"
+    ],
+    "specifications": [
+      "Grade: Premium",
+      "Packaging: Vacuum Sealed for Freshness",
+      "Type: Raw/Natural"
+    ],
+    "howToUse": "Eat as a healthy snack, or add to smoothies, desserts, and salads for extra nutrition and crunch."
+  },
+  {
+    "id": "amaranthus-chikki",
+    "name": "Amaranthus Chikki",
+    "category": "millet_snacks",
+    "description": "Authentic and healthy Amaranthus Chikki, prepared with care using traditional methods and natural ingredients.",
+    "image": "/millet_cookies_and_snacks_1777167211594.png",
+    "sizes": [
+      {
+        "size": "1PC",
+        "price": 116,
+        "offerPrice": 90,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "Natural and healthy ingredients",
+      "Traditional preparation",
+      "No artificial flavors",
+      "Wholesome and nutritious"
+    ],
+    "specifications": [
+      "Type: Natural/Homemade",
+      "Purity: 100% Guaranteed",
+      "Packaging: Secure Box/Packet"
+    ],
+    "howToUse": "Ready to consume. Store in an airtight container to maintain freshness."
+  },
+  {
+    "id": "millet-rusk-jaggery",
+    "name": "Millet Rusk Jaggery",
+    "category": "jaggery",
+    "description": "Traditional Millet Rusk Jaggery, made from high-quality sugarcane juice. A healthy alternative to refined sugar.",
+    "image": "/organic_jaggery_and_honey_1777167168541.png",
+    "sizes": [
+      {
+        "size": "1 Packet",
+        "price": 76,
+        "offerPrice": 65,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "Rich in iron and minerals",
+      "Healthy sugar substitute",
+      "Traditional preparation method",
+      "No chemicals used"
+    ],
+    "specifications": [
+      "Source: Organic Sugarcane",
+      "Purity: 100% Pure Jaggery",
+      "Type: Balls/Powder"
+    ],
+    "howToUse": "Use as a sweetener in tea, coffee, or desserts. Can be consumed directly for a quick energy boost."
+  },
+  {
+    "id": "millet-bread-jaggery",
+    "name": "Millet Bread Jaggery",
+    "category": "jaggery",
+    "description": "Traditional Millet Bread Jaggery, made from high-quality sugarcane juice. A healthy alternative to refined sugar.",
+    "image": "/organic_jaggery_and_honey_1777167168541.png",
+    "sizes": [
+      {
+        "size": "1 Packet",
+        "price": 83,
+        "offerPrice": 65,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "Rich in iron and minerals",
+      "Healthy sugar substitute",
+      "Traditional preparation method",
+      "No chemicals used"
+    ],
+    "specifications": [
+      "Source: Organic Sugarcane",
+      "Purity: 100% Pure Jaggery",
+      "Type: Balls/Powder"
+    ],
+    "howToUse": "Use as a sweetener in tea, coffee, or desserts. Can be consumed directly for a quick energy boost."
+  },
+  {
+    "id": "coconut-cookies",
+    "name": "Coconut Cookies",
+    "category": "snacks",
+    "description": "Authentic and healthy Coconut Cookies, prepared with care using traditional methods and natural ingredients.",
+    "image": "/indian_snacks_platter_1777167125845.png",
+    "sizes": [
+      {
+        "size": "1BOX",
+        "price": 79,
+        "offerPrice": 65,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "Natural and healthy ingredients",
+      "Traditional preparation",
+      "No artificial flavors",
+      "Wholesome and nutritious"
+    ],
+    "specifications": [
+      "Type: Natural/Homemade",
+      "Purity: 100% Guaranteed",
+      "Packaging: Secure Box/Packet"
+    ],
+    "howToUse": "Ready to consume. Store in an airtight container to maintain freshness."
+  },
+  {
+    "id": "millet-cookies-1box",
+    "name": "Millet Cookies 1BOX",
+    "category": "snacks",
+    "description": "Authentic and healthy Millet Cookies 1BOX, prepared with care using traditional methods and natural ingredients.",
+    "image": "/indian_snacks_platter_1777167125845.png",
+    "sizes": [
+      {
+        "size": "0.2KG",
+        "price": 117,
+        "offerPrice": 100,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "Natural and healthy ingredients",
+      "Traditional preparation",
+      "No artificial flavors",
+      "Wholesome and nutritious"
+    ],
+    "specifications": [
+      "Type: Natural/Homemade",
+      "Purity: 100% Guaranteed",
+      "Packaging: Secure Box/Packet"
+    ],
+    "howToUse": "Ready to consume. Store in an airtight container to maintain freshness."
+  },
+  {
+    "id": "dry-fruit-laddu",
+    "name": "Dry Fruit Laddu",
+    "category": "snacks",
+    "description": "Authentic and healthy Dry Fruit Laddu, prepared with care using traditional methods and natural ingredients.",
+    "image": "/indian_snacks_platter_1777167125845.png",
+    "sizes": [
+      {
+        "size": "150gm",
+        "price": 195,
+        "offerPrice": 160,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "Natural and healthy ingredients",
+      "Traditional preparation",
+      "No artificial flavors",
+      "Wholesome and nutritious"
+    ],
+    "specifications": [
+      "Type: Natural/Homemade",
+      "Purity: 100% Guaranteed",
+      "Packaging: Secure Box/Packet"
+    ],
+    "howToUse": "Ready to consume. Store in an airtight container to maintain freshness."
+  },
+  {
+    "id": "organic-jaggery-balls",
+    "name": "Organic Jaggery Balls",
+    "category": "jaggery",
+    "description": "Traditional Organic Jaggery Balls, made from high-quality sugarcane juice. A healthy alternative to refined sugar.",
+    "image": "/organic_jaggery_and_honey_1777167168541.png",
+    "sizes": [
+      {
+        "size": "1KG",
+        "price": 183,
+        "offerPrice": 150,
+        "inStock": true
+      },
+      {
+        "size": "0.5KG",
+        "price": 99,
+        "offerPrice": 80,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "Rich in iron and minerals",
+      "Healthy sugar substitute",
+      "Traditional preparation method",
+      "No chemicals used"
+    ],
+    "specifications": [
+      "Source: Organic Sugarcane",
+      "Purity: 100% Pure Jaggery",
+      "Type: Balls/Powder"
+    ],
+    "howToUse": "Use as a sweetener in tea, coffee, or desserts. Can be consumed directly for a quick energy boost."
+  },
+  {
+    "id": "nature-candy",
+    "name": "Nature Candy",
+    "category": "jaggery",
+    "description": "Traditional Nature Candy, made from high-quality sugarcane juice. A healthy alternative to refined sugar.",
+    "image": "/organic_jaggery_and_honey_1777167168541.png",
+    "sizes": [
+      {
+        "size": "1BOX",
+        "price": 88,
+        "offerPrice": 77,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "Rich in iron and minerals",
+      "Healthy sugar substitute",
+      "Traditional preparation method",
+      "No chemicals used"
+    ],
+    "specifications": [
+      "Source: Organic Sugarcane",
+      "Purity: 100% Pure Jaggery",
+      "Type: Balls/Powder"
+    ],
+    "howToUse": "Use as a sweetener in tea, coffee, or desserts. Can be consumed directly for a quick energy boost."
+  },
+  {
+    "id": "powder",
+    "name": "Powder",
+    "category": "jaggery",
+    "description": "Traditional Powder, made from high-quality sugarcane juice. A healthy alternative to refined sugar.",
+    "image": "/organic_jaggery_and_honey_1777167168541.png",
+    "sizes": [
+      {
+        "size": "1KG",
+        "price": 151,
+        "offerPrice": 120,
+        "inStock": true
+      },
+      {
+        "size": "0.5KG",
+        "price": 67,
+        "offerPrice": 60,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "Rich in iron and minerals",
+      "Healthy sugar substitute",
+      "Traditional preparation method",
+      "No chemicals used"
+    ],
+    "specifications": [
+      "Source: Organic Sugarcane",
+      "Purity: 100% Pure Jaggery",
+      "Type: Balls/Powder"
+    ],
+    "howToUse": "Use as a sweetener in tea, coffee, or desserts. Can be consumed directly for a quick energy boost."
+  },
+  {
+    "id": "palm-jaggery",
+    "name": "Palm Jaggery",
+    "category": "jaggery",
+    "description": "Traditional Palm Jaggery, made from high-quality sugarcane juice. A healthy alternative to refined sugar.",
+    "image": "/organic_jaggery_and_honey_1777167168541.png",
+    "sizes": [
+      {
+        "size": "1BOX",
+        "price": 85,
+        "offerPrice": 75,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "Rich in iron and minerals",
+      "Healthy sugar substitute",
+      "Traditional preparation method",
+      "No chemicals used"
+    ],
+    "specifications": [
+      "Source: Organic Sugarcane",
+      "Purity: 100% Pure Jaggery",
+      "Type: Balls/Powder"
+    ],
+    "howToUse": "Use as a sweetener in tea, coffee, or desserts. Can be consumed directly for a quick energy boost."
+  },
+  {
+    "id": "cubes",
+    "name": "Cubes",
+    "category": "jaggery",
+    "description": "Traditional Cubes, made from high-quality sugarcane juice. A healthy alternative to refined sugar.",
+    "image": "/organic_jaggery_and_honey_1777167168541.png",
+    "sizes": [
+      {
+        "size": "1KG",
+        "price": 132,
+        "offerPrice": 110,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "Rich in iron and minerals",
+      "Healthy sugar substitute",
+      "Traditional preparation method",
+      "No chemicals used"
+    ],
+    "specifications": [
+      "Source: Organic Sugarcane",
+      "Purity: 100% Pure Jaggery",
+      "Type: Balls/Powder"
+    ],
+    "howToUse": "Use as a sweetener in tea, coffee, or desserts. Can be consumed directly for a quick energy boost."
+  },
+  {
+    "id": "shikakai-powder",
+    "name": "Shikakai Powder",
+    "category": "shampoo",
+    "description": "Authentic and healthy Shikakai Powder, prepared with care using traditional methods and natural ingredients.",
+    "image": "/millet_cookies_and_snacks_1777167211594.png",
+    "sizes": [
+      {
+        "size": "100GM",
+        "price": 62,
+        "offerPrice": 50,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "Natural and healthy ingredients",
+      "Traditional preparation",
+      "No artificial flavors",
+      "Wholesome and nutritious"
+    ],
+    "specifications": [
+      "Type: Natural/Homemade",
+      "Purity: 100% Guaranteed",
+      "Packaging: Secure Box/Packet"
+    ],
+    "howToUse": "Ready to consume. Store in an airtight container to maintain freshness."
+  },
+  {
+    "id": "soapnut-powder",
+    "name": "Soapnut Powder",
+    "category": "shampoo",
+    "description": "Authentic and healthy Soapnut Powder, prepared with care using traditional methods and natural ingredients.",
+    "image": "/millet_cookies_and_snacks_1777167211594.png",
+    "sizes": [
+      {
+        "size": "100GM",
+        "price": 61,
+        "offerPrice": 50,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "Natural and healthy ingredients",
+      "Traditional preparation",
+      "No artificial flavors",
+      "Wholesome and nutritious"
+    ],
+    "specifications": [
+      "Type: Natural/Homemade",
+      "Purity: 100% Guaranteed",
+      "Packaging: Secure Box/Packet"
+    ],
+    "howToUse": "Ready to consume. Store in an airtight container to maintain freshness."
+  },
+  {
+    "id": "lemon",
+    "name": "Lemon",
+    "category": "pickles",
+    "description": "Authentic and healthy Lemon, prepared with care using traditional methods and natural ingredients.",
+    "image": "/traditional_indian_pickles_1777167190912.png",
+    "sizes": [
+      {
+        "size": "0.5KG",
+        "price": 163,
+        "offerPrice": 135,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "Natural and healthy ingredients",
+      "Traditional preparation",
+      "No artificial flavors",
+      "Wholesome and nutritious"
+    ],
+    "specifications": [
+      "Type: Natural/Homemade",
+      "Purity: 100% Guaranteed",
+      "Packaging: Secure Box/Packet"
+    ],
+    "howToUse": "Ready to consume. Store in an airtight container to maintain freshness."
+  },
+  {
+    "id": "mango",
+    "name": "Mango",
+    "category": "pickles",
+    "description": "Authentic and healthy Mango, prepared with care using traditional methods and natural ingredients.",
+    "image": "/traditional_indian_pickles_1777167190912.png",
+    "sizes": [
+      {
+        "size": "0.5KG",
+        "price": 163,
+        "offerPrice": 135,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "Natural and healthy ingredients",
+      "Traditional preparation",
+      "No artificial flavors",
+      "Wholesome and nutritious"
+    ],
+    "specifications": [
+      "Type: Natural/Homemade",
+      "Purity: 100% Guaranteed",
+      "Packaging: Secure Box/Packet"
+    ],
+    "howToUse": "Ready to consume. Store in an airtight container to maintain freshness."
+  },
+  {
+    "id": "amla-and-stuff",
+    "name": "Amla and Stuff",
+    "category": "pickles",
+    "description": "Authentic and healthy Amla and Stuff, prepared with care using traditional methods and natural ingredients.",
+    "image": "/traditional_indian_pickles_1777167190912.png",
+    "sizes": [
+      {
+        "size": "0.5KG",
+        "price": 149,
+        "offerPrice": 135,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "Natural and healthy ingredients",
+      "Traditional preparation",
+      "No artificial flavors",
+      "Wholesome and nutritious"
+    ],
+    "specifications": [
+      "Type: Natural/Homemade",
+      "Purity: 100% Guaranteed",
+      "Packaging: Secure Box/Packet"
+    ],
+    "howToUse": "Ready to consume. Store in an airtight container to maintain freshness."
+  },
+  {
+    "id": "farming-honey",
+    "name": "Farming Honey",
+    "category": "honey_ghee",
+    "description": "Authentic and healthy Farming Honey, prepared with care using traditional methods and natural ingredients.",
+    "image": "/organic_jaggery_and_honey_1777167168541.png",
+    "sizes": [
+      {
+        "size": "0.5KG",
+        "price": 255,
+        "offerPrice": 200,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "Natural and healthy ingredients",
+      "Traditional preparation",
+      "No artificial flavors",
+      "Wholesome and nutritious"
+    ],
+    "specifications": [
+      "Type: Natural/Homemade",
+      "Purity: 100% Guaranteed",
+      "Packaging: Secure Box/Packet"
+    ],
+    "howToUse": "Ready to consume. Store in an airtight container to maintain freshness."
+  },
+  {
+    "id": "forest-honey",
+    "name": "Forest Honey",
+    "category": "honey_ghee",
+    "description": "Authentic and healthy Forest Honey, prepared with care using traditional methods and natural ingredients.",
+    "image": "/organic_jaggery_and_honey_1777167168541.png",
+    "sizes": [
+      {
+        "size": "0.5KG",
+        "price": 411,
+        "offerPrice": 350,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "Natural and healthy ingredients",
+      "Traditional preparation",
+      "No artificial flavors",
+      "Wholesome and nutritious"
+    ],
+    "specifications": [
+      "Type: Natural/Homemade",
+      "Purity: 100% Guaranteed",
+      "Packaging: Secure Box/Packet"
+    ],
+    "howToUse": "Ready to consume. Store in an airtight container to maintain freshness."
+  },
+  {
+    "id": "desi-cow-ghee",
+    "name": "Desi Cow Ghee",
+    "category": "honey_ghee",
+    "description": "Authentic and healthy Desi Cow Ghee, prepared with care using traditional methods and natural ingredients.",
+    "image": "/organic_jaggery_and_honey_1777167168541.png",
+    "sizes": [
+      {
+        "size": "0.25KG",
+        "price": 413,
+        "offerPrice": 320,
+        "inStock": true
+      },
+      {
+        "size": "0.5KG",
+        "price": 681,
+        "offerPrice": 600,
+        "inStock": true
+      }
+    ],
+    "benefits": [
+      "Natural and healthy ingredients",
+      "Traditional preparation",
+      "No artificial flavors",
+      "Wholesome and nutritious"
+    ],
+    "specifications": [
+      "Type: Natural/Homemade",
+      "Purity: 100% Guaranteed",
+      "Packaging: Secure Box/Packet"
+    ],
+    "howToUse": "Ready to consume. Store in an airtight container to maintain freshness."
+  }
+]
