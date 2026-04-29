@@ -12,11 +12,11 @@ export default function TrustedBadge({
   subtextColor = "text-emerald-600"
 }: TrustedBadgeProps) {
   return (
-    <div className={`flex items-center gap-2 shadow-sm rounded-full px-4 py-2 border w-fit ${className.includes('bg-') ? '' : 'bg-white'} ${className.includes('border-') ? '' : 'border-zinc-200'} ${className}`}>
-      <ShieldCheck className="text-emerald-600 w-5 h-5 flex-shrink-0" />
-      <div className="text-base leading-tight">
-        <p className={`font-medium text-xs uppercase tracking-widest ${textColor}`}>Trusted & Secure</p>
-        <p className={`font-medium text-xs uppercase tracking-widest ${subtextColor}`}>Certified Protection</p>
+    <div className={`flex items-center gap-2 shadow-sm rounded-full px-3 py-1.5 border w-fit transition-all hover:shadow-md ${className.includes('bg-') ? '' : 'bg-white/95 backdrop-blur-sm'} ${className.includes('border-') ? '' : 'border-black/5'} ${className}`}>
+      <ShieldCheck className="text-emerald-600 w-4 h-4 flex-shrink-0" />
+      <div className="flex flex-col justify-center">
+        <p className={`font-semibold text-[9px] uppercase tracking-widest leading-tight ${textColor}`}>Trusted & Secure</p>
+        <p className={`font-semibold text-[9px] uppercase tracking-widest leading-tight ${subtextColor}`}>Certified Protection</p>
       </div>
     </div>
   );

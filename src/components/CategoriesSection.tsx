@@ -18,7 +18,7 @@ export default function CategoriesSection({ onCategoryClick }: CategoriesSection
         
         {/* Heading */}
         <div className="text-center mb-16">
-          <span className="text-sm font-medium text-[#9EA233] uppercase tracking-[0.4em] mb-3 block">Pure & Organic</span>
+          <span className="text-sm font-medium text-[#9EA233] uppercase tracking-[0.4em] mb-3 block">Pure</span>
           <h2 className="text-4xl md:text-5xl font-bold text-[#0A3221] tracking-tight">Our Categories</h2>
           <div className="h-1 w-20 bg-[#9EA233] mx-auto mt-6 rounded-full opacity-30"></div>
         </div>

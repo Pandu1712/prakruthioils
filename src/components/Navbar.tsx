@@ -81,7 +81,13 @@ export default function Navbar({ onNavigate, currentPage, onSearch, onViewProduc
 
   return (
     <>
-    <div className="fixed top-0 left-0 right-0 z-50">
+    <div className="fixed top-0 left-0 right-0 z-50 flex flex-col">
+      {/* Top Announcement Banner */}
+      <div className="bg-[#9EA233] text-white py-2 px-4 text-center shadow-sm">
+        <p className="text-[11px] md:text-sm font-medium tracking-wide">
+          Free delivery on orders above ₹1,500! Delivered within 24 hours.
+        </p>
+      </div>
       <nav
         className={`transition-all duration-700 ${
           isScrolled 
@@ -105,7 +111,7 @@ export default function Navbar({ onNavigate, currentPage, onSearch, onViewProduc
               </div>
               <div className="flex flex-col min-w-0">
                 <span className="text-base md:text-2xl font-medium text-zinc-900 tracking-tight leading-none truncate">Prakruthi</span>
-                <span className="text-xs font-medium tracking-[0.2em] md:tracking-widest text-[#9EA233] mt-1 truncate">Cold Pressed Oils</span>
+                <span className="text-[11px] font-bold tracking-[0.25em] md:tracking-widest text-[#1E4620] mt-1.5 truncate">COLD PRESSED OILS</span>
               </div>
             </div>
 
@@ -116,10 +122,10 @@ export default function Navbar({ onNavigate, currentPage, onSearch, onViewProduc
                   key={item.id}
                   onClick={() => onNavigate(item.id)}
                   className={`text-base font-medium tracking-wide transition-all duration-300 relative group
-                    ${currentPage === item.id ? "text-[#9EA233]" : "text-gray-900 hover:text-[#9EA233]"}`}
+                    ${currentPage === item.id ? "text-[#1E4620] font-semibold" : "text-gray-900 hover:text-[#1E4620]"}`}
                 >
                   {item.name}
-                  <span className={`absolute -bottom-2 left-0 h-0.5 bg-[#9EA233] transition-all duration-500 ${currentPage === item.id ? "w-full" : "w-0 group-hover:w-full"}`}></span>
+                  <span className={`absolute -bottom-2 left-0 h-0.5 bg-[#1E4620] transition-all duration-500 ${currentPage === item.id ? "w-full" : "w-0 group-hover:w-full"}`}></span>
                 </button>
               ))}
             </div>

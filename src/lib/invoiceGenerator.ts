@@ -13,128 +13,181 @@ const loadImage = (url: string): Promise<HTMLImageElement> => {
 export const generateInvoice = async (order: Order) => {
   const doc = new jsPDF();
   const pageWidth = doc.internal.pageSize.getWidth();
-  const brandColor = [158, 162, 51]; // #9EA233
   
-  // PREMIUM HEADER BACKGROUND
-  doc.setFillColor(brandColor[0], brandColor[1], brandColor[2]);
-  doc.rect(0, 0, pageWidth, 50, 'F');
+  // Premium Colors
+  const darkGreen = [30, 70, 32];    // #1E4620
+  const goldAccent = [212, 175, 55]; // #D4AF37
+  const textDark = [40, 40, 40];
+  const textGray = [100, 100, 100];
   
-  // LOGO FRAME
-  doc.setFillColor(255, 255, 255);
-  doc.circle(35, 25, 18, 'F');
-  
-  // LOAD AND ADD LOGO
+  // LOGO
   try {
     const logo = await loadImage('/coldLogo.jpg');
-    // Center the image in the circle (circle is at 35, 25 with r=18)
-    // Image box: x=21, y=11, size=28 (approx)
-    doc.addImage(logo, 'JPEG', 21, 11, 28, 28);
+    // Draw logo at top left
+    doc.addImage(logo, 'JPEG', 20, 20, 25, 25);
   } catch (e) {
     console.error("Logo load failed, falling back to text", e);
   }
 
-  // BRANDING TEXT
-  doc.setTextColor(255, 255, 255);
-  doc.setFontSize(22);
+  // COMPANY INFO (Next to Logo)
+  doc.setTextColor(darkGreen[0], darkGreen[1], darkGreen[2]);
+  doc.setFontSize(24);
   doc.setFont('helvetica', 'bold');
-  doc.text('PRAKRUTHI', 60, 25);
+  doc.text('Prakruthi', 55, 30);
+  
+  doc.setTextColor(goldAccent[0], goldAccent[1], goldAccent[2]);
+  doc.setFontSize(9);
+  doc.setFont('helvetica', 'bold');
+  doc.text('COLD PRESSED OILS', 55, 36);
+
+  doc.setTextColor(textGray[0], textGray[1], textGray[2]);
   doc.setFontSize(8);
   doc.setFont('helvetica', 'normal');
-  doc.text('COLD PRESSED OILS', 60, 32);
-  
-  doc.setTextColor(255, 255, 255);
-  doc.setFontSize(30);
+  doc.text('No.839, 14th Cross Rd, near Nandini milk parlour,', 55, 42);
+  doc.text('A Block, Sahakar Nagar, Bengaluru, Karnataka', 55, 46);
+  doc.text('Phone: +91 80735 16982', 55, 50);
+
+  // INVOICE TITLE & META (Top Right)
+  doc.setTextColor(darkGreen[0], darkGreen[1], darkGreen[2]);
+  doc.setFontSize(28);
   doc.setFont('helvetica', 'bold');
-  doc.text('INVOICE', pageWidth - 20, 30, { align: 'right' });
+  doc.text('INVOICE', pageWidth - 20, 32, { align: 'right' });
+
+  doc.setFontSize(9);
+  doc.setTextColor(textGray[0], textGray[1], textGray[2]);
+  doc.setFont('helvetica', 'normal');
+  doc.text('Invoice Number:', pageWidth - 60, 42);
+  doc.setFont('helvetica', 'bold');
+  doc.setTextColor(textDark[0], textDark[1], textDark[2]);
+  doc.text(`#${order.id.slice(0, 8).toUpperCase()}`, pageWidth - 20, 42, { align: 'right' });
+
+  doc.setFont('helvetica', 'normal');
+  doc.setTextColor(textGray[0], textGray[1], textGray[2]);
+  doc.text('Issue Date:', pageWidth - 60, 47);
+  doc.setFont('helvetica', 'bold');
+  doc.setTextColor(textDark[0], textDark[1], textDark[2]);
   
-  // SUB-HEADER INFO
-  doc.setTextColor(60, 60, 60);
+  const formattedDate = order.createdAt?.toDate 
+    ? order.createdAt.toDate().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }) 
+    : new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+  doc.text(formattedDate, pageWidth - 20, 47, { align: 'right' });
+
+  // DECORATIVE LINE
+  doc.setDrawColor(goldAccent[0], goldAccent[1], goldAccent[2]);
+  doc.setLineWidth(0.5);
+  doc.line(20, 58, pageWidth - 20, 58);
+
+  // BILLING INFO
+  doc.setFillColor(250, 250, 250);
+  doc.roundedRect(20, 65, 85, 35, 3, 3, 'F');
+  
+  doc.setTextColor(textGray[0], textGray[1], textGray[2]);
+  doc.setFontSize(8);
+  doc.setFont('helvetica', 'bold');
+  doc.text('Billed To', 25, 73);
+  
+  doc.setTextColor(textDark[0], textDark[1], textDark[2]);
   doc.setFontSize(10);
   doc.setFont('helvetica', 'bold');
-  doc.text('BILL FROM:', 20, 65);
-  doc.setFont('helvetica', 'normal');
-  doc.text('Prakruthi cold pressed oils', 20, 72);
-  doc.text('Tata Nagar, Bengaluru', 20, 77);
-  doc.text('Karnataka 560094', 20, 82);
-  doc.text('Phone: +91 80735 16982', 20, 87);
+  doc.text(order.customerName, 25, 80);
   
-  doc.setFont('helvetica', 'bold');
-  doc.text('BILL TO:', 120, 65);
-  doc.setFont('helvetica', 'normal');
-  doc.text(order.customerName, 120, 72);
-  doc.text(order.phone, 120, 77);
-  const addressLines = doc.splitTextToSize(order.address, 70);
-  doc.text(addressLines, 120, 82);
-  
-  // INVOICE METADATA
-  doc.setFillColor(245, 245, 245);
-  doc.rect(20, 105, pageWidth - 40, 15, 'F');
-  doc.setFont('helvetica', 'bold');
   doc.setFontSize(9);
-  doc.text(`INVOICE NO: #${order.id.slice(0, 8).toUpperCase()}`, 25, 115);
-  doc.text(`DATE: ${order.createdAt?.toDate ? order.createdAt.toDate().toLocaleDateString() : new Date().toLocaleDateString()}`, 80, 115);
-  doc.text(`STATUS: ${order.status.toUpperCase()}`, 140, 115);
+  doc.setFont('helvetica', 'normal');
+  doc.setTextColor(textGray[0], textGray[1], textGray[2]);
+  doc.text(order.phone, 25, 86);
+  const addressLines = doc.splitTextToSize(order.address, 75);
+  doc.text(addressLines, 25, 92);
+
+  // ORDER META (Payment & Status)
+  doc.setFontSize(8);
+  doc.setFont('helvetica', 'bold');
+  doc.text('Payment Status:', 120, 75);
+  doc.text('Shipping Mode:', 120, 85);
   
+  // Custom styled badges for status
+  doc.setFillColor(255, 250, 230); // light yellow
+  doc.roundedRect(155, 71, 35, 6, 1, 1, 'F');
+  doc.setTextColor(200, 150, 0);
+  doc.text('Cash on Delivery', 172.5, 75.5, { align: 'center' });
+  
+  doc.setTextColor(textDark[0], textDark[1], textDark[2]);
+  doc.setFont('helvetica', 'normal');
+  doc.text('Express Home Delivery', 155, 85);
+
   // TABLE HEADER
-  const tableTop = 135;
-  doc.setFillColor(brandColor[0], brandColor[1], brandColor[2]);
-  doc.rect(20, tableTop, pageWidth - 40, 10, 'F');
-  doc.setTextColor(255, 255, 255);
-  doc.text('DESCRIPTION', 25, tableTop + 7);
-  doc.text('SIZE', 100, tableTop + 7);
-  doc.text('QTY', 130, tableTop + 7);
-  doc.text('RATE', 150, tableTop + 7);
-  doc.text('AMOUNT', 180, tableTop + 7);
+  const tableTop = 115;
+  doc.setDrawColor(230, 230, 230);
+  doc.setLineWidth(0.5);
+  doc.line(20, tableTop, pageWidth - 20, tableTop);
+  doc.line(20, tableTop + 8, pageWidth - 20, tableTop + 8);
+  
+  doc.setTextColor(goldAccent[0], goldAccent[1], goldAccent[2]);
+  doc.setFontSize(8);
+  doc.setFont('helvetica', 'bold');
+  doc.text('Item Details', 25, tableTop + 5);
+  doc.text('Qty', 115, tableTop + 5, { align: 'center' });
+  doc.text('Unit Price', 150, tableTop + 5, { align: 'right' });
+  doc.text('Amount', 190, tableTop + 5, { align: 'right' });
   
   // TABLE CONTENT
-  let currentY = tableTop + 20;
-  doc.setTextColor(60, 60, 60);
-  doc.setFont('helvetica', 'normal');
+  let currentY = tableTop + 16;
+  doc.setTextColor(textDark[0], textDark[1], textDark[2]);
   
-  order.items.forEach((item, index) => {
-    if (index % 2 === 0) {
-      doc.setFillColor(252, 252, 252);
-      doc.rect(20, currentY - 7, pageWidth - 40, 10, 'F');
-    }
-    
+  order.items.forEach((item) => {
+    doc.setFontSize(10);
+    doc.setFont('helvetica', 'bold');
     doc.text(item.product.name, 25, currentY);
-    doc.text(item.selectedSize.size, 100, currentY);
-    doc.text(item.quantity.toString(), 130, currentY);
-    doc.text(`INR ${item.unitPrice}`, 150, currentY);
-    doc.text(`INR ${item.unitPrice * item.quantity}`, 180, currentY);
-    currentY += 10;
+    
+    doc.setFontSize(8);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(textGray[0], textGray[1], textGray[2]);
+    doc.text(item.selectedSize.size, 25, currentY + 4);
+    
+    doc.setTextColor(textDark[0], textDark[1], textDark[2]);
+    doc.setFontSize(9);
+    doc.text(item.quantity.toString(), 115, currentY, { align: 'center' });
+    doc.text(`INR ${item.unitPrice}`, 150, currentY, { align: 'right' });
+    doc.text(`INR ${item.unitPrice * item.quantity}`, 190, currentY, { align: 'right' });
+    
+    currentY += 12;
   });
   
-  // TOTALS
-  const totalY = currentY + 15;
-  doc.setDrawColor(brandColor[0], brandColor[1], brandColor[2]);
-  doc.setLineWidth(1);
-  doc.line(130, totalY, 190, totalY);
+  // TOTALS SECTION
+  const totalTop = currentY + 10;
   
+  doc.setTextColor(textGray[0], textGray[1], textGray[2]);
+  doc.setFontSize(9);
   doc.setFont('helvetica', 'bold');
-  doc.text('SUBTOTAL:', 130, totalY + 10);
-  doc.text(`INR ${order.totalAmount}`, 190, totalY + 10, { align: 'right' });
+  doc.text('Subtotal', 140, totalTop);
+  doc.setTextColor(textDark[0], textDark[1], textDark[2]);
+  doc.text(`INR ${order.totalAmount}`, 190, totalTop, { align: 'right' });
   
-  doc.text('SHIPPING:', 130, totalY + 17);
-  doc.text('FREE', 190, totalY + 17, { align: 'right' });
+  doc.setTextColor(goldAccent[0], goldAccent[1], goldAccent[2]);
+  doc.text('Delivery', 140, totalTop + 8);
+  doc.text('Free', 190, totalTop + 8, { align: 'right' });
   
-  doc.setFillColor(brandColor[0], brandColor[1], brandColor[2]);
-  doc.rect(130, totalY + 22, 60, 12, 'F');
-  doc.setTextColor(255, 255, 255);
-  doc.setFontSize(12);
-  doc.text('TOTAL:', 135, totalY + 30);
-  doc.text(`INR ${order.totalAmount}`, 185, totalY + 30, { align: 'right' });
+  doc.setDrawColor(goldAccent[0], goldAccent[1], goldAccent[2]);
+  doc.line(140, totalTop + 12, 190, totalTop + 12);
+  
+  doc.setTextColor(textGray[0], textGray[1], textGray[2]);
+  doc.text('Grand Total', 140, totalTop + 20);
+  doc.setTextColor(darkGreen[0], darkGreen[1], darkGreen[2]);
+  doc.setFontSize(14);
+  doc.text(`INR ${order.totalAmount}`, 190, totalTop + 20, { align: 'right' });
   
   // FOOTER
-  const footerTop = 260;
-  doc.setTextColor(180, 180, 180);
-  doc.setFontSize(8);
+  const footerY = doc.internal.pageSize.getHeight() - 20;
+  doc.setDrawColor(240, 240, 240);
+  doc.setLineWidth(0.5);
+  doc.line(20, footerY - 10, pageWidth - 20, footerY - 10);
+  
+  doc.setTextColor(200, 200, 200);
+  doc.setFontSize(7);
   doc.setFont('helvetica', 'italic');
-  doc.text('This is a computer generated invoice. No signature required.', pageWidth / 2, footerTop, { align: 'center' });
-  doc.setTextColor(brandColor[0], brandColor[1], brandColor[2]);
-  doc.setFontSize(10);
-  doc.setFont('helvetica', 'bold');
-  doc.text('Thank you for choosing Prakruthi cold pressed oils!', pageWidth / 2, footerTop + 10, { align: 'center' });
+  doc.text('Pure Harvest. Traditional Extraction. Ancient Wisdom.', pageWidth / 2, footerY - 3, { align: 'center', charSpace: 1.5 });
+  
+  doc.setFont('helvetica', 'normal');
+  doc.text('Generated by Prakruthi System', 20, footerY + 5);
   
   // Save PDF
   doc.save(`Invoice_${order.id.slice(0, 8)}.pdf`);

@@ -52,7 +52,7 @@ export default function HeroSection({ onExplore }: HeroSectionProps) {
              <div className="w-px h-10 bg-gray-200"></div>
               <div className="flex flex-col">
                 <span className="text-[24px] font-medium text-gray-900">100%</span>
-                <span className="text-xs text-gray-500 font-medium tracking-widest">Organic & Pure</span>
+                <span className="text-xs text-gray-500 font-medium tracking-widest">Pure</span>
               </div>
           </div>
         </div>

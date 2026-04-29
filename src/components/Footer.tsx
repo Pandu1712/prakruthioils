@@ -8,7 +8,6 @@ import {
   Clock,
   ArrowRight
 } from "lucide-react";
-import TrustedBadge from "./TrustedBadge";
 
 interface FooterProps {
   onNavigate: (page: string) => void;
@@ -52,13 +51,6 @@ export default function Footer({ onNavigate, onCategoryClick }: FooterProps) {
               ))}
             </div>
 
-            <div className="pt-4">
-               <TrustedBadge 
-                 className="bg-transparent border-white/20 text-white !shadow-none" 
-                 textColor="text-white" 
-                 subtextColor="text-white/80" 
-               />
-            </div>
           </div>
 
           {/* Quick Links */}
@@ -113,24 +105,18 @@ export default function Footer({ onNavigate, onCategoryClick }: FooterProps) {
 
           {/* Office Links */}
           <div>
-            <h3 className="text-lg font-black uppercase tracking-widest text-white mb-8">Our Hours</h3>
+            <h3 className="text-[24px] font-black uppercase tracking-widest text-white mb-8">Our Hours</h3>
             <ul className="space-y-4">
                <li className="flex gap-4">
                   <div className="w-10 h-10 rounded-xl bg-white/10 flex-shrink-0 flex items-center justify-center text-white">
                      <Clock className="w-5 h-5" />
                   </div>
                   <div>
-                    <span className="block text-white text-sm font-bold uppercase tracking-tight">Mon - Sat</span>
-                    <span className="text-white text-xs font-medium">09:00 AM - 08:00 PM</span>
-                  </div>
-               </li>
-               <li className="flex gap-4 opacity-50">
-                  <div className="w-10 h-10 rounded-xl bg-white/10 flex-shrink-0 flex items-center justify-center text-white">
-                     <Clock className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <span className="block text-white text-sm font-bold uppercase tracking-tight">Sunday</span>
-                    <span className="text-white text-xs font-medium italic">Closed</span>
+                    <span className="block text-white text-sm font-bold uppercase tracking-tight">All Days</span>
+                    <div className="flex flex-col gap-1 mt-1">
+                      <span className="text-white text-xs font-medium">09:00 AM - 12:00 PM</span>
+                      <span className="text-white text-xs font-medium">04:30 PM - 09:15 PM</span>
+                    </div>
                   </div>
                </li>
             </ul>

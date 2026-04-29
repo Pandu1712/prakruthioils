@@ -5,6 +5,7 @@ import { DataProvider } from "./context/DataContext";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import CategoriesSection from "./components/CategoriesSection";
+import ScrollingTicker from "./components/ScrollingTicker";
 
 import HomePage from "./pages/HomePage";
 import ProductsPage from "./pages/ProductsPage";
@@ -215,6 +216,7 @@ function App() {
 
           {currentPage !== 'admin-login' && currentPage !== 'admin-dashboard' && (
             <>
+              <ScrollingTicker />
               <Footer
                 onNavigate={handleNavigate}
                 onCategoryClick={handleCategoryClick}
@@ -231,7 +233,7 @@ function App() {
                   </div>
                 </>
               )}
-              <MobileBottomBar onNavigate={navigateWithHistory} currentPage={currentPage} />
+              <MobileBottomBar onNavigate={handleNavigate} currentPage={currentPage} />
             </>
           )}
           </div>
