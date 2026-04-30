@@ -6,7 +6,7 @@ export default function ScrollingTicker() {
     { text: "100% PURE COLD PRESSED OILS", Icon: Droplet, image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?q=80&w=100&auto=format&fit=crop" },
     { text: "NO CHEMICALS OR PRESERVATIVES", Icon: ShieldCheck, image: "/coldLogo.jpg" },
     { text: "CONTACT US: +91 80735 16982", Icon: PhoneCall, image: "https://images.unsplash.com/photo-1611078489935-0cb964de46d6?q=80&w=100&auto=format&fit=crop" },
-    { text: "TRADITIONAL WOOD PRESSED EXTRACTION", Icon: Leaf, image: "https://images.unsplash.com/photo-1536993165279-22a2bbfa7969?q=80&w=100&auto=format&fit=crop" },
+    { text: "ONLY COLD PRESSED OILS", Icon: Leaf, image: "https://images.unsplash.com/photo-1536993165279-22a2bbfa7969?q=80&w=100&auto=format&fit=crop" },
   ];
 
   return (
