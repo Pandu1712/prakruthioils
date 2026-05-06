@@ -167,10 +167,10 @@ function App() {
         );
 
       case "contact":
-        return <ContactPage />;
+        return <ContactPage onBack={() => navigateWithHistory("home")} />;
 
       case "about":
-        return <AboutPage />;
+        return <AboutPage onBack={() => navigateWithHistory("home")} />;
 
       case "categories":
         return <CategoriesSection onCategoryClick={handleCategoryClick} />;

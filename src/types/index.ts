@@ -17,7 +17,7 @@ export interface Product {
   specifications: string[];
   howToUse: string;
   tags?: string[];
-
+  isActive?: boolean;
 }
 
 export interface CartItem {

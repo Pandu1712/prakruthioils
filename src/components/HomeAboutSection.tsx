@@ -51,7 +51,7 @@ export default function HomeAboutSection({ onReadMore }: HomeAboutSectionProps) 
             </div>
             
             <p className="text-gray-500 font-medium leading-relaxed text-[16px]">
-              Prakruthi cold pressed oils is born from a vision to bring back the lost purity of traditional cooking. We believe that what you eat determines how you live. Our processes are designed to honor nature at every step.
+              Prakruthi Naturals is born from a vision to bring back the lost purity of traditional cooking. We believe that what you eat determines how you live. Our processes are designed to honor nature at every step.
             </p>
 
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">

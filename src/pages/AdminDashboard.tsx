@@ -114,32 +114,71 @@ export default function AdminDashboard({ onLogout }: AdminDashboardProps) {
 
   // Stats
   const stats = useMemo(() => {
-    const totalSales = orders.filter(o => o.status !== 'cancelled').reduce((sum, o) => sum + o.totalAmount, 0);
+    const filteredForRevenue = orders.filter(o => {
+      if (o.status === 'cancelled') return false;
+      if (dateFilter === 'all') return true;
+      const orderDate = o.createdAt?.toDate ? o.createdAt.toDate() : new Date();
+      const now = new Date();
+      if (dateFilter === 'today') return orderDate.toDateString() === now.toDateString();
+      if (dateFilter === 'week') return orderDate >= new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+      if (dateFilter === 'month') return orderDate.getMonth() === now.getMonth() && orderDate.getFullYear() === now.getFullYear();
+      return true;
+    });
+
+    const totalSales = filteredForRevenue.reduce((sum, o) => sum + o.totalAmount, 0);
     const pendingOrders = orders.filter(o => o.status === 'pending').length;
     const totalProducts = products.length;
-    return { totalSales, pendingOrders, totalProducts };
-  }, [orders, products]);
+    return { totalSales, pendingOrders, totalProducts, revenueOrderCount: filteredForRevenue.length };
+  }, [orders, products, dateFilter]);
 
   // Analytics Data
   const analyticsData = useMemo(() => {
-    const last7Days = [...Array(7)].map((_, i) => {
-      const d = new Date();
-      d.setDate(d.getDate() - i);
-      return d.toLocaleDateString('en-IN', { day: 'numeric', month: 'short' });
-    }).reverse();
+    let labels: string[] = [];
+    let formatLabel: (date: Date) => string;
 
-    return last7Days.map(date => {
-      const dayOrders = orders.filter(o => {
+    if (dateFilter === 'today') {
+      const now = new Date();
+      labels = [...Array(12)].map((_, i) => {
+        const d = new Date(now.getTime() - (11 - i) * 2 * 60 * 60 * 1000);
+        return d.getHours() + ":00";
+      });
+      formatLabel = (date) => date.getHours() + ":00";
+    } else if (dateFilter === 'week') {
+      labels = [...Array(7)].map((_, i) => {
+        const d = new Date();
+        d.setDate(d.getDate() - (6 - i));
+        return d.toLocaleDateString('en-IN', { day: 'numeric', month: 'short' });
+      });
+      formatLabel = (date) => date.toLocaleDateString('en-IN', { day: 'numeric', month: 'short' });
+    } else if (dateFilter === 'month') {
+      labels = [...Array(10)].map((_, i) => {
+        const d = new Date();
+        d.setDate(d.getDate() - (9 - i) * 3);
+        return d.toLocaleDateString('en-IN', { day: 'numeric', month: 'short' });
+      });
+      formatLabel = (date) => date.toLocaleDateString('en-IN', { day: 'numeric', month: 'short' });
+    } else {
+      labels = [...Array(6)].map((_, i) => {
+        const d = new Date();
+        d.setMonth(d.getMonth() - (5 - i));
+        return d.toLocaleDateString('en-IN', { month: 'short', year: '2-digit' });
+      });
+      formatLabel = (date) => date.toLocaleDateString('en-IN', { month: 'short', year: '2-digit' });
+    }
+
+    return labels.map(label => {
+      const periodOrders = orders.filter(o => {
+        if (o.status === 'cancelled') return false;
         const oDate = o.createdAt?.toDate ? o.createdAt.toDate() : new Date();
-        return oDate.toLocaleDateString('en-IN', { day: 'numeric', month: 'short' }) === date;
+        return formatLabel(oDate) === label;
       });
       return {
-        name: date,
-        sales: dayOrders.reduce((sum, o) => sum + o.totalAmount, 0),
-        orders: dayOrders.length
+        name: label,
+        sales: periodOrders.reduce((sum, o) => sum + o.totalAmount, 0),
+        orders: periodOrders.length
       };
     });
-  }, [orders]);
+  }, [orders, dateFilter]);
 
   const categoryStats = useMemo(() => {
     return categories.map(cat => ({
@@ -150,7 +189,19 @@ export default function AdminDashboard({ onLogout }: AdminDashboardProps) {
 
   const topProducts = useMemo(() => {
     const productSales: { [key: string]: { name: string, count: number, image: string, total: number } } = {};
-    orders.forEach(o => {
+    
+    const filteredForTop = orders.filter(o => {
+      if (o.status === 'cancelled') return false;
+      if (dateFilter === 'all') return true;
+      const orderDate = o.createdAt?.toDate ? o.createdAt.toDate() : new Date();
+      const now = new Date();
+      if (dateFilter === 'today') return orderDate.toDateString() === now.toDateString();
+      if (dateFilter === 'week') return orderDate >= new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+      if (dateFilter === 'month') return orderDate.getMonth() === now.getMonth() && orderDate.getFullYear() === now.getFullYear();
+      return true;
+    });
+
+    filteredForTop.forEach(o => {
       o.items.forEach(item => {
         if (!productSales[item.product.id]) {
           productSales[item.product.id] = { 
@@ -164,8 +215,8 @@ export default function AdminDashboard({ onLogout }: AdminDashboardProps) {
         productSales[item.product.id].total += item.unitPrice * item.quantity;
       });
     });
-    return Object.values(productSales).sort((a, b) => b.count - a.count).slice(0, 5);
-  }, [orders]);
+    return Object.values(productSales).sort((a, b) => b.total - a.total).slice(0, 5);
+  }, [orders, dateFilter]);
 
   // Filters
   const filteredOrders = useMemo(() => {
@@ -203,38 +254,64 @@ export default function AdminDashboard({ onLogout }: AdminDashboardProps) {
 
   // Export Handlers
   const handleExportProducts = (type: 'excel' | 'pdf') => {
-    const data = products.map(p => ({
-      ID: p.id.slice(0, 8),
-      Name: p.name,
-      Category: p.category.name,
-      Description: p.description,
-      'Active Status': p.isActive ? 'Active' : 'Inactive',
-      'Total Variants': p.sizes.length,
-      'Base Price (₹)': p.sizes[0]?.price || 0
-    }));
+    const data: any[] = [];
+    
+    products.forEach(p => {
+      const categoryName = categories.find(c => c.id === p.category || c.name === p.category)?.name || p.category;
+      
+      p.sizes.forEach(s => {
+        data.push({
+          'Category': categoryName,
+          'Product Name': p.name,
+          'Description': p.description,
+          'Status': p.isActive === false ? 'Inactive' : 'Active',
+          'Size': s.size,
+          'Price (₹)': s.price,
+          'Offer Price (₹)': s.offerPrice || s.price,
+          'Stock': s.inStock ? 'In Stock' : 'Out of Stock'
+        });
+      });
+    });
 
     if (type === 'excel') {
-      exportToExcel(data, 'Prakruthi_Products_Export');
+      exportToExcel(data, 'Prakruthi_Detailed_Products_Export');
     } else {
-      const headers = ['ID', 'Name', 'Category', 'Status', 'Variants', 'Base Price (₹)'];
-      const body = data.map(d => [d.ID, d.Name, d.Category, d['Active Status'], d['Total Variants'], d['Base Price (₹)']]);
-      exportToPDF(headers, body, 'Product Inventory Report', 'Prakruthi_Products_Export');
+      const headers = ['Category', 'Product', 'Size', 'Price (₹)', 'Status'];
+      const body = data.map(d => [d['Category'], d['Product Name'], d['Size'], d['Offer Price (₹)'], d['Status']]);
+      exportToPDF(headers, body, 'Detailed Product Inventory Report', 'Prakruthi_Detailed_Products_Export');
     }
   };
 
   const handleExportCategories = (type: 'excel' | 'pdf') => {
-    const data = categories.map(c => ({
-      ID: c.id.slice(0, 8),
-      Name: c.name,
-      'Product Count': products.filter(p => p.category.name === c.name || p.category.id === c.id).length
-    }));
+    const data: any[] = [];
+    
+    // Group products by category for a clearer report
+    categories.forEach(c => {
+      const categoryProducts = products.filter(p => p.category === c.id || p.category === c.name);
+      
+      if (categoryProducts.length === 0) {
+        data.push({
+          'Category': c.name,
+          'Product Name': 'No Products Linked',
+          'Status': 'N/A'
+        });
+      } else {
+        categoryProducts.forEach(p => {
+          data.push({
+            'Category': c.name,
+            'Product Name': p.name,
+            'Status': p.isActive === false ? 'Inactive' : 'Active'
+          });
+        });
+      }
+    });
 
     if (type === 'excel') {
-      exportToExcel(data, 'Prakruthi_Categories_Export');
+      exportToExcel(data, 'Prakruthi_Inventory_By_Category');
     } else {
-      const headers = ['ID', 'Category Name', 'Total Products'];
-      const body = data.map(d => [d.ID, d.Name, d['Product Count']]);
-      exportToPDF(headers, body, 'Category Overview Report', 'Prakruthi_Categories_Export');
+      const headers = ['Category', 'Product Name', 'Status'];
+      const body = data.map(d => [d['Category'], d['Product Name'], d['Status']]);
+      exportToPDF(headers, body, 'Inventory Grouped By Category', 'Prakruthi_Inventory_By_Category');
     }
   };
 
@@ -250,11 +327,11 @@ export default function AdminDashboard({ onLogout }: AdminDashboardProps) {
     }));
 
     if (type === 'excel') {
-      exportToExcel(data, 'Prakruthi_Orders_Export');
+      exportToExcel(data, 'Prakruthi_Naturals_Orders_Export');
     } else {
       const headers = ['Order ID', 'Date', 'Customer', 'Amount (₹)', 'Status', 'Items'];
       const body = data.map(d => [d['Order ID'].slice(0,8), d['Date'], d['Customer'], d['Total Amount (₹)'], d['Status'], d['Items Count']]);
-      exportToPDF(headers, body, 'Order Fulfillment Report', 'Prakruthi_Orders_Export');
+      exportToPDF(headers, body, 'Order Fulfillment Report', 'Prakruthi_Naturals_Orders_Export');
     }
   };
 
@@ -266,11 +343,11 @@ export default function AdminDashboard({ onLogout }: AdminDashboardProps) {
     }));
 
     if (type === 'excel') {
-      exportToExcel(data, 'Prakruthi_Revenue_Export');
+      exportToExcel(data, 'Prakruthi_Naturals_Revenue_Export');
     } else {
       const headers = ['Product Name', 'Units Sold', 'Revenue Generated (₹)'];
       const body = data.map(d => [d['Product Name'], d['Units Sold'], d['Revenue Generated (₹)']]);
-      exportToPDF(headers, body, `Revenue Analytics`, 'Prakruthi_Revenue_Export');
+      exportToPDF(headers, body, `Revenue Analytics`, 'Prakruthi_Naturals_Revenue_Export');
     }
   };
 
@@ -290,7 +367,7 @@ export default function AdminDashboard({ onLogout }: AdminDashboardProps) {
           </div>
           <div className="flex flex-col">
             <span className="text-[22px] font-black text-white tracking-tighter leading-none group-hover:text-[#9EA233] transition-colors duration-300">Prakruthi</span>
-            <span className="text-[9px] uppercase font-black tracking-[0.4em] text-[#9EA233]/80 mt-1">Premium Admin</span>
+            <span className="text-[9px] uppercase font-black tracking-[0.4em] text-[#9EA233]/80 mt-1">Naturals Admin</span>
           </div>
         </div>
 
@@ -649,7 +726,7 @@ export default function AdminDashboard({ onLogout }: AdminDashboardProps) {
                         </td>
                         <td className="px-8 py-5">
                           <span className="px-3 py-1.5 rounded-md bg-zinc-100 text-zinc-700 border border-zinc-200 text-[9px] font-black uppercase tracking-widest whitespace-nowrap">
-                            {product.category}
+                            {categories.find(c => c.id === product.category)?.name || product.category}
                           </span>
                         </td>
                         <td className="px-8 py-5">
@@ -1001,8 +1078,8 @@ export default function AdminDashboard({ onLogout }: AdminDashboardProps) {
                  </div>
                  <div className="bg-white p-6 rounded-3xl border border-zinc-200 shadow-sm hover:shadow-md transition-shadow">
                     <p className="text-[10px] font-black text-zinc-400 uppercase tracking-widest mb-2">Avg. Order Value</p>
-                    <h3 className="text-3xl font-black text-zinc-900 tracking-tighter">₹{(stats.totalSales / (orders.length || 1)).toFixed(0)}</h3>
-                    <p className="mt-4 text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Based on {orders.length} transactions</p>
+                    <h3 className="text-3xl font-black text-zinc-900 tracking-tighter">₹{(stats.totalSales / (stats.revenueOrderCount || 1)).toFixed(0)}</h3>
+                    <p className="mt-4 text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Based on {stats.revenueOrderCount} transactions</p>
                  </div>
                  <div className="bg-white p-6 rounded-3xl border border-zinc-200 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
                     <div className="absolute top-0 right-0 w-24 h-24 bg-[#9EA233]/10 rounded-full blur-2xl -mr-8 -mt-8 pointer-events-none"></div>

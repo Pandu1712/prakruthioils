@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { ArrowLeft, MessageSquarePlus, Award } from 'lucide-react';
+import { ArrowLeft, MessageSquarePlus } from 'lucide-react';
 
 export default function ReviewsPage({ onBack }: { onBack: () => void }) {
   
@@ -22,31 +22,24 @@ export default function ReviewsPage({ onBack }: { onBack: () => void }) {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#FFFEF9] pt-40 pb-24">
-      <div className="container mx-auto px-6">
+    <div className="min-h-screen bg-[#FDFDFD] pt-40 md:pt-48 pb-24">
+      <div className="container mx-auto max-w-7xl px-6 md:px-12">
         
-        {/* Cinematic Header */}
-        <div className="mb-24 text-center">
+        {/* Header */}
+        <div className="mb-10">
           <button
             onClick={onBack}
-            className="flex items-center gap-2 text-gray-400 hover:text-[#9EA233] font-bold text-xs uppercase tracking-[0.3em] mb-8 mx-auto transition-all"
+            className="group flex items-center gap-3 text-gray-400 hover:text-[#9EA233] font-medium text-base tracking-widest mb-3 transition-all"
           >
-            <ArrowLeft className="w-4 h-4" />
+            <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
             Back to Home
           </button>
           
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#9EA233]/10 text-[#7D8128] text-xs font-bold uppercase tracking-[0.3em] mb-10">
-            <Award className="w-4 h-4" />
-            <span>Customer Voices</span>
-          </div>
-
-          <h1 className="text-5xl md:text-8xl font-bold text-gray-900 tracking-tight leading-[1.1] mb-10">
-            Stories of <br />
-            <span className="text-[#9EA233]">Purity & Trust.</span>
+          <h1 className="text-[30px] font-bold text-gray-900 tracking-tight leading-none mb-2">
+            Customer <span className="text-[#9EA233]">Reviews.</span>
           </h1>
-          
-          <p className="text-gray-500 font-medium max-w-2xl mx-auto text-lg leading-relaxed">
-            Every drop we extract carries the trust of thousands of families. Read their experiences with Prakruthi cold pressed oils directly from Google.
+          <p className="text-sm md:text-base text-gray-500 font-medium leading-relaxed">
+            Every drop we extract carries the trust of thousands of families.
           </p>
         </div>
 
@@ -56,16 +49,16 @@ export default function ReviewsPage({ onBack }: { onBack: () => void }) {
         </div>
 
         {/* Simplified Contact CTA */}
-        <div className="mt-32 text-center">
-           <div className="max-w-xl mx-auto p-12 rounded-[50px] border-2 border-dashed border-gray-200 hover:border-[#9EA233] transition-colors group">
-              <MessageSquarePlus className="w-12 h-12 text-[#9EA233] mx-auto mb-6 group-hover:scale-110 transition-transform" />
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Share Your Experience</h3>
-              <p className="text-sm text-gray-500 font-medium mb-10 leading-relaxed">
+        <div className="mt-12 md:mt-20 text-center">
+           <div className="max-w-xl mx-auto p-6 md:p-10 rounded-3xl md:rounded-[50px] border-2 border-dashed border-gray-100 hover:border-[#9EA233] transition-colors group">
+              <MessageSquarePlus className="w-10 h-10 text-[#9EA233] mx-auto mb-4 group-hover:scale-110 transition-transform" />
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Share Your Experience</h3>
+              <p className="text-sm text-gray-500 font-medium mb-8 leading-relaxed">
                 Your feedback helps us remain committed to our promise of purity.
               </p>
               <button 
-                onClick={() => window.open('https://wa.me/918073516982?text=Hi, I want to share my feedback about Prakruthi cold pressed oils!', '_blank')}
-                className="px-10 py-4 bg-[#9EA233] text-white rounded-md font-bold text-xs uppercase tracking-[0.2em] transform hover:scale-105 transition-all shadow-xl"
+                onClick={() => window.open('https://wa.me/918073516982?text=Hi, I want to share my feedback about Prakruthi Naturals!', '_blank')}
+                className="px-8 py-3 bg-[#9EA233] text-white rounded-xl font-bold text-xs uppercase tracking-[0.2em] transform hover:scale-105 transition-all shadow-xl"
               >
                  Send Feedback via WhatsApp
               </button>

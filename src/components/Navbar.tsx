@@ -85,7 +85,7 @@ export default function Navbar({ onNavigate, currentPage, onSearch, onViewProduc
       {/* Top Announcement Banner */}
       <div className="bg-[#9EA233] text-white py-2 px-4 text-center shadow-sm">
         <p className="text-[11px] md:text-sm font-medium tracking-wide">
-          Free delivery on orders above ₹1,500! Delivered within 24 hours.
+          Free delivery on orders above ₹1,500! Delivery within 5 km of Sahakar Nagar in 24 hours.
         </p>
       </div>
       <nav
@@ -111,7 +111,7 @@ export default function Navbar({ onNavigate, currentPage, onSearch, onViewProduc
               </div>
               <div className="flex flex-col min-w-0">
                 <span className="text-base md:text-2xl font-medium text-zinc-900 tracking-tight leading-none truncate">Prakruthi</span>
-                <span className="text-[11px] font-bold tracking-[0.25em] md:tracking-widest text-[#1E4620] mt-1.5 truncate">COLD PRESSED OILS</span>
+                <span className="text-[11px] font-bold tracking-[0.25em] md:tracking-widest text-[#1E4620] mt-1.5 truncate">NATURALS</span>
               </div>
             </div>
 
@@ -231,7 +231,7 @@ export default function Navbar({ onNavigate, currentPage, onSearch, onViewProduc
                   <img src="/coldLogo.jpg" alt="Logo" className="w-12 h-12 rounded-full border border-[#9EA233]/20" />
                   <div className="flex flex-col">
                     <span className="text-2xl font-medium text-zinc-900 tracking-tight leading-none">Prakruthi</span>
-                    <span className="text-xs font-medium tracking-widest text-[#9EA233] mt-1">Cold Oils</span>
+                    <span className="text-xs font-medium tracking-widest text-[#9EA233] mt-1">Naturals</span>
                   </div>
               </div>
               <button 

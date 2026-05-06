@@ -57,7 +57,7 @@ const AdminLoginPage: React.FC<AdminLoginPageProps> = ({ onBack, onLoginSuccess 
           subject: 'Your Admin Login OTP code',
           html: `
             <div style="font-family: sans-serif; max-w: 600px; margin: 0 auto;">
-              <h2 style="color: #16a34a;">Prakruthi cold pressed oils Admin</h2>
+              <h2 style="color: #16a34a;">Prakruthi Naturals Admin</h2>
               <p>Your one-time password (OTP) to log into the Admin Dashboard is:</p>
               <h1 style="font-size: 32px; letter-spacing: 4px; background: #f3f4f6; padding: 12px; border-radius: 8px; display: inline-block;">${generatedOtp}</h1>
               <p>This code is valid for your current session.</p>

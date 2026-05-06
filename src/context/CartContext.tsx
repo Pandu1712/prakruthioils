@@ -10,6 +10,8 @@ interface CartContextType {
   clearCart: () => void;
   getTotalPrice: () => number;
   getTotalItems: () => number;
+  getDeliveryCharges: () => number;
+  getFinalTotal: () => number;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -126,6 +128,16 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
         clearCart: () => setCart([]),
         getTotalPrice,
         getTotalItems,
+        getDeliveryCharges: () => {
+          const total = getTotalPrice();
+          if (total === 0 || total >= 1500) return 0;
+          return 100;
+        },
+        getFinalTotal: () => {
+          const total = getTotalPrice();
+          const delivery = total > 0 && total < 1500 ? 100 : 0;
+          return total + delivery;
+        }
       }}
     >
       {children}

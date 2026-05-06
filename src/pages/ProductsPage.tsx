@@ -62,7 +62,9 @@ export default function ProductsPage({
       // Category match: either from URL (initialCategoryId) OR from sidebar selection (selectedCats)
       // If selectedCats has items, only those categories match. 
       // If activeCategory is not 'all', it acts as a primary filter.
-      const matchesCategory = activeCategory === 'all' || p.category.toLowerCase() === activeCategory.toLowerCase();
+      const matchesCategory = activeCategory === 'all' || 
+                              p.category.toLowerCase() === activeCategory.toLowerCase() ||
+                              categoryData.find(c => c.id === activeCategory)?.name.toLowerCase() === p.category.toLowerCase();
       
       const matchesSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
                             p.description.toLowerCase().includes(searchQuery.toLowerCase());
@@ -93,7 +95,7 @@ export default function ProductsPage({
   };
 
   return (
-    <div className="min-h-screen bg-[#FDFCF7] pt-32 md:pt-40 pb-16">
+    <div className="min-h-screen bg-[#FDFCF7] pt-40 md:pt-48 pb-16">
       <div className="container mx-auto max-w-7xl px-4 md:px-6">
         
         {/* Top Filter Bar */}
@@ -318,7 +320,7 @@ export default function ProductsPage({
               </h3>
               <div className="space-y-4">
                 {categoryData.map((cat) => {
-                  const count = products.filter(p => p.category === cat.id).length;
+                  const count = products.filter(p => p.category === cat.id || p.category.toLowerCase() === cat.name.toLowerCase()).length;
                   const isChecked = selectedCats.includes(cat.id);
                   return (
                     <div key={cat.id} className="flex items-center justify-between group cursor-pointer" onClick={() => toggleCategory(cat.id)}>

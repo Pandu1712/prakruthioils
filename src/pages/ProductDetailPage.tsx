@@ -30,7 +30,7 @@ export default function ProductDetailPage({
   const [isAdded, setIsAdded] = useState(false);
   const [activeTab, setActiveTab] = useState<'benefits' | 'specs' | 'usage'>('benefits');
   const { addToCart } = useCart();
-  const { products } = useData();
+  const { products, categories: categoryData } = useData();
 
   const handleAddToCart = () => {
     addToCart({
@@ -49,28 +49,28 @@ export default function ProductDetailPage({
     .slice(0, 4);
 
   return (
-    <div className="min-h-screen bg-white pt-32 pb-24">
+    <div className="min-h-screen bg-white pt-40 md:pt-48 pb-16">
       <div className="container mx-auto max-w-7xl px-6 md:px-12">
         
         {/* Navigation Breadcrumb */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
           <button
             onClick={onBack}
-            className="group flex items-center gap-3 text-gray-400 hover:text-[#9EA233] font-medium text-xs md:text-base tracking-[0.2em] transition-all"
+            className="group flex items-center gap-2 text-gray-400 hover:text-[#9EA233] font-medium text-[10px] md:text-base tracking-widest transition-all"
           >
-            <ArrowLeft className="w-5 h-5 md:w-6 md:h-6 group-hover:-translate-x-1 transition-transform" />
+            <ArrowLeft className="w-4 h-4 md:w-6 md:h-6 group-hover:-translate-x-1 transition-transform" />
             Back to Catalog
           </button>
           <div className="flex items-center gap-2 text-[10px] md:text-xs font-medium uppercase tracking-widest text-gray-300">
              <button onClick={onBack} className="hover:text-[#9EA233] transition-colors">Shop</button>
              <span className="w-1 h-1 bg-gray-200 rounded-full"></span>
-             <span className="text-[#9EA233]">{product.category}</span>
+             <span className="text-[#9EA233]">{categoryData.find(c => c.id === product.category)?.name || product.category}</span>
              <span className="w-1 h-1 bg-gray-200 rounded-full"></span>
              <span className="text-gray-900">{product.name}</span>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start mb-16 md:mb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-start mb-12 md:mb-16">
           
           {/* Left: Premium Image Section */}
           <div className="relative group">
@@ -93,7 +93,7 @@ export default function ProductDetailPage({
           <div className="md:col-span-1 space-y-8 animate-fadeIn">
             {/* Product Category Tag */}
             <div className="inline-block px-3 py-1 bg-[#9EA233]/5 text-[#9EA233] text-[10px] font-medium uppercase tracking-[0.2em] rounded-full">
-              {product.category}
+              {categoryData.find(c => c.id === product.category)?.name || product.category}
             </div>
 
             <div className="space-y-4">
@@ -182,7 +182,7 @@ export default function ProductDetailPage({
         </div>
 
         {/* Tabbed Info Section */}
-        <div className="mb-16 md:mb-24">
+        <div className="mb-12 md:mb-16">
            <div className="flex border-b border-gray-100 mb-16 overflow-x-auto scrollbar-hide">
               {[
                 { id: 'benefits', label: 'Nutritional Benefits', icon: Zap },

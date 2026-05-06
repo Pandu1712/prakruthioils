@@ -5,126 +5,157 @@ interface InvoiceProps {
   formData: any;
   cart: CartItem[];
   total: number;
+  deliveryCharge: number;
   invoiceNumber: string;
   date: string;
 }
 
 const Invoice = forwardRef<HTMLDivElement, InvoiceProps>(
-  ({ formData, cart, total, invoiceNumber, date }, ref) => {
+  ({ formData, cart, total, deliveryCharge, invoiceNumber, date }, ref) => {
+    const subtotal = cart.reduce((sum, item) => sum + item.unitPrice * item.quantity, 0);
+
     return (
-      <div ref={ref} className="p-12 w-[210mm] mx-auto bg-white text-gray-800 font-sans shadow-2xl">
+      <div ref={ref} className="p-10 w-[210mm] mx-auto bg-white text-gray-900 border border-gray-100" style={{ fontFamily: 'Arial, sans-serif' }}>
         
-        {/* PREMIUM HEADER */}
-        <div className="flex justify-between items-start mb-12 border-b-2 border-[#D4AF37]/50 pb-10">
-          <div className="flex items-center gap-6">
-            <div className="w-24 h-24 rounded-full border-2 border-[#D4AF37] overflow-hidden shadow-lg bg-white flex items-center justify-center p-1">
-              <img src="/coldLogo.jpg" className="w-full h-full object-cover rounded-full" alt="logo" />
-            </div>
-            <div>
-              <h1 className="text-3xl font-serif font-bold text-[#1E4620] tracking-tight leading-none">Prakruthi</h1>
-              <p className="text-[11px] font-bold tracking-[0.3em] text-[#D4AF37] mt-1.5 uppercase">Cold Pressed Oils</p>
-              <div className="mt-4 text-[11px] font-medium text-gray-500 tracking-wide leading-relaxed">
-                <p>No.839, 14th Cross Rd, near Nandini milk parlour,</p>
-                <p>A Block, Sahakar Nagar, Bengaluru, Karnataka</p>
-                <p>Phone: +91 80735 16982</p>
-              </div>
-            </div>
+        {/* HEADER SECTION */}
+        <div className="flex justify-between items-start mb-12">
+          <div className="flex items-start gap-12">
+             {/* Logo Circle */}
+             <div className="w-24 h-24 rounded-full border-2 border-zinc-900 flex items-center justify-center text-[10px] font-bold tracking-tighter overflow-hidden flex-shrink-0">
+                <img src="/coldLogo.jpg" className="w-full h-full object-cover" alt="logo" />
+             </div>
+             <div className="space-y-1">
+                <h1 className="text-3xl font-bold text-[#1E4620] mb-2">Prakruthi Naturals</h1>
+                <div className="text-sm text-gray-600 font-medium leading-relaxed">
+                   <p>No.839, 14th Cross Rd,</p>
+                   <p>Near Nandini milk parlour,</p>
+                   <p>A Block, Sahakar Nagar, Bengaluru,</p>
+                   <p>prakruthioilsales@gmail.com | 8073516982</p>
+                   <p>Prakruthicoldpressedoils.com</p>
+                </div>
+             </div>
           </div>
-          
           <div className="text-right">
-            <h2 className="text-5xl font-medium text-gray-100 tracking-tighter mb-2">Invoice</h2>
-            <div className="space-y-1">
-              <p className="text-[10px] font-medium tracking-widest text-gray-400">Invoice Number</p>
-              <p className="text-sm font-medium text-gray-900"># {invoiceNumber}</p>
-              <p className="text-[10px] font-medium tracking-widest text-gray-400 mt-2">Issue Date</p>
-              <p className="text-sm font-medium text-gray-900">{date}</p>
-            </div>
+             <h2 className="text-4xl font-bold text-[#EEF2C1] opacity-90 uppercase tracking-[0.2em]">INVOICE</h2>
           </div>
         </div>
 
-        {/* CLIENT DETAILS */}
-        <div className="grid grid-cols-2 gap-12 mb-12">
-          <div className="bg-[#1E4620]/5 p-8 rounded-2xl border border-[#1E4620]/10">
-            <p className="text-[10px] font-bold tracking-[0.3em] text-[#1E4620] mb-4 uppercase">Billed To</p>
-            <h3 className="text-xl font-serif font-bold text-gray-900 mb-2">{formData.name}</h3>
-            <div className="text-xs font-medium text-gray-600 space-y-1.5 leading-relaxed">
-              <p>{formData.phone}</p>
-              <p className="max-w-[250px]">{formData.address}</p>
-            </div>
-          </div>
-          
-          <div className="flex flex-col justify-center p-8">
-            <div className="space-y-4">
-              <div className="flex justify-between items-center pb-4 border-b border-gray-100">
-                <span className="text-[10px] font-medium tracking-widest text-gray-400">Payment Status</span>
-                <span className="px-4 py-1.5 rounded-full bg-yellow-50 text-yellow-600 text-[9px] font-medium tracking-[0.2em]">Cash on Delivery</span>
+        {/* ADDRESSES & INFO */}
+        <div className="grid grid-cols-3 gap-8 mb-12">
+           {/* Bill To */}
+           <div>
+              <p className="text-sm font-black uppercase mb-3 border-b-2 border-gray-900 pb-1 w-fit">BILL TO</p>
+              <div className="text-sm font-medium text-gray-700 space-y-1">
+                 <p className="font-bold text-gray-900 text-base">{formData.name}</p>
+                 <p className="max-w-[220px] leading-snug">{formData.address}</p>
+                 <p className="pt-1">{formData.phone}</p>
               </div>
-              <div className="flex justify-between items-center">
-                <span className="text-[10px] font-medium tracking-widest text-gray-400">Shipping Mode</span>
-                <span className="text-[10px] font-medium text-gray-900">Express Harvest Delivery</span>
+           </div>
+
+           {/* Shipping Address */}
+           <div>
+              <p className="text-sm font-black uppercase mb-3 border-b-2 border-gray-900 pb-1 w-fit">Shipping Address</p>
+              <div className="text-sm font-medium text-gray-700 space-y-1">
+                 <p className="font-bold text-gray-900 text-base">{formData.name} (Shipping)</p>
+                 <p className="max-w-[220px] leading-snug">{formData.address}</p>
+                 <p className="pt-1">{formData.phone}</p>
               </div>
-            </div>
-          </div>
+           </div>
+
+           {/* Invoice Info */}
+           <div className="text-sm font-medium text-right flex flex-col justify-end">
+              <div className="grid grid-cols-2 gap-x-4 gap-y-1">
+                 <span className="font-bold">Invoice No:</span>
+                 <span className="text-gray-900">{invoiceNumber}</span>
+                 <span className="font-bold">Invoice Date:</span>
+                 <span className="text-gray-900">{date}</span>
+                 <span className="font-bold">Due Date:</span>
+                 <span className="text-gray-900">{date}</span>
+                 <span className="font-bold">PO No:</span>
+                 <span className="text-gray-900">PO-{invoiceNumber.slice(-3)}</span>
+              </div>
+           </div>
         </div>
 
-        {/* PRODUCT TABLE */}
-        <div className="mb-12">
-          <table className="w-full text-left">
-            <thead>
-              <tr className="text-[10px] font-bold tracking-[0.2em] text-[#1E4620] uppercase border-b-2 border-[#D4AF37]/50">
-                <th className="py-6 px-4">Item Details</th>
-                <th className="py-6 px-4 text-center">Qty</th>
-                <th className="py-6 px-4 text-right">Unit Price</th>
-                <th className="py-6 px-4 text-right">Amount</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-gray-50">
-              {cart.map((item, index) => (
-                <tr key={index} className="group">
-                  <td className="py-6 px-4">
-                    <p className="font-medium text-gray-900">{item.product.name}</p>
-                    <p className="text-[9px] font-medium text-gray-400 tracking-widest mt-1">{item.selectedSize.size}</p>
-                  </td>
-                  <td className="py-6 px-4 text-center text-sm font-medium text-gray-600">{item.quantity}</td>
-                  <td className="py-6 px-4 text-right text-sm font-medium text-gray-600">₹{item.unitPrice.toLocaleString()}</td>
-                  <td className="py-6 px-4 text-right text-sm font-medium text-gray-900">₹{(item.unitPrice * item.quantity).toLocaleString()}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        {/* TABLE */}
+        <div className="mb-10">
+           <table className="w-full text-left border-collapse">
+              <thead>
+                 <tr className="bg-[#EEF2C1]/30 text-sm font-bold text-[#1E4620]">
+                    <th className="py-3 px-4 border-y-2 border-gray-200 w-16 text-center">Sl.</th>
+                    <th className="py-3 px-4 border-y-2 border-gray-200">Description</th>
+                    <th className="py-3 px-4 border-y-2 border-gray-200 text-center w-24">Qty</th>
+                    <th className="py-3 px-4 border-y-2 border-gray-200 text-right w-32">Rate</th>
+                    <th className="py-3 px-4 border-y-2 border-gray-200 text-right w-36">Amount</th>
+                 </tr>
+              </thead>
+              <tbody className="text-sm font-medium text-gray-700">
+                 {cart.map((item, idx) => (
+                    <tr key={idx} className="border-b border-gray-100">
+                       <td className="py-4 px-4 text-center">{idx + 1}</td>
+                       <td className="py-4 px-4">
+                          <p className="font-bold text-gray-900 text-base">{item.product.name}</p>
+                          <p className="text-xs text-gray-500 mt-1 uppercase tracking-wider">{item.selectedSize.size}</p>
+                       </td>
+                       <td className="py-4 px-4 text-center text-base">{item.quantity}</td>
+                       <td className="py-4 px-4 text-right text-base">₹{item.unitPrice.toLocaleString()}</td>
+                       <td className="py-4 px-4 text-right font-bold text-gray-900 text-base">₹{(item.unitPrice * item.quantity).toLocaleString()}</td>
+                    </tr>
+                 ))}
+              </tbody>
+           </table>
         </div>
 
-        {/* TOTALS */}
-        <div className="flex justify-end mb-12">
-          <div className="w-64 space-y-4">
-            <div className="flex justify-between text-xs font-medium tracking-widest text-gray-400">
-              <span>Subtotal</span>
-              <span className="text-gray-900">₹{total.toLocaleString()}</span>
-            </div>
-            <div className="flex justify-between text-xs font-bold tracking-widest text-[#D4AF37] uppercase">
-               <span>Delivery</span>
-               <span>Free</span>
-            </div>
-            <div className="pt-6 border-t-2 border-[#1E4620] flex justify-between items-end">
-              <span className="text-xs font-bold tracking-[0.2em] text-[#1E4620] uppercase">Grand Total</span>
-              <span className="text-3xl font-serif font-bold text-gray-900">₹{total.toLocaleString()}</span>
-            </div>
-          </div>
+        {/* FOOTER & TOTALS */}
+        <div className="flex justify-between items-start">
+           {/* Left Note */}
+           <div className="w-1/2">
+              <p className="text-xs font-bold text-gray-600 mb-12 italic leading-relaxed">
+                 Thank you for your order! We are committed to providing fresh, high-quality items. Stay healthy!
+              </p>
+              
+              <div className="mt-12 bg-gray-50 p-6 rounded-2xl border border-gray-100">
+                 <p className="text-sm font-bold text-[#1E4620] underline mb-3 uppercase tracking-wider">Payment Instructions</p>
+                 <p className="text-xs text-gray-600 leading-relaxed font-medium">
+                    Please make the payment once your item is ready for dispatch. After payment is completed, we will share the live location of the item.
+                 </p>
+              </div>
+           </div>
+
+           {/* Right Totals */}
+           <div className="w-5/12 text-sm font-medium space-y-3">
+              <div className="flex justify-between text-gray-600 px-2">
+                 <span>Subtotal</span>
+                 <span className="text-gray-900 font-bold">₹{subtotal.toLocaleString()}</span>
+              </div>
+              <div className="flex justify-between text-gray-600 px-2">
+                 <span>Delivery Charges</span>
+                 <span className="text-gray-900 font-bold">₹{deliveryCharge.toLocaleString()}</span>
+              </div>
+              <div className="flex justify-between text-gray-600 border-t border-gray-100 pt-3 px-2">
+                 <span>Tax Rate (0%)</span>
+                 <span className="text-gray-900 font-bold">0.00</span>
+              </div>
+              <div className="flex justify-between text-gray-600 px-2">
+                 <span>Total Tax</span>
+                 <span className="text-gray-900 font-bold">0.00</span>
+              </div>
+              
+              <div className="bg-[#EEF2C1]/50 p-5 mt-6 flex justify-between items-center border-2 border-[#1E4620]/20 rounded-xl">
+                 <span className="text-base font-black uppercase text-[#1E4620]">Balance Due</span>
+                 <span className="text-2xl font-black text-gray-900">₹{total.toLocaleString()}</span>
+              </div>
+
+              <div className="mt-16 text-center pt-10 border-t-2 border-gray-100">
+                 <div className="h-14"></div>
+                 <p className="text-sm font-black uppercase text-[#1E4620] tracking-widest">Authorized Signatory</p>
+              </div>
+           </div>
         </div>
 
-        {/* FOOTER */}
-        <div className="pt-12 border-t border-gray-100 text-center">
-          <p className="text-[10px] font-medium tracking-[0.4em] text-gray-400 mb-8 uppercase">Pure Harvest. Traditional Extraction. Ancient Wisdom.</p>
-          <div className="flex justify-between items-end mt-12">
-            <div className="text-left">
-              <p className="text-[9px] font-medium tracking-widest text-gray-400 mb-1 uppercase">Generated by</p>
-              <p className="text-[11px] font-bold tracking-wider text-[#1E4620] uppercase">Prakruthi Cold Pressed Oils</p>
-            </div>
-            <div className="text-right">
-              <div className="w-48 border-b border-[#1E4620]/30 mb-2"></div>
-              <p className="text-[9px] font-medium tracking-widest text-gray-400 uppercase">Authorized Signature</p>
-            </div>
-          </div>
+        {/* BOTTOM ACCENT */}
+        <div className="mt-12 border-t border-zinc-100 pt-6 text-center">
+           <p className="text-[10px] text-gray-400 font-bold uppercase tracking-[0.6em]">Pure Harvest • Traditional Roots • Ancient Wisdom</p>
         </div>
       </div>
     );

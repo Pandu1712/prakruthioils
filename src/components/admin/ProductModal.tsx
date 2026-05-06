@@ -132,7 +132,7 @@ export default function ProductModal({ isOpen, onClose, product }: ProductModalP
               <div>
                 <label className="block text-[11px] font-medium text-gray-400 uppercase tracking-[0.2em] mb-3">Category Selection</label>
                 <select required value={formData.category} onChange={e => setFormData({ ...formData, category: e.target.value })} className="w-full p-4 bg-gray-50 border border-transparent rounded-2xl outline-none focus:bg-white focus:border-[#9EA233] transition-all font-medium text-gray-900 appearance-none shadow-inner">
-                  {categories.map(c => <option key={c.id} value={c.name}>{c.name}</option>)}
+                  {categories.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
                 </select>
               </div>
             </div>
